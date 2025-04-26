@@ -24,7 +24,7 @@ const HeroH1 = () => {
             <span className="xl:hidden">Olulanke</span>Mainasara
             <motion.p
               style={{ opacity: scrollYProgress }}
-              className="text-6xl md:text-9xl xl:text-[200px] uppercase flex flex-col items-center leading-none xl:block bg-[url('src/images/space-lighthouse.png')] bg-bottom bg-cover bg-clip-text text-transparent absolute inset-0"
+              className="text-6xl md:text-9xl xl:text-[200px] uppercase flex flex-col items-center leading-none xl:block bg-[url('/space-lighthouse.png')] bg-bottom bg-cover bg-clip-text text-transparent absolute inset-0"
             >
               <span className="xl:hidden">Olulanke</span>Mainasara
             </motion.p>
@@ -85,7 +85,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
       <div className="relative h-[60dvh] lg:h-screen p-4 pb-0 md:p-8">
         <motion.img
           style={{ opacity: scrollYProgress }}
-          src="src/images/me.jpg"
+          src="/me.jpg"
           className="object-cover object-top w-full h-full rounded-lg brightness-[30%]"
           alt="Mainasara Olulanke"
         />
