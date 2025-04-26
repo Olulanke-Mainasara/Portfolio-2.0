@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+import BlackBackground from "@/images/black-background.jpg"
+import SpaceLighthouse from "@/images/space-lighthouse.png"
+---
+
+<section>
+    <div class="relative flex flex-col items-center justify-center h-screen text-white">
+        <Image src={BlackBackground} class="absolute top-0 z-[-20] w-full h-full object-cover brightness-75" alt={"Bunch of stars"}/>
+        <Image src={SpaceLighthouse} class="object-cover object-left w-full h-full md:object-center" alt={"Space lighthouse"}/>
+    </div>
+    <div class="h-screen">
+
+    </div>
+</section>
+
+

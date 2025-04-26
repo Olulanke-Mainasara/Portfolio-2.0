@@ -1,0 +1,15 @@
+---
+import { Icon } from "astro-icon/components"
+---
+
+<header class="fixed left-0 z-10 flex items-center justify-center w-full h-24 text-black bottom-4 md:hidden">
+    <nav class="w-[92%] flex items-center rounded-full bg-white px-6 py-4 gap-10">
+        <ul class="flex w-full gap-10 justify-evenly">
+            <li><a href="#home"><Icon name={"house"} size={25} /></a></li>
+            <li><a href="#about"><Icon name={"address-card"} size={25} /></a></li>
+            <li><a href="#projects"><Icon name={"project"} size={25} /></a></li>
+            <li><a href="#contact"><Icon name={"phone"} size={25} /></a></li>
+        </ul>
+        <a href="/public/" class="text-black"><Icon name={"file"} size={25} /></a>
+    </nav>    
+</header>

@@ -1,0 +1,30 @@
+.container {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.item {
+  width: 135px;
+  stroke: #fff;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.left-arrow {
+  position: absolute;
+  left: -50px;
+  bottom: 21px;
+  width: 70px;
+}
+
+.right-arrow {
+  position: absolute;
+  right: -54px;
+  top: 21px;
+  width: 70px;
+}

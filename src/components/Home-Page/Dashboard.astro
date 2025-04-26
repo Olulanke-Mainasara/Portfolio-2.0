@@ -1,0 +1,69 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import MissionsImg from "@/images/missions.jpg"
+import BlogImg from "@/images/diary.webp"
+import ToolsImg from "@/images/tools.png"
+import AboutImg from "@/images/me3.jpg"
+import TestimonialsImg from "@/images/testimonials.png"
+---
+
+<section class="flex items-center justify-center px-4 lg:px-8 h-full lg:h-[80dvh]">
+    <div class="grid w-full h-full grid-cols-1 gap-4 lg:gap-8 xl:grid-rows-2 md:grid-cols-2 xl:grid-cols-3">
+        <div class="relative w-full h-full overflow-hidden border rounded-lg group max-h-72 lg:max-h-full">
+            <Image src={MissionsImg} class="object-cover w-full h-full duration-300 group-hover:scale-110 object-bottom" alt="My current projects"/>
+            <div class="absolute bottom-0 left-0 w-full lg:p-8 space-y-2 text-white rounded-lg bg-gradient-to-b from-black/50 to-black p-4 h-full flex flex-col justify-end">
+                <p class="text-4xl">Mission logs</p>
+                <p class="max-w-lg font-thin text-lg">Some of the things I'm currently working on and learning, on my 10x dev master race.</p>
+                <a href="/src/pages/" class="flex items-center gap-2 group">
+                    <span class="text-white">View</span>
+                    <Icon name="arrow-right" size={20} class="text-white duration-300 group-hover:translate-x-1" />
+                </a>
+            </div>
+        </div>
+        <div class="relative w-full h-full overflow-hidden border rounded-lg md:row-span-2 group max-h-72 md:max-h-full row-start-1">
+            <Image src={AboutImg} class="object-cover object-top w-full h-full duration-300 group-hover:scale-110" alt="About me"/>
+            <div class="absolute bottom-0 left-0 w-full md:p-8 space-y-2 text-white rounded-lg bg-gradient-to-b from-black/30 to-black p-4 h-full flex flex-col justify-end">
+                <p class="text-4xl md:text-7xl">The Nerd</p>
+                <p class="max-w-lg md:text-xl font-thin text-lg">When I'm not coding on vibes or debugging my sanity, I'm probably pretending to be a superhero or a ninja.</p>
+                <a href="src/pages/about" class="flex items-center gap-2 group">
+                    <span class="text-white md:text-xl">Hmmm</span>
+                    <Icon name="arrow-right" size={30} class="text-white duration-300 group-hover:translate-x-1" />
+                </a>
+            </div>
+        </div>
+        <div class="relative w-full h-full overflow-hidden border rounded-lg group max-h-72 md:max-h-full">
+            <Image src={ToolsImg} class="object-cover w-full h-full duration-300 group-hover:scale-110 object-center" alt="My tools"/>
+            <div class="absolute bottom-0 left-0 w-full md:p-8 space-y-2 text-white rounded-lg bg-gradient-to-b from-black/50 to-black p-4 h-full flex flex-col justify-end">
+                <p class="text-4xl">Utility belt</p>
+                <p class="max-w-lg font-thin text-lg">Some of the tools I use on a daily basis and also recommend to get things done.</p>
+                <a href="/src/pages/tools" class="flex items-center gap-2 group">
+                    <span class="text-white">Steal</span>
+                    <Icon name="arrow-right" size={20} class="text-white duration-300 group-hover:translate-x-1" />
+                </a>
+            </div>
+        </div>
+        <div class="relative w-full h-full overflow-hidden border rounded-lg group max-h-72 md:max-h-full">
+            <Image src={BlogImg} class="object-cover w-full h-full duration-300 group-hover:scale-110" alt="My blog"/>
+            <div class="absolute bottom-0 left-0 w-full md:p-8 space-y-2 text-white rounded-lg bg-gradient-to-b from-black/50 to-black p-4 h-full flex flex-col justify-end">
+                <p class="text-4xl flex items-center gap-1">Dear diary <span class="text-sm">coming soon</span></p>
+                <p class="max-w-lg font-thin text-lg">I occasionally share my thoughts and findings with my diary, don't be a creep.</p>
+                <a href="#" class="flex items-center gap-2 group">
+                    <span class="text-white">Peek</span>
+                    <Icon name="arrow-right" size={20} class="text-white duration-300 group-hover:translate-x-1" />
+                </a>
+            </div>
+        </div>
+        <div class="relative w-full h-full overflow-hidden border rounded-lg group max-h-72 md:max-h-full">
+            <Image src={TestimonialsImg} class="object-contain w-full h-full duration-300 group-hover:scale-110" alt="Some testimonials"/>
+            <div class="absolute bottom-0 left-0 w-full md:p-8 space-y-2 text-white rounded-lg bg-gradient-to-b from-black/50 to-black p-4 h-full flex flex-col justify-end">
+                <p class="text-4xl flex items-center gap-1"><span class="hidden lg:inline-block">Mum, </span>I'm famous! <span class="text-sm">coming soon</span></p>
+                <p class="max-w-lg font-thin text-lg">People say I'm built different, they probably just laugh when I break production, weirdos.</p>
+                <a href="#" class="flex items-center gap-2 group">
+                    <span class="text-white">Pfftt</span>
+                    <Icon name="arrow-right" size={20} class="text-white duration-300 group-hover:translate-x-1" />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

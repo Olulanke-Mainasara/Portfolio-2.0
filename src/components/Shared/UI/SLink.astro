@@ -1,0 +1,33 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+    href: string;
+    text: string;
+    icon?: string;
+    iconPosition?: string;
+    extraStyles?: string;
+    borderColor?: string;
+    iconWandH?: "small" | "medium" | "large";
+}
+
+const { href, text, icon, iconPosition, extraStyles, borderColor, iconWandH } = Astro.props
+---
+
+<a href={href} class=`flex items-center rounded-full relative group overflow-hidden ${extraStyles}`>
+  <div class="absolute top-0 w-full h-full duration-300 rounded-full -left-full backdrop-invert group-hover:left-0"></div>
+  <div class=`absolute inset-0 border-[2px] ${borderColor} rounded-full`></div>
+  {iconPosition === "left" && 
+    <span class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-2xl"} mr-1 flex items-center justify-center bg-black text-white rounded-full`}>
+      <Icon name={icon} />
+    </span>
+  }
+
+  {text}{" "}
+
+  {iconPosition === "right" && 
+    <span class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-2xl"} ml-1 w-8 h-8 flex items-center justify-center bg-black text-white rounded-full`}>
+      <Icon name={icon} />
+    </span>
+  }
+</a>

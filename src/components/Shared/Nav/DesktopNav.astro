@@ -1,0 +1,19 @@
+---
+import Logo from "../Logo/Logo.astro";
+import SLink from "../UI/SLink.astro";
+---
+
+<header class="fixed z-10 items-center hidden w-full text-black top-3 left-2 md:flex">
+    <nav class="flex items-center pl-6 bg-white rounded-full">
+        <a href="/"><Logo /></a>
+        <div class="flex items-center gap-6">
+            <ul class="flex gap-6">
+                <li class="hover:scale-110 hover:-rotate-6 duration-300"><a href="#home">Home</a></li>
+                <li class="hover:scale-110 hover:rotate-6 duration-300"><a href="#about">About</a></li>
+                <li class="hover:scale-110 hover:-rotate-6 duration-300"><a href="#projects">Projects</a></li>
+                <li class="hover:scale-110 hover:rotate-6 duration-300"><a href="#contact">Contact</a></li>
+            </ul>
+            <SLink href="/about" text="The Nerd" iconPosition="left" icon="astronaut" extraStyles="py-4 px-6 bg-black text-white gap-1" borderColor="border-black" iconWandH="medium" />
+        </div>
+    </nav>    
+</header>

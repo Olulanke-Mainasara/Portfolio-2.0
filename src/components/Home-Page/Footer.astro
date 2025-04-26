@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import Logo from "../Shared/Logo/Logo.astro";
+import SButton from "../Shared/UI/SButton.astro";
+---
+
+<footer class="px-4 pb-32 md:pb-8 mt-32 lg:p-8">
+    <div class="flex flex-col items-center justify-between gap-8 lg:flex-row lg:gap-0">
+        <div class="w-full lg:text-right pr-8">
+            <div class="flex items-center lg:justify-end">
+                <span class="text-white"><Logo fill="white" /></span>
+                <p class="text-xl text-gray-400 -translate-x-4">Frontend Engineer</p>
+            </div>
+            <p class="mb-4 text-white text-7xl md:text-8xl">Mainasara</p>
+            <p class="text-xl text-gray-400">Thanks for stopping by!</p>
+        </div>
+        <div class="flex flex-col w-full lg:border-l lg:pl-8">
+            <p class="mb-4 text-white text-7xl md:text-9xl lg:text-8xl xl:text-9xl text-right lg:text-left">Let's talk!</p>
+            <div class="flex items-center justify-end gap-4 text-white lg:justify-start">
+                <a href="mailto:mainasara.o.olulanke@gmail.com">
+                    <Icon name={"mail"} size={30} class={"hover:scale-125 hover:-rotate-6 duration-300 hover:text-background"} />
+                </a>
+                <a href="https://www.linkedin.com/in/mainasara-olulanke-01658a228/">
+                    <Icon name={"linkedin"} size={30} class={"hover:scale-125 hover:rotate-6 duration-300 hover:text-background"} />
+                </a>
+                <a href="https://github.com/Olulanke-Mainasara">
+                    <Icon name={"github"} size={30} class={"hover:scale-125 hover:-rotate-6 duration-300 hover:text-background"} />
+                </a>
+                <a href="https://x.com/MainasaraOlu">
+                    <Icon name={"twitter"} size={30} class={"hover:scale-125 hover:rotate-6 duration-300 hover:text-background"} />
+                </a>
+                <a href="/contact"><SButton text="Contact me" iconPosition="right" icon="arrow-right" extraStyles="hidden md:flex text-3xl text-black gap-3 bg-white pl-4 pr-[6px] py-[6px]" /></a>
+            </div>
+        </div>
+    </div>
+    <hr class="my-8">
+    <div class="flex flex-col items-center justify-between md:flex-row gap-1 md:gap-0 text-center">
+        <p class="text-sm text-gray-500">© 2025 Mainasara Olulanke.</p>
+        <p class="text-gray-500">Designed and Developed by <a href="https://github.com/Olulanke-Mainasara" class="underline transition-colors hover:text-white">Mainasara Olulanke</a></p>
+        <p class="text-gray-500">Last updated: {new Date().toLocaleDateString()}</p>
+</footer>
