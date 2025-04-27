@@ -2,14 +2,38 @@
 import { Icon } from "astro-icon/components"
 ---
 
-<header class="fixed left-0 z-10 flex items-center justify-center w-full h-24 text-black bottom-4 md:hidden">
-    <nav class="w-[92%] flex items-center rounded-full bg-white px-6 py-4 gap-10">
-        <ul class="flex w-full gap-10 justify-evenly">
-            <li><a href="#home"><Icon name={"house"} size={25} /></a></li>
-            <li><a href="#about"><Icon name={"address-card"} size={25} /></a></li>
-            <li><a href="#projects"><Icon name={"project"} size={25} /></a></li>
-            <li><a href="#contact"><Icon name={"phone"} size={25} /></a></li>
-        </ul>
-        <a href="/public/" class="text-black"><Icon name={"file"} size={25} /></a>
-    </nav>    
+<header class="backdrop-blur-3xl fixed bottom-0 w-full z-10 md:hidden pb-3">
+  <nav class="sticky bottom-0 mx-auto flex w-full justify-between gap-8 px-10 pt-5 pb-3 text-xs sm:max-w-md sm:rounded-t-xl sm:border-l sm:border-r sm:text-sm">
+    <a href="/" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
+      <Icon name={"house"} size={25} />
+      <span>Home</span>
+    </a>
+
+    <a href="/about" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
+      <Icon name={"address-card"} size={25} />
+      <span>About</span>
+    </a>
+
+    <a href="/projects" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
+      <Icon name={"project"} size={25} />
+      <span>Projects</span>
+    </a>
+
+    <a href="/contact" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
+      <Icon name={"phone"} size={25} />
+      <span>Contact</span>
+    </a>
+  </nav>
 </header>
+
+<script>
+  const path = document.location.pathname
+  const navLinks = Array.from(document.getElementsByClassName("navlink"))
+  navLinks.forEach(link => {
+    if (link.getAttribute("href") === path) {
+      link.classList.add("text-background")
+    } else {
+      link.classList.add("text-neutral-500")
+    }
+  })
+</script>

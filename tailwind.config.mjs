@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "rgb(38, 64, 75)",
+        background: "rgb(120, 161, 153)",
       },
     },
   },

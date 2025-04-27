@@ -1,5 +1,12 @@
 {
-  "cSpell.words": ["astrojs", "leftarrow", "rightarrow", "thooose", "Xplorer"],
+  "cSpell.words": [
+    "astrojs",
+    "leftarrow",
+    "navlink",
+    "rightarrow",
+    "thooose",
+    "Xplorer"
+  ],
   "prettier.documentSelectors": ["**/*.astro"],
   "[astro]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

@@ -1,5 +1,3 @@
-import React from "react";
-
 const ProjectDescription = ({
   index,
   name,
@@ -12,12 +10,13 @@ const ProjectDescription = ({
   children: React.ReactNode;
 }) => {
   return (
-    <div className="flex items-center justify-center w-full">
+    <div className="flex items-center justify-center w-full relative">
       <div className="flex flex-col max-w-xl gap-4 md:gap-6">
-        <p className="text-3xl">
-          {index} - {name}
-        </p>
-        <p className="text-base font-thin xl:text-xl opacity-80">
+        <p className="text-4xl md:text-5xl">{name}</p>
+        <p
+          id="description"
+          className="font-thin text-lg md:text-base lg:text-xl opacity-80"
+        >
           {description}
         </p>
         {children}

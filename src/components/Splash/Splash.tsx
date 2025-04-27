@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import "./splash.css";
 const icon = {
@@ -21,7 +20,7 @@ const icon = {
 export const Splash = () => (
   <>
     <motion.div
-      className="absolute bg-black h-full z-10 inset-0"
+      className="absolute bg-black h-full z-20 inset-0"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0, display: "none" }}
       transition={{

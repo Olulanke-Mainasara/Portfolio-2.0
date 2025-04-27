@@ -3,17 +3,46 @@ import Logo from "../Logo/Logo.astro";
 import SLink from "../UI/SLink.astro";
 ---
 
-<header class="fixed z-10 items-center hidden w-full text-black top-3 left-2 md:flex">
-    <nav class="flex items-center pl-6 bg-white rounded-full">
+<header id="desktop-nav" class="fixed z-20 items-center hidden w-full text-black top-3 left-2 md:flex opacity-0 pointer-events-none transition-opacity duration-300">
+    <nav class="flex items-center pl-6 bg-white rounded-full shadow-2xl">
         <a href="/"><Logo /></a>
         <div class="flex items-center gap-6">
             <ul class="flex gap-6">
-                <li class="hover:scale-110 hover:-rotate-6 duration-300"><a href="#home">Home</a></li>
-                <li class="hover:scale-110 hover:rotate-6 duration-300"><a href="#about">About</a></li>
-                <li class="hover:scale-110 hover:-rotate-6 duration-300"><a href="#projects">Projects</a></li>
-                <li class="hover:scale-110 hover:rotate-6 duration-300"><a href="#contact">Contact</a></li>
+                <li class="text-black hover:scale-110 hover:-rotate-6 duration-300 hover:bg-black hover:text-white py-1 px-2 rounded-md"><a href="/">Home</a></li>
+                <li class="hover:scale-110 hover:rotate-6 duration-300 hover:bg-black hover:text-white py-1 px-2 rounded-md"><a href="/about">About</a></li>
+                <li class="hover:scale-110 hover:-rotate-6 duration-300 hover:bg-black hover:text-white py-1 px-2 rounded-md"><a href="/projects">Projects</a></li>
+                <li class="hover:scale-110 hover:rotate-6 duration-300 hover:bg-black hover:text-white py-1 px-2 rounded-md"><a href="/contact">Contact</a></li>
             </ul>
             <SLink href="/about" text="The Nerd" iconPosition="left" icon="astronaut" extraStyles="py-4 px-6 bg-black text-white gap-1" borderColor="border-black" iconWandH="medium" />
         </div>
     </nav>    
 </header>
+
+<script>
+    // Ensure the script runs after the DOM is fully loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        const nav = document.getElementById("desktop-nav");
+        const path = document.location.pathname
+
+        if (path !== "/") {
+            if (nav) {
+                nav.classList.add("opacity-100", "pointer-events-auto");
+            }
+        }   
+
+        // Listen for scroll events
+        window.addEventListener("scroll", () => {
+            if (window.scrollY >= window.innerHeight) {
+                // Show the nav bar after scrolling 100vh
+                if (nav) {
+                    nav.classList.add("opacity-100", "pointer-events-auto");
+                }
+            } else {
+                // Hide the nav bar when scrolled back to the top
+                if (nav) {
+                    nav.classList.remove("opacity-100", "pointer-events-auto");
+                }
+            }
+        });
+    });
+</script>
