@@ -1,0 +1,102 @@
+---
+import Footer from "@/components/Home-Page/Footer.astro";
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout title="Contact - Mainasara Olulanke">
+    <main class="pt-8 md:pt-20 xl:pt-0 px-4 lg:px-8 lg:h-[60vh] xl:h-screen max-w-screen-2xl mx-auto">
+        <div class="text-white w-full h-full flex flex-col lg:flex-row items-center gap-16 md:gap-8">
+            <div class="flex flex-col gap-8 w-full h-fit">
+                <div class="text-center lg:text-left">
+                    <h1 class="text-7xl md:text-9xl text-white">Contact</h1>
+                    <p class="text-2xl md:text-4xl text-gray-400 mt-4 font-thin">Let's build something amazing together</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-12 w-full h-fit">
+                    <div>
+                        <h3 class="text-3xl flex items-center gap-3"><div class="h-12 w-12 flex items-center justify-center bg-gray-500 text-primary rounded-full text-2xl"><Icon name={"mail"} /></div> Email</h3>
+                        <p class="my-2.5 text-gray-400 max-w-80 text-lg md:text-base">Feel free to reach out to me via email for any inquiries or collaborations.</p>
+                        <a class="font-medium text-2xl md:text-xl hover:text-background duration-200" href="mailto:mainasara.o.olulanke@gmail.com">
+                            mainasara.o.olulanke@gmail.com
+                        </a>
+                    </div>
+                    <div class="flex flex-col items-end md:items-start">
+                        <h3 class="text-3xl flex items-center gap-3"><div class="h-12 w-12 flex items-center justify-center bg-gray-500 text-primary rounded-full text-2xl"><Icon name={"phone"} /></div> Phone</h3>
+                        <p class="my-2.5 text-gray-400 max-w-72 text-right md:text-left text-lg md:text-base">Reach out to me via phone for any urgent matters.</p>
+                        <a class="font-medium text-2xl md:text-xl hover:text-background duration-200" href="tel:+2348181120601">
+                            +234 818 112 0601
+                        </a>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl flex items-center gap-3"><div class="h-12 w-12 flex items-center justify-center bg-gray-500 text-primary rounded-full text-2xl"><Icon name={"address-card"} /></div> Socials</h3>
+                        <p class="my-2.5 text-gray-400 max-w-72 text-lg md:text-base"> You can also find me on social media. I'm always open to new connections!</p>
+                        <div class="items-center gap-4 flex text-white">
+                            <a href="https://www.linkedin.com/in/mainasara-olulanke-01658a228/" target="_blank" rel="noopener noreferrer">
+                                <Icon name={"linkedin"} size={35} class={"hover:scale-125 hover:rotate-6 duration-300 hover:text-background"} />
+                            </a>
+                            <a href="https://github.com/Olulanke-Mainasara" target="_blank" rel="noopener noreferrer">
+                                <Icon name={"github"} size={35} class={"hover:scale-125 hover:-rotate-6 duration-300 hover:text-background"} />
+                            </a>
+                            <a href="https://x.com/MainasaraOlu" target="_blank" rel="noopener noreferrer">
+                                <Icon name={"twitter"} size={35} class={"hover:scale-125 hover:rotate-6 duration-300 hover:text-background"} />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end md:items-start">
+                        <h3 class="text-3xl flex items-center gap-3"><div class="h-12 w-12 flex items-center justify-center bg-gray-500 text-primary rounded-full text-2xl"><Icon name={"house"} /></div> Address</h3>
+                        <p class="my-2.5 text-gray-400 max-w-80 text-right md:text-left text-lg md:text-base">Feel free to visit me at my location for any in-person discussions or meetings.</p>
+                        <p class="font-medium text-2xl md:text-xl">
+                            Lagos, Nigeria.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            {/* Form */}
+            <div class="w-full">
+                <form class="lg:max-w-xl mx-auto border p-4 md:p-8 rounded-lg">
+                    <div class="grid grid-cols-2 gap-x-5 gap-y-5">
+                        <div class="col-span-1">
+                            <label class="block" for="firstName">First Name</label>
+                            <input
+                                placeholder="First name"
+                                id="firstName"
+                                class="mt-1.5 bg-transparent border border-neutral-400 h-11 shadow-none w-full pl-3 rounded-md text-black"
+                            />
+                        </div>
+                        <div class="col-span-1">
+                            <label class="block" for="lastName">Last Name</label>
+                            <input
+                                placeholder="Last name"
+                                id="lastName"
+                                class="mt-1.5 bg-transparent border border-neutral-400 h-11 shadow-none w-full pl-3 rounded-md text-black"
+                            />
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block" for="email">Email</label>
+                            <input
+                                type="email"
+                                placeholder="Email"
+                                id="email"
+                                class="mt-1.5 bg-transparent border border-neutral-400 h-11 shadow-none w-full pl-3 rounded-md text-black"
+                            />
+                        </div>
+                        <div class="col-span-2">
+                            <label class="block" for="message">Message</label>
+                            <textarea
+                                id="message"
+                                placeholder="Message"
+                                class="mt-1.5 bg-transparent border border-neutral-400 shadow-none w-full pl-3 pt-3 rounded-md text-black"
+                                rows={6}
+                            />
+                        </div>
+                    </div>
+                    <button class="mt-6 w-full text-xl text-black hover:text-white bg-white hover:bg-background py-4 rounded-md transition-colors duration-200 flex items-center justify-center gap-2">
+                        Send message <Icon name={"send"} />
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+    <Footer />
+</Layout>

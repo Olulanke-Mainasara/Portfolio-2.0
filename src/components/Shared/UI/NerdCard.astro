@@ -1,0 +1,28 @@
+---
+import { Image } from "astro:assets";
+import NerdDescription from "./NerdDescription"
+
+interface Props {
+    index: number,
+    project: {
+        name: string;
+        description: string;
+        image: ImageMetadata;
+    },
+}
+
+const { index, project } = Astro.props;
+---
+
+<div class=`flex flex-col ${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} items-center px-4 lg:px-8 h-full`>
+    <div class={`w-full h-full md:py-14 flex justify-center md:h-[300px] lg:h-[370px] xl:h-[480px] ${index % 2 === 0 ? "border-l pl-4 md:pl-8" : "border-r pr-4 md:pr-8"}`}>
+        <div class="w-full h-full overflow-hidden rounded-lg xl:max-w-2xl">
+            <Image src={project.image} alt={project.name} class={"w-full h-full hover:scale-110 duration-300"} />
+        </div>
+    </div>
+    <NerdDescription 
+        index={index} 
+        name={project.name} 
+        description={project.description} 
+    />
+</div>

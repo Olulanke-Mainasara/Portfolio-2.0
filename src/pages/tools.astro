@@ -1,0 +1,27 @@
+---
+import Footer from "@/components/Home-Page/Footer.astro";
+import Layout from "@/layouts/Layout.astro";
+import { technologies } from "@/static-data";
+---
+
+<Layout title="Tools - Mainasara Olulanke">
+    <main class="pt-8 md:pt-24 px-4 lg:px-8 max-w-screen-2xl mx-auto">
+        <div>
+            <h1 class="text-7xl md:text-9xl text-white text-center">Utility Belt</h1>
+            <p class="text-2xl md:text-4xl text-gray-400 text-center mt-4 font-thin">Tools and Tech I use to build some amazing things</p>
+        </div>
+        
+
+        <div class="text-white mt-8 grid grid-cols-4 md:grid-cols-7 lg:grid-cols-9 xl:grid-cols-11 gap-8 justify-items-center">
+            {technologies.map((technology) => {
+            return <a href={technology.link} target="_blank" rel="noopener noreferrer" class="flex flex-col gap-4 items-center group">
+                        <div class="w-20 h-20 p-4 rounded-lg bg-gray-200 border-4 group-hover:scale-110 duration-300 flex items-center justify-center group-hover:border-4 group-hover:border-background">
+                            <img src={technology.icon} alt={technology.name} />
+                        </div>
+                        <p class="text-center text-lg font-extralight">{technology.name}</p>
+                    </a>
+            })}
+        </div>
+    </main>
+    <Footer />
+</Layout>

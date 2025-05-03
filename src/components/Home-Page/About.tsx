@@ -17,7 +17,7 @@ const HeroH1 = () => {
       <div className="sticky top-0 flex flex-col items-center justify-center w-full md:min-h-[768px] h-screen -z-10">
         <div>
           <p className="text-xl tracking-widest text-center uppercase md:text-3xl">
-            Frontend Engineer
+            Frontend Engineer🧑🏾‍💻
           </p>
           <motion.h1
             initial={{ y: 100, opacity: 0 }}
@@ -77,10 +77,10 @@ const About = ({ children }: { children: React.ReactNode }) => {
         ref={ref}
         className="absolute top-0 md:min-h-[1536px] h-[200vh] w-full text-white"
       >
-        <div className="sticky top-0 flex flex-col items-center w-full md:min-h-[768px] h-screen justify-evenly">
+        <div className="sticky top-0 flex flex-col items-center w-full md:min-h-[768px] h-screen justify-evenly max-w-screen-2xl mx-auto">
           <motion.div
             style={{ opacity: scrollYProgress }}
-            className="flex items-center justify-end w-full p-4 md:pr-8"
+            className="flex items-center justify-end w-full p-4 lg:px-8"
           >
             <p className="max-w-md text-3xl font-thin text-right">
               Hey, I'm Mainasara Olulanke, Frontend Engineer by day, Capt. Space
@@ -102,7 +102,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
 
           <motion.div
             style={{ opacity: scrollYProgress }}
-            className="flex flex-col items-center justify-between w-full p-4 md:flex-row md:pl-8"
+            className="flex flex-col items-center justify-between w-full p-4 md:flex-row lg:px-8"
           >
             <p className="max-w-md text-3xl font-thin">
               I build creative solutions for the web that are performant and
@@ -113,26 +113,29 @@ const About = ({ children }: { children: React.ReactNode }) => {
           </motion.div>
         </div>
       </div>
-      <div className="relative md:min-h-[500px] h-[60vh] xl:h-[90vh] px-4 md:px-8">
+      <div className="relative xl:flex md:min-h-[500px] h-[60vh] xl:h-[80vh] px-4 lg:px-8 max-w-screen-2xl mx-auto">
         <img
           src="/me.jpg"
-          className="object-cover object-top w-full h-full rounded-lg brightness-[30%]"
+          className="object-cover object-top w-full h-full rounded-lg xl:brightness-[80%] grayscale hover:grayscale-0 duration-300"
           alt="Mainasara Olulanke"
         />
-        <div className="absolute inset-0 flex flex-col text-white items-center justify-center w-full h-full rounded-lg">
-          <p className="text-center md:text-2xl text-neutral-400">
-            Going by this saying,
-          </p>
-          <h3
-            ref={textRef}
-            className="max-w-xl lg:max-w-3xl p-8 text-xl font-thin text-center md:text-2xl lg:text-4xl"
-          >
-            "Any fool can write code that a computer can understand. Good
-            programmers write code that humans can understand." - Martin Fowler,
-          </h3>
-          <p className="text-center md:text-2xl text-neutral-400">
-            I'm a 10x developer (testing's for losers🫵🏾).
-          </p>
+        <div className="absolute inset-0 flex text-white xl:static w-full h-full px-4 lg:px-8">
+          <div className="backdrop-brightness-[30%] xl:backdrop-brightness-100 w-full h-full flex flex-col items-center justify-center gap-8 text-center xl:items-start xl:text-left px-4">
+            <p className="md:text-2xl text-neutral-400">
+              Going by this saying,
+            </p>
+            <h3
+              ref={textRef}
+              className="max-w-xl lg:max-w-3xl text-xl font-thin md:text-2xl lg:text-4xl"
+            >
+              "Any fool can write code that a computer can understand. Good
+              programmers write code that humans can understand." - Martin
+              Fowler,
+            </h3>
+            <p className="md:text-2xl text-neutral-400">
+              then I'm a 10x developer (testing's for losers🫵🏾).
+            </p>
+          </div>
         </div>
       </div>
     </>

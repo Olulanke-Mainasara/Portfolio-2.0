@@ -1,0 +1,22 @@
+---
+import Footer from "@/components/Home-Page/Footer.astro";
+import NerdCard from "@/components/Shared/UI/NerdCard.astro";
+import Layout from "@/layouts/Layout.astro";
+import { projects } from "@/static-data";
+---
+
+<Layout title="The Nerd - Mainasara Olulanke">
+    <main class="pt-8 md:pt-24 max-w-screen-2xl mx-auto">
+        <div>
+            <h1 class="text-7xl md:text-9xl text-white text-center">The Nerd</h1>
+            <p class="text-2xl md:text-4xl text-gray-400 text-center mt-4 font-thin max-w-80 mx-auto md:max-w-xl">Of course I have a life outside "Hello world", geez luweez</p>
+        </div>
+
+        <div class="flex flex-col gap-20 md:gap-0 text-white mt-14">
+            {projects.map((project, index) => {
+            return <NerdCard project={project} index={index + 1} />
+            })}
+        </div>
+    </main>
+    <Footer />
+</Layout>

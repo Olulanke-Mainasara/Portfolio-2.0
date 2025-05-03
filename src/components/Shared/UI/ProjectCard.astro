@@ -8,47 +8,46 @@ interface Props {
     index: number,
     project: {
         name: string;
-        slug: string;
         link: string;
         github: string;
         description: string;
         image: ImageMetadata;
-        technologies?: string[];
+        technologies: string[];
     },
+    showTechnologies?: boolean;
 }
 
-const { index, project } = Astro.props;
+const { index, project, showTechnologies } = Astro.props;
 ---
 
-<div class=`flex flex-col ${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} items-center px-4 gap-4 lg:gap-8 xl:gap-0 h-full`>
-    <div class=`w-full h-full md:py-4 flex justify-center md:h-[230px] lg:h-[300px] xl:h-[400px]`>
-        <a href={project.slug} class="w-full h-full overflow-hidden rounded-lg xl:max-w-2xl">
+<div class=`flex flex-col ${index % 2 === 0 ? "md:flex-row-reverse" : "md:flex-row"} items-center px-4 lg:px-8 gap-4 lg:gap-8 xl:gap-0 h-full`>
+    <div class=`w-full h-full md:py-2 flex justify-center md:h-[230px] lg:h-[275px] xl:h-[400px]`>
+        <a href={project.link} target="_blank" rel="noopener noreferrer" class="w-full h-full overflow-hidden rounded-lg xl:max-w-2xl">
             <Image src={project.image} alt={project.name} class={"w-full h-full hover:scale-110 duration-300"} />
         </a>
     </div>
     <ProjectDescription 
         index={index} 
         name={project.name} 
-        description={project.description}  
+        description={project.description} 
+        showTechnologies={showTechnologies}
+        technologies={project.technologies} 
     >
         <div class="flex items-center gap-2">
-            <a href={project.link} target="_blank" rel="noopener noreferrer" class={"w-12 h-12 bg-white text-black hover:bg-background hover:text-white duration-150 flex items-center justify-center rounded-full text-2xl"}>
-                <Icon name={"link"} />
-            </a>
-            
-            <a href={project.github} target="_blank" rel="noopener noreferrer" class={"w-12 h-12 bg-white text-black hover:bg-background hover:text-white duration-150 flex items-center justify-center rounded-full text-3xl"}>
-                <Icon name={"github"} />
+            <a href={project.github} target="_blank" rel="noopener noreferrer" class={"bg-white text-black hover:bg-background hover:text-white duration-150 flex gap-2 items-center justify-center rounded-full px-2 pr-3 py-[6px] text-base md:text-sm xl:text-base"}>
+                <span class="text-3xl"><Icon name={"github"} /></span>
+                View Code
             </a>
             
             <SLink
-            href={project.slug}
-            text="View Project"
+            href={project.link}
+            text="Live Demo"
             iconPosition="right"
             icon="arrow-right"
             extraStyles="text-base md:text-sm xl:text-base text-black gap-1 bg-white pl-4 pr-[6px] py-[6px] w-fit"
             iconWandH="medium"
+            newPage
             />
         </div>
-        
     </ProjectDescription>
 </div>

@@ -1,13 +1,16 @@
 const ProjectDescription = ({
-  index,
   name,
   description,
   children,
+  showTechnologies,
+  technologies,
 }: {
   index: number;
   name: string;
   description: string;
   children: React.ReactNode;
+  showTechnologies?: boolean;
+  technologies: string[];
 }) => {
   return (
     <div className="flex items-center justify-center w-full relative">
@@ -19,6 +22,18 @@ const ProjectDescription = ({
         >
           {description}
         </p>
+        {showTechnologies && (
+          <div className="flex flex-wrap gap-2">
+            {technologies.map((technology, index) => (
+              <span
+                key={index}
+                className="text-sm border text-white px-3 py-2 rounded-full"
+              >
+                {technology}
+              </span>
+            ))}
+          </div>
+        )}
         {children}
       </div>
     </div>

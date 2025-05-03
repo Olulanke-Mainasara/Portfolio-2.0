@@ -1,0 +1,22 @@
+---
+import Footer from "@/components/Home-Page/Footer.astro";
+import ProjectCard from "@/components/Shared/UI/ProjectCard.astro";
+import Layout from "@/layouts/Layout.astro";
+import { projects } from "@/static-data";
+---
+
+<Layout title="Projects - Mainasara Olulanke">
+    <main class="pt-8 md:pt-24 max-w-screen-2xl mx-auto">
+        <div>
+            <h1 class="text-7xl md:text-9xl text-white text-center">Projects</h1>
+            <p class="text-2xl md:text-4xl text-gray-400 text-center mt-4 font-thin">Stuff I've worked on over the years</p>
+        </div>
+
+        <div class="flex flex-col gap-28 text-white mt-14">
+            {projects.map((project, index) => {
+            return <ProjectCard project={project} index={index + 1} showTechnologies />
+            })}
+        </div>
+    </main>
+    <Footer />
+</Layout>

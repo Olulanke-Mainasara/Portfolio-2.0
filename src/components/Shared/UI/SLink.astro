@@ -9,16 +9,17 @@ interface Props {
     extraStyles?: string;
     borderColor?: string;
     iconWandH?: "small" | "medium" | "large";
+    newPage?: boolean;
 }
 
-const { href, text, icon, iconPosition, extraStyles, borderColor, iconWandH } = Astro.props
+const { href, text, icon, iconPosition, extraStyles, borderColor, iconWandH, newPage } = Astro.props
 ---
 
-<a href={href} class=`flex items-center rounded-full relative group overflow-hidden ${extraStyles}`>
+<a href={href} target={newPage ? "_blank" : "_self"} rel="noopener noreferrer" class=`flex items-center rounded-full relative group overflow-hidden ${extraStyles}`>
   <div class="absolute top-0 w-full h-full duration-300 rounded-full -left-full backdrop-invert group-hover:left-0"></div>
   <div class=`absolute inset-0 border-[2px] ${borderColor} rounded-full`></div>
   {iconPosition === "left" && 
-    <span class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-2xl"} mr-1 flex items-center justify-center bg-black text-white rounded-full`}>
+    <span class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-3xl"} mr-1 flex items-center justify-center bg-black text-white rounded-full`}>
       <Icon name={icon} />
     </span>
   }
@@ -26,7 +27,7 @@ const { href, text, icon, iconPosition, extraStyles, borderColor, iconWandH } = 
   {text}{" "}
 
   {iconPosition === "right" && 
-    <span class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-2xl"} ml-1 w-8 h-8 flex items-center justify-center bg-black text-white rounded-full`}>
+    <span class={`${iconWandH === "small" ? "text-lg w-8 h-8" : iconWandH === "medium" ? "text-xl w-8 h-8" : "text-3xl w-12 h-12"} flex items-center justify-center bg-black text-white rounded-full`}>
       <Icon name={icon} />
     </span>
   }

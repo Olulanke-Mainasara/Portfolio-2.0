@@ -2,10 +2,10 @@
 import { process } from "@/static-data"
 ---
 
-<section class="px-4 my-32 space-y-8 md:space-y-16 text-white lg:px-8">
+<section class="px-4 my-32 text-white lg:px-8 max-w-screen-2xl mx-auto">
   <h2 class="text-8xl text-center md:text-9xl">Process</h2>
 
-  <div class="grid gap-y-8 gap-x-4 lg:gap-8 md:grid-cols-2 xl:grid-cols-3">
+  <div class="grid gap-y-8 gap-x-4 lg:gap-8 md:grid-cols-2 xl:grid-cols-3 mt-8 md:mt-16">
     {process.map((process, index) => {
       return <div class="space-y-4">
                 <div class="flex items-center gap-1">

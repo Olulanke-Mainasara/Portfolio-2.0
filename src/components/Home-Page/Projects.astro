@@ -2,20 +2,20 @@
 import { Icon } from "astro-icon/components";
 import { projects } from "@/static-data";
 import ProjectCard from "../Shared/UI/ProjectCard.astro";
-import Project7 from "@/images/Project7.png";
-import Project8 from "@/images/Project8.png";
 import Project9 from "@/images/Project9.png";
+import Project8 from "@/images/Project8.png";
+import Project11 from "@/images/Project11.png";
 import { Image } from "astro:assets";
 ---
 
-<section class="min-h-screen mt-32 space-y-8 text-white md:space-y-16">
+<section class="min-h-screen mt-32 space-y-8 text-white md:space-y-16 max-w-screen-2xl mx-auto">
   <h2 class="text-center text-8xl md:text-9xl">Projects</h2>
 
   <div class="flex flex-col gap-28">
-    {projects.reverse().map((project, index) => {
+    {projects.slice(0, 5).map((project, index) => {
       return <ProjectCard project={project} index={index + 1} />
     })}
-    <div class="flex flex-col-reverse md:flex-row justify-center gap-4 px-4 lg:px-8 md:w-[95%] md:mx-auto rounded-lg">
+    <div class="flex flex-col-reverse md:flex-row justify-center gap-4 px-4 lg:px-8 xl:w-[95%] md:mx-auto rounded-lg">
       <div class="flex justify-center basis-1/2">
         <div class="flex flex-col justify-center h-full gap-4">
           <h3 class="text-[46px] leading-[1] md:text-7xl">What are <br class="hidden md:block xl:hidden"> th👀se?</h3>
@@ -30,8 +30,8 @@ import { Image } from "astro:assets";
       <div class="flex items-center justify-center basis-1/2">
         <div class="grid grid-cols-2 grid-rows-2 gap-4 lg:gap-8">
           <div class="col-span-2 overflow-hidden rounded-lg max-h-64 group"><Image src={Project9} class="object-cover object-top w-full h-full duration-300 group-hover:scale-110" alt="Greezy"></div>
-          <div class="overflow-hidden rounded-lg max-h-64 group"><Image src={Project7} class="object-cover object-left w-full h-full duration-300 group-hover:scale-110" alt="Grimvies"></div>
-          <div class="overflow-hidden rounded-lg max-h-64 group"><Image src={Project8} class="object-cover object-left w-full h-full duration-300 group-hover:scale-110" alt="Di-clock"></div>
+          <div class="overflow-hidden rounded-lg max-h-64 group"><Image src={Project8} class="object-cover object-left w-full h-full duration-300 group-hover:scale-110" alt="Grimvies"></div>
+          <div class="overflow-hidden rounded-lg max-h-64 group"><Image src={Project11} class="object-cover w-full h-full duration-300 group-hover:scale-110" alt="Di-clock"></div>
         </div>
       </div>
     </div>

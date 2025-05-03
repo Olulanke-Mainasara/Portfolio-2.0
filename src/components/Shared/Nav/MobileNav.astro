@@ -3,20 +3,25 @@ import { Icon } from "astro-icon/components"
 ---
 
 <header class="backdrop-blur-3xl fixed bottom-0 w-full z-10 md:hidden pb-3">
-  <nav class="sticky bottom-0 mx-auto flex w-full justify-between gap-8 px-10 pt-5 pb-3 text-xs sm:max-w-md sm:rounded-t-xl sm:border-l sm:border-r sm:text-sm">
+  <nav class="sticky bottom-0 mx-auto flex w-full justify-between gap-8 px-4 md:px-8 pt-5 pb-3 text-xs sm:max-w-md sm:rounded-t-xl sm:border-l sm:border-r sm:text-sm">
     <a href="/" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
       <Icon name={"house"} size={25} />
       <span>Home</span>
     </a>
 
-    <a href="/about" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
-      <Icon name={"address-card"} size={25} />
-      <span>About</span>
-    </a>
-
     <a href="/projects" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
       <Icon name={"project"} size={25} />
       <span>Projects</span>
+    </a>
+
+    <a href="/the-nerd" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
+      <Icon name={"address-card"} size={25} />
+      <span>The Nerd</span>
+    </a>
+
+    <a href="/tools" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
+      <Icon name={"tools"} size={25} />
+      <span>Tools</span>
     </a>
 
     <a href="/contact" class="flex flex-col items-center gap-1 transition duration-100 active:text-background navlink">
