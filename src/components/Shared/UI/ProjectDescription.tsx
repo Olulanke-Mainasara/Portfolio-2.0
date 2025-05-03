@@ -1,30 +1,29 @@
 const ProjectDescription = ({
-  name,
-  description,
+  project,
   children,
   showTechnologies,
-  technologies,
 }: {
-  index: number;
-  name: string;
-  description: string;
+  project: {
+    name: string;
+    description: string;
+    technologies: string[];
+  };
   children: React.ReactNode;
   showTechnologies?: boolean;
-  technologies: string[];
 }) => {
   return (
     <div className="flex items-center justify-center w-full relative">
       <div className="flex flex-col max-w-xl gap-4 md:gap-6">
-        <p className="text-4xl md:text-5xl">{name}</p>
+        <p className="text-4xl md:text-5xl">{project.name}</p>
         <p
           id="description"
           className="font-thin text-lg md:text-base lg:text-xl opacity-80"
         >
-          {description}
+          {project.description}
         </p>
         {showTechnologies && (
           <div className="flex flex-wrap gap-2">
-            {technologies.map((technology, index) => (
+            {project.technologies.map((technology, index) => (
               <span
                 key={index}
                 className="text-sm border text-white px-3 py-2 rounded-full"

@@ -2,14 +2,12 @@
 import { Image } from "astro:assets";
 import ProjectDescription from "./ProjectDescription"
 import SLink from "./SLink.astro";
-import { Icon } from "astro-icon/components";
 
 interface Props {
     index: number,
     project: {
         name: string;
         link: string;
-        github: string;
         description: string;
         image: ImageMetadata;
         technologies: string[];
@@ -27,27 +25,17 @@ const { index, project, showTechnologies } = Astro.props;
         </a>
     </div>
     <ProjectDescription 
-        index={index} 
-        name={project.name} 
-        description={project.description} 
+        project={project}
         showTechnologies={showTechnologies}
-        technologies={project.technologies} 
     >
-        <div class="flex items-center gap-2">
-            <a href={project.github} target="_blank" rel="noopener noreferrer" class={"bg-white text-black hover:bg-background hover:text-white duration-150 flex gap-2 items-center justify-center rounded-full px-2 pr-3 py-[6px] text-base md:text-sm xl:text-base"}>
-                <span class="text-3xl"><Icon name={"github"} /></span>
-                View Code
-            </a>
-            
-            <SLink
-            href={project.link}
-            text="Live Demo"
-            iconPosition="right"
-            icon="arrow-right"
-            extraStyles="text-base md:text-sm xl:text-base text-black gap-1 bg-white pl-4 pr-[6px] py-[6px] w-fit"
-            iconWandH="medium"
-            newPage
-            />
-        </div>
+        <SLink
+        href={project.link}
+        text="Live Demo"
+        iconPosition="right"
+        icon="arrow-right"
+        extraStyles="text-base md:text-sm xl:text-base text-black gap-1 bg-white pl-4 pr-[6px] py-[6px] w-fit"
+        iconWandH="medium"
+        newPage
+        />
     </ProjectDescription>
 </div>

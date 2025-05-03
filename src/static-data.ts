@@ -18,7 +18,6 @@ export const projects = [
       "My Butler is a full-stack personalized digital assistant and full e-commerce platform designed that utilizes machine learning to provide tailored recommendations for outfits and style choices.",
     image: Project5,
     link: "https://my-butler-v1.vercel.app/",
-    github: "https://github.com/Olulanke-Mainasara/My-Butler",
     technologies: [
       "TypeScript",
       "Next.js",
@@ -34,7 +33,6 @@ export const projects = [
       "This is a fun and functional web app that combines interactive learning, entertainment, and utility tools in one sleek interface. Whether you want to learn something new, test your knowledge, play a quick game, or just get work done, this app has you covered.",
     image: Project4,
     link: "https://fun-xplorer.vercel.app/",
-    github: "https://github.com/Olulanke-Mainasara/FunXplorer",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
@@ -43,7 +41,6 @@ export const projects = [
       "This is a vacation planning and trip scheduling web app with the aim of giving users the ability to take full control of the planning and booking of their vacations, access bespoke and exquisite experiences and take them to a whole new level of ease and comfort.",
     image: Project1,
     link: "https://agency-io-v1.vercel.app/",
-    github: "https://github.com/Olulanke-Mainasara/Agency.io",
     technologies: [
       "TypeScript",
       "Next.js",
@@ -58,7 +55,6 @@ export const projects = [
       "NextGen Patients is an open-source project aimed at making medical advice and consultation easily accessible. This project allows patients (users, or you and me :) ) to conveniently access healthcare services directly from our smartphones.",
     image: Project3,
     link: "https://next-gen-patients.vercel.app/",
-    github: "https://github.com/Olulanke-Mainasara/NextGenPatients",
     technologies: ["Next.js", "Tailwind CSS", "Motion", "Appwrite", "Jest"],
   },
   {
@@ -67,7 +63,6 @@ export const projects = [
       "This is a full encyclopedia web application which acts as a history bank for all those seeking answers to the different questions fueled by their curiosity. It is also aimed at delivering first hand news and updates concerning different global topics and discussions.",
     image: Project2,
     link: "https://the-watchers.vercel.app/",
-    github: "https://github.com/Olulanke-Mainasara/The-Watchers",
     technologies: ["Next.js", "Tailwind CSS", "Motion", "Firebase", "Zustand"],
   },
   {
@@ -76,8 +71,6 @@ export const projects = [
       "This is a web app provided for the Covenant University bookstore to enable faster sales and easier purchasing.",
     image: Project9,
     link: "https://cu-bookstore.vercel.app/",
-    github:
-      "https://github.com/Olulanke-Mainasara/Covenant-University-Bookstore",
     technologies: ["Next.js", "Tailwind CSS", "Firebase", "Stripe", "Zustand"],
   },
   {
@@ -86,7 +79,6 @@ export const projects = [
       "This is a meticulously designed and thought-out web application that provides accurate and specific weather information along with an array of impressive features.",
     image: Project8,
     link: "https://greezy-v1.vercel.app/",
-    github: "https://github.com/Olulanke-Mainasara/Greezy",
     technologies: ["Next.js", "Tailwind CSS", "React-Query"],
   },
   {
@@ -95,7 +87,6 @@ export const projects = [
       "This is a to-do list app which aids in the day to day planning of an individuals activities :). It is a simple and easy to use web app that allows users to create, edit and delete their tasks.",
     image: Project11,
     link: "https://on-track-todo-list.vercel.app/",
-    github: "https://github.com/Olulanke-Mainasara/On-Track-A-todo-list-app",
     technologies: ["React", "CSS"],
   },
   {
@@ -104,8 +95,6 @@ export const projects = [
       "This is a video streaming website with the aim of providing first class entertainment to individuals/users of all ages :)",
     image: Project6,
     link: "https://grimvies.netlify.app/",
-    github:
-      "https://github.com/Olulanke-Mainasara/Grimvies-A-Videostream-Website",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
@@ -114,8 +103,6 @@ export const projects = [
       "This is an application which contains a vast number of calculators to be used by various ages and occupations :)",
     image: Project10,
     link: "https://the-answer.netlify.app/",
-    github:
-      "https://github.com/Olulanke-Mainasara/The-Answer-An-all-in-one-calculator",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
@@ -124,7 +111,6 @@ export const projects = [
       "This is a webpage which can be used to view quotes made by different DC heroes.",
     image: Project12,
     link: "https://dc-hero-quotes-generator.netlify.app/",
-    github: "https://github.com/Olulanke-Mainasara/My-DC-Hero-quotes-Generator",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
@@ -133,7 +119,6 @@ export const projects = [
       "This is a Hybrid clock i.e it displays the time both in analog and digital form.",
     image: Project7,
     link: "https://di-clock.netlify.app/",
-    github: "https://github.com/Olulanke-Mainasara/Di-Clock",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
 ];

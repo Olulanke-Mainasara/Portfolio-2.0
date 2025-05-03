@@ -2,10 +2,10 @@
 import { Icon } from "astro-icon/components";
 import SLink from "./SLink.astro";
 
-
+const { extraStyles } = Astro.props;
 ---
 
-<div class="items-center hidden gap-4 lg:flex text-white">
+<div class={`items-center gap-4 text-white ${extraStyles}`}>
     <a href="mailto:mainasara.o.olulanke@gmail.com" target="_blank" rel="noopener noreferrer">
         <Icon name={"mail"} size={30} class={"hover:scale-125 hover:-rotate-6 duration-300 hover:text-background"} />
     </a>
@@ -18,5 +18,5 @@ import SLink from "./SLink.astro";
     <a href="https://x.com/MainasaraOlu" target="_blank" rel="noopener noreferrer">
         <Icon name={"twitter"} size={30} class={"hover:scale-125 hover:rotate-6 duration-300 hover:text-background"} />
     </a>
-    <SLink href='/contact' text="Contact me" iconPosition="right" icon="arrow-right" extraStyles="hidden lg:flex text-3xl text-black gap-3 bg-white pl-4 pr-[6px] py-[6px]" iconWandH='large' />
+    <SLink href='/contact' text="Contact me" iconPosition="right" icon="arrow-right" extraStyles="hidden md:flex text-3xl text-black gap-3 bg-white pl-4 pr-[6px] py-[6px]" iconWandH='large' />
 </div>
