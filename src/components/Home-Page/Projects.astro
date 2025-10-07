@@ -15,7 +15,7 @@ import { Image } from "astro:assets";
     {projects.slice(0, 6).map((project, index) => {
       return <ProjectCard project={project} index={index + 1} />
     })}
-    <div class="flex flex-col-reverse md:flex-row justify-center gap-4 px-4 lg:px-8 xl:w-[95%] md:mx-auto rounded-lg">
+    <div class="flex flex-col md:flex-row justify-center gap-4 px-4 lg:px-8 xl:w-[95%] md:mx-auto rounded-lg">
       <div class="flex items-center justify-center basis-1/2">
         <div class="grid grid-cols-2 grid-rows-2 gap-4 lg:gap-8">
           <div class="col-span-2 overflow-hidden rounded-lg max-h-64 group"><Image src={Project9} class="object-cover object-top w-full h-full duration-300 group-hover:scale-110" alt="Greezy"></div>
