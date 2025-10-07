@@ -32,7 +32,7 @@ const HeroH1 = () => {
             <span className="xl:hidden">Olulanke</span>Mainasara
             <motion.p
               style={{ opacity: scrollYProgress }}
-              className="text-6xl md:text-9xl xl:text-[200px] uppercase flex flex-col items-center leading-none xl:block bg-[url('/space-lighthouse.png')] bg-bottom bg-cover bg-clip-text text-transparent absolute inset-0"
+              className="text-6xl md:text-9xl xl:text-[200px] uppercase flex flex-col items-center leading-none xl:block bg-[url('/space-lighthouse.webp')] bg-bottom bg-cover bg-clip-text text-transparent absolute inset-0"
             >
               <span className="xl:hidden">Olulanke</span>Mainasara
             </motion.p>
@@ -58,12 +58,16 @@ const About = ({ children }: { children: React.ReactNode }) => {
 
     // Animation code
     const { words } = splitText(textRef.current);
+
+    // Set parent back to full opacity since we're animating children
+    textRef.current.style.opacity = "1";
+
     animate(
       words,
       { opacity: [0, 1], y: [10, 0] },
       {
         type: "spring",
-        duration: 3,
+        duration: 2,
         bounce: 0,
         delay: stagger(0.07),
       }
@@ -113,20 +117,20 @@ const About = ({ children }: { children: React.ReactNode }) => {
           </motion.div>
         </div>
       </div>
-      <div className="relative xl:flex md:min-h-[500px] h-[60vh] xl:h-[80vh] px-4 lg:px-8 max-w-screen-2xl mx-auto">
+      <div className="relative xl:flex md:min-h-[500px] h-[60vh] xl:h-[80vh] px-4 lg:px-8 max-w-screen-2xl mx-auto overflow-hidden">
         <img
-          src="/me.jpg"
+          src="/me.webp"
           className="object-cover object-top w-full h-full rounded-lg xl:brightness-[80%] grayscale hover:grayscale-0 duration-300"
           alt="Mainasara Olulanke"
         />
         <div className="absolute inset-0 flex text-white xl:static w-full h-full px-4 lg:px-8">
-          <div className="backdrop-brightness-[30%] xl:backdrop-brightness-100 w-full h-full flex flex-col items-center justify-center gap-8 text-center xl:items-start xl:text-left px-4">
+          <div className="bg-gradient-to-b from-transparent to-[#070b0f] w-full h-full flex flex-col justify-end xl:justify-center gap-2 md:gap-8 xl:text-left px-4 pb-4 lg:pb-0">
             <p className="md:text-2xl text-neutral-400">
               Going by this saying,
             </p>
             <h3
               ref={textRef}
-              className="max-w-xl lg:max-w-3xl text-xl font-thin md:text-2xl lg:text-4xl"
+              className="max-w-xl lg:max-w-3xl text-xl font-thin md:text-2xl lg:text-4xl opacity-0"
             >
               "Any fool can write code that a computer can understand. Good
               programmers write code that humans can understand." - Martin

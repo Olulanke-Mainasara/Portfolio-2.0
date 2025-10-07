@@ -2,9 +2,9 @@
 import { Icon } from "astro-icon/components";
 import { projects } from "@/static-data";
 import ProjectCard from "../Shared/UI/ProjectCard.astro";
-import Project9 from "@/images/Project9.png";
-import Project8 from "@/images/Project8.png";
-import Project11 from "@/images/Project11.png";
+import Project9 from "@/images/Project9.webp";
+import Project8 from "@/images/Project8.webp";
+import Project11 from "@/images/Project11.webp";
 import { Image } from "astro:assets";
 ---
 
@@ -12,26 +12,26 @@ import { Image } from "astro:assets";
   <h2 class="text-center text-8xl md:text-9xl">Projects</h2>
 
   <div class="flex flex-col gap-28">
-    {projects.slice(0, 5).map((project, index) => {
+    {projects.slice(0, 6).map((project, index) => {
       return <ProjectCard project={project} index={index + 1} />
     })}
     <div class="flex flex-col-reverse md:flex-row justify-center gap-4 px-4 lg:px-8 xl:w-[95%] md:mx-auto rounded-lg">
-      <div class="flex xl:justify-center basis-1/2">
-        <div class="flex flex-col justify-center h-full gap-4">
-          <h3 class="text-[46px] leading-[1] md:text-7xl">What are <br class="hidden md:block xl:hidden"> th👀se?</h3>
-          <p class="max-w-md font-thin text-xl lg:text-2xl">Some of my random doodles, and projects I've played with in the background</p>
-          <a href="/src/pages/" class="flex items-center gap-2 group">
-            <span class="text-xl text-white">See all my projects</span>
-            <Icon name="arrow-right" size={30} class="text-white duration-300 group-hover:translate-x-1" />
-          </a>
-        </div>
-      </div>
-      
       <div class="flex items-center justify-center basis-1/2">
         <div class="grid grid-cols-2 grid-rows-2 gap-4 lg:gap-8">
           <div class="col-span-2 overflow-hidden rounded-lg max-h-64 group"><Image src={Project9} class="object-cover object-top w-full h-full duration-300 group-hover:scale-110" alt="Greezy"></div>
           <div class="overflow-hidden rounded-lg max-h-64 group"><Image src={Project8} class="object-cover object-left w-full h-full duration-300 group-hover:scale-110" alt="Grimvies"></div>
           <div class="overflow-hidden rounded-lg max-h-64 group"><Image src={Project11} class="object-cover w-full h-full duration-300 group-hover:scale-110" alt="Di-clock"></div>
+        </div>
+      </div>
+
+      <div class="flex xl:justify-center basis-1/2">
+        <div class="flex flex-col justify-center h-full gap-4">
+          <h3 class="text-[46px] leading-[1] md:text-7xl">What are <br class="hidden md:block xl:hidden"> th👀se?</h3>
+          <p class="max-w-md font-thin text-xl lg:text-2xl">Some of my random doodles, and projects I've played with in the background</p>
+          <a href="/projects" class="flex items-center gap-2 group">
+            <span class="text-xl text-white">See all my projects</span>
+            <Icon name="arrow-right" size={30} class="text-white duration-300 group-hover:translate-x-1" />
+          </a>
         </div>
       </div>
     </div>

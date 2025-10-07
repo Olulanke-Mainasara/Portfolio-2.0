@@ -1,21 +1,62 @@
-import Project1 from "./images/Project1.png";
-import Project2 from "./images/Project2.png";
-import Project3 from "./images/Project3.png";
-import Project4 from "./images/Project4.png";
-import Project5 from "./images/Project5.png";
-import Project6 from "./images/Project6.png";
-import Project7 from "./images/Project7.png";
-import Project8 from "./images/Project8.png";
-import Project9 from "./images/Project9.png";
-import Project10 from "./images/Project10.png";
-import Project11 from "./images/Project11.png";
-import Project12 from "./images/Project12.png";
+import Project1 from "./images/Project1.webp";
+import Project2 from "./images/Project2.webp";
+import Project3 from "./images/Project3.webp";
+import Project4 from "./images/Project4.webp";
+import Project5 from "./images/Project5.webp";
+import Project6 from "./images/Project6.webp";
+import Project7 from "./images/Project7.webp";
+import Project8 from "./images/Project8.webp";
+import Project9 from "./images/Project9.webp";
+import Project10 from "./images/Project10.webp";
+import Project11 from "./images/Project11.webp";
+import Project12 from "./images/Project12.webp";
+import Project13 from "./images/Project13.webp";
+import Project14 from "./images/Project14.webp";
+import Project15 from "./images/Project15.webp";
 
 export const projects = [
   {
-    name: "My Butler 🤖",
+    name: "Moova 🤖",
     description:
-      "My Butler is a full-stack personalized digital assistant and full e-commerce platform designed that utilizes machine learning to provide tailored recommendations for outfits and style choices.",
+      "This is an AI-powered travel planner that creates personalized trips based on your mood, budget, and timeframe. It delivers curated destinations, activities, and cost breakdowns in a sleek, modern UI.",
+    image: Project14,
+    link: "https://moova-travels.vercel.app/",
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Motion",
+      "Supabase",
+      "Google Gemini",
+      "Clerk",
+    ],
+  },
+  {
+    name: "TeXcellence 🎤",
+    description:
+      "A modern web application built to showcase speakers, sessions, and highlights from Texcellence events. Explore past conferences, connect with industry leaders, and stay updated on future editions—all in one seamless platform.",
+    image: Project13,
+    link: "https://texcellence-4.vercel.app/",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Motion"],
+  },
+  {
+    name: "Coded In Motion 🎥",
+    description:
+      "A cinematic portfolio website built for a videographer, showcasing his work, clients, and storytelling through an elegant, modern design with smooth animations and immersive visuals.",
+    image: Project15,
+    link: "https://coded-in-motion.vercel.app/",
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Motion",
+      "Sanity CMS",
+    ],
+  },
+  {
+    name: "My Butler 🛒",
+    description:
+      "My Butler is a full-stack personalized digital assistant and full e-commerce platform that utilizes machine learning to provide tailored recommendations for outfits and style choices.",
     image: Project5,
     link: "https://my-butler-v1.vercel.app/",
     technologies: [
@@ -233,6 +274,11 @@ export const technologies = [
     name: "Notion",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/notion/notion-original.svg",
     link: "https://www.notion.so/",
+  },
+  {
+    name: "Ngrok",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ngrok/ngrok-original.svg",
+    link: "https://clerk.com/",
   },
 ];
 
