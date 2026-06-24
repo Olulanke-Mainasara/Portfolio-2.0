@@ -12,9 +12,9 @@ const HeroH1 = () => {
   return (
     <div
       ref={ref}
-      className="absolute top-0 md:min-h-[1536px] h-[200vh] w-full text-white"
+      className="absolute top-0 md:min-h-384 h-[200vh] w-full text-white"
     >
-      <div className="sticky top-0 flex flex-col items-center justify-center w-full md:min-h-[768px] h-screen -z-10">
+      <div className="sticky top-0 flex flex-col items-center justify-center w-full md:min-h-192 h-screen -z-10">
         <div>
           <p className="text-xl tracking-widest text-center uppercase md:text-3xl">
             Frontend Engineer🧑🏾‍💻
@@ -70,7 +70,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
         duration: 2,
         bounce: 0,
         delay: stagger(0.07),
-      }
+      },
     );
   }, [isInView]);
 
@@ -79,9 +79,9 @@ const About = ({ children }: { children: React.ReactNode }) => {
       <HeroH1 />
       <div
         ref={ref}
-        className="absolute top-0 md:min-h-[1536px] h-[200vh] w-full text-white"
+        className="absolute top-0 md:min-h-384 h-[200vh] w-full text-white"
       >
-        <div className="sticky top-0 flex flex-col items-center w-full md:min-h-[768px] h-screen justify-evenly max-w-screen-2xl mx-auto">
+        <div className="sticky top-0 flex flex-col items-center w-full md:min-h-192 h-screen justify-evenly max-w-screen-2xl mx-auto">
           <motion.div
             style={{ opacity: scrollYProgress }}
             className="flex items-center justify-end w-full p-4 lg:px-8"
@@ -117,14 +117,14 @@ const About = ({ children }: { children: React.ReactNode }) => {
           </motion.div>
         </div>
       </div>
-      <div className="relative xl:flex md:min-h-[500px] h-[60vh] xl:h-[80vh] px-4 lg:px-8 max-w-screen-2xl mx-auto overflow-hidden">
+      <div className="relative xl:flex md:min-h-125 h-[60vh] xl:h-[80vh] px-4 lg:px-8 max-w-screen-2xl mx-auto overflow-hidden">
         <img
           src="/me.webp"
-          className="object-cover object-top w-full h-full rounded-lg xl:brightness-[80%] grayscale hover:grayscale-0 duration-300"
+          className="object-cover object-top w-full h-full rounded-lg xl:brightness-80 grayscale hover:grayscale-0 duration-300"
           alt="Mainasara Olulanke"
         />
         <div className="absolute inset-0 flex text-white xl:static w-full h-full px-4 lg:px-8">
-          <div className="bg-gradient-to-b from-transparent to-[#070b0f] w-full h-full flex flex-col justify-end xl:justify-center gap-2 md:gap-8 xl:text-left px-4 pb-4 lg:pb-0">
+          <div className="bg-linear-to-b from-transparent to-[#070b0f] w-full h-full flex flex-col justify-end xl:justify-center gap-2 md:gap-8 xl:text-left px-4 pb-4 lg:pb-0">
             <p className="md:text-2xl text-neutral-400">
               Going by this saying,
             </p>
@@ -137,7 +137,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
               Fowler,
             </h3>
             <p className="md:text-2xl text-neutral-400">
-              then I'm a 10x developer (testing's for losers🫵🏾).
+              then I'm a 10x developer (testing's for losers).
             </p>
           </div>
         </div>

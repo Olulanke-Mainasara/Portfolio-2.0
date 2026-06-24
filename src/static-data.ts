@@ -13,12 +13,52 @@ import Project12 from "./images/Project12.webp";
 import Project13 from "./images/Project13.webp";
 import Project14 from "./images/Project14.webp";
 import Project15 from "./images/Project15.webp";
+import Project16 from "./images/Project16.webp";
+import Project17 from "./images/Project17.webp";
+import Project18 from "./images/Project18.webp";
 
 export const projects = [
   {
-    name: "Moova 🤖",
+    name: "SafiPay",
     description:
-      "This is an AI-powered travel planner that creates personalized trips based on your mood, budget, and timeframe. It delivers curated destinations, activities, and cost breakdowns in a sleek, modern UI.",
+      "A machine learning-powered fraud detection system for mobile money transactions. Built with Logistic Regression, Random Forest & XGBoost on the PaySim dataset. Features a Next.js frontend, Express backend, and PostgreSQL database.",
+    image: Project18,
+    link: "https://safipay-fyp.vercel.app/",
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Express",
+      "PostgreSQL",
+      "Machine Learning",
+    ],
+  },
+  {
+    name: "Cave Foundation",
+    description:
+      "A showcase website to provide detailed information, show process timelines, answer questions, and onboard prospective applicants for the Cave Foundation Scholarship.",
+    image: Project17,
+    link: "https://www.cavefoundation.com/",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS"],
+  },
+  {
+    name: "Afritransfer",
+    description:
+      "AfriTransfer is a pan-African financial services platform designed to help individuals and businesses access secure digital financial tools, from wallets and AJO savings groups, to bank transfers, multi-currency holdings, and USSD for low-data users.",
+    image: Project16,
+    link: "https://afritransfer.com/",
+    technologies: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Motion",
+      "Google Gemini",
+    ],
+  },
+  {
+    name: "Moova",
+    description:
+      "An AI-powered travel planner that creates personalized trips based on your mood, budget, and timeframe. It delivers curated destinations, activities, and cost breakdowns in a sleek, modern UI.",
     image: Project14,
     link: "https://moova-travels.vercel.app/",
     technologies: [
@@ -32,7 +72,7 @@ export const projects = [
     ],
   },
   {
-    name: "TeXcellence 🎤",
+    name: "TeXcellence",
     description:
       "A modern web application built to showcase speakers, sessions, and highlights from Texcellence events. Explore past conferences, connect with industry leaders, and stay updated on future editions—all in one seamless platform.",
     image: Project13,
@@ -54,9 +94,9 @@ export const projects = [
     ],
   },
   {
-    name: "My Butler 🛒",
+    name: "My Butler",
     description:
-      "My Butler is a full-stack personalized digital assistant and full e-commerce platform that utilizes machine learning to provide tailored recommendations for outfits and style choices.",
+      "A full-stack personalized digital assistant and full e-commerce platform that utilizes machine learning to provide tailored recommendations for outfits and style choices.",
     image: Project5,
     link: "https://my-butler-v1.vercel.app/",
     technologies: [
@@ -69,17 +109,17 @@ export const projects = [
     ],
   },
   {
-    name: "FunXplorer 🧠",
+    name: "FunXplorer",
     description:
-      "This is a fun and functional web app that combines interactive learning, entertainment, and utility tools in one sleek interface. Whether you want to learn something new, test your knowledge, play a quick game, or just get work done, this app has you covered.",
+      "A fun and functional web app that combines interactive learning, entertainment, and utility tools in one sleek interface. Whether you want to learn something new, test your knowledge, play a quick game, or just get work done, this app has you covered.",
     image: Project4,
     link: "https://fun-xplorer.vercel.app/",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
-    name: "Agency.io ✈️",
+    name: "Agency.io",
     description:
-      "This is a vacation planning and trip scheduling web app with the aim of giving users the ability to take full control of the planning and booking of their vacations, access bespoke and exquisite experiences and take them to a whole new level of ease and comfort.",
+      "A vacation planning and trip scheduling web app with the aim of giving users the ability to take full control of the planning and booking of their vacations, access bespoke and exquisite experiences and take them to a whole new level of ease and comfort.",
     image: Project1,
     link: "https://agency-io-v1.vercel.app/",
     technologies: [
@@ -91,73 +131,73 @@ export const projects = [
     ],
   },
   {
-    name: "NextGen Patients 🏥",
+    name: "NextGen Patients",
     description:
-      "NextGen Patients is an open-source project aimed at making medical advice and consultation easily accessible. This project allows patients (users, or you and me :) ) to conveniently access healthcare services directly from our smartphones.",
+      "An open-source project aimed at making medical advice and consultation easily accessible. This project allows patients (users, or you and me :) ) to conveniently access healthcare services directly from our smartphones.",
     image: Project3,
     link: "https://next-gen-patients.vercel.app/",
     technologies: ["Next.js", "Tailwind CSS", "Motion", "Appwrite", "Jest"],
   },
   {
-    name: "The Watchers 📰",
+    name: "The Watchers",
     description:
-      "This is a full encyclopedia web application which acts as a history bank for all those seeking answers to the different questions fueled by their curiosity. It is also aimed at delivering first hand news and updates concerning different global topics and discussions.",
+      "A full encyclopedia web application which acts as a history bank for all those seeking answers to the different questions fueled by their curiosity. It is also aimed at delivering first hand news and updates concerning different global topics and discussions.",
     image: Project2,
     link: "https://the-watchers.vercel.app/",
     technologies: ["Next.js", "Tailwind CSS", "Motion", "Firebase", "Zustand"],
   },
   {
-    name: "Covenant University Bookstore 📚",
+    name: "Covenant University Bookstore",
     description:
-      "This is a web app provided for the Covenant University bookstore to enable faster sales and easier purchasing.",
+      "A web app provided for the Covenant University bookstore to enable faster sales and easier purchasing.",
     image: Project9,
     link: "https://cu-bookstore.vercel.app/",
     technologies: ["Next.js", "Tailwind CSS", "Firebase", "Stripe", "Zustand"],
   },
   {
-    name: "Greezy 🌦",
+    name: "Greezy",
     description:
-      "This is a meticulously designed and thought-out web application that provides accurate and specific weather information along with an array of impressive features.",
+      "A meticulously designed and thought-out web application that provides accurate and specific weather information along with an array of impressive features.",
     image: Project8,
     link: "https://greezy-v1.vercel.app/",
     technologies: ["Next.js", "Tailwind CSS", "React-Query"],
   },
   {
-    name: "On-Track 🗓",
+    name: "On-Track",
     description:
-      "This is a to-do list app which aids in the day to day planning of an individuals activities :). It is a simple and easy to use web app that allows users to create, edit and delete their tasks.",
+      "A to-do list app which aids in the day to day planning of an individuals activities :). It is a simple and easy to use web app that allows users to create, edit and delete their tasks.",
     image: Project11,
     link: "https://on-track-todo-list.vercel.app/",
     technologies: ["React", "CSS"],
   },
   {
-    name: "Grimvies 🎬",
+    name: "Grimvies",
     description:
-      "This is a video streaming website with the aim of providing first class entertainment to individuals/users of all ages :)",
+      "A video streaming website with the aim of providing first class entertainment to individuals/users of all ages :)",
     image: Project6,
     link: "https://grimvies.netlify.app/",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
-    name: "The Answer 🧮",
+    name: "The Answer",
     description:
-      "This is an application which contains a vast number of calculators to be used by various ages and occupations :)",
+      "An application which contains a vast number of calculators to be used by various ages and occupations :)",
     image: Project10,
     link: "https://the-answer.netlify.app/",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
-    name: "DC Hero quote generator 🦸‍♂️",
+    name: "DC Hero quote generator",
     description:
-      "This is a webpage which can be used to view quotes made by different DC heroes.",
+      "A webpage which can be used to view quotes made by different DC heroes.",
     image: Project12,
     link: "https://dc-hero-quotes-generator.netlify.app/",
     technologies: ["HTML", "CSS", "JavaScript"],
   },
   {
-    name: "Di-Clock 🕒",
+    name: "Di-Clock",
     description:
-      "This is a Hybrid clock i.e it displays the time both in analog and digital form.",
+      "A Hybrid clock i.e it displays the time both in analog and digital form.",
     image: Project7,
     link: "https://di-clock.netlify.app/",
     technologies: ["HTML", "CSS", "JavaScript"],

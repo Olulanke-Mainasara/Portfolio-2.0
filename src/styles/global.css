@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: rgb(120, 161, 153);
+}
+
+html {
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background-color: #070b0f;
+}
