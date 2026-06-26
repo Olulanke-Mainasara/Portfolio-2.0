@@ -1,19 +1,25 @@
 ---
-import { process } from "@/static-data"
+import { process } from "@/data";
 ---
 
 <section class="px-4 my-32 text-white lg:px-8 max-w-screen-2xl mx-auto">
   <h2 class="text-8xl text-center md:text-9xl">Process</h2>
 
-  <div class="grid gap-y-8 gap-x-4 lg:gap-8 md:grid-cols-2 xl:grid-cols-3 mt-8 md:mt-16">
-    {process.map((process, index) => {
-      return <div class="space-y-4">
-                <div class="flex items-center gap-1">
-                  <p class="text-3xl text-background">{"0" + (index + 1) + "."}</p>
-                  <h3 class="font-light md:font-normal text-3xl">{process.name}</h3>
-                </div>   
-                <p class="font-thin opacity-80 text-xl">{process.description}</p>
+  <div
+    class="grid gap-y-8 gap-x-4 lg:gap-8 md:grid-cols-2 xl:grid-cols-3 mt-8 md:mt-16"
+  >
+    {
+      process.map((process, index) => {
+        return (
+          <div class="space-y-4">
+            <div class="flex items-center gap-1">
+              <p class="text-3xl text-background">{"0" + (index + 1) + "."}</p>
+              <h3 class="font-light md:font-normal text-3xl">{process.name}</h3>
             </div>
-    })}
+            <p class="font-thin opacity-80 text-xl">{process.description}</p>
+          </div>
+        );
+      })
+    }
   </div>
 </section>

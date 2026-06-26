@@ -17,7 +17,7 @@ const HeroH1 = () => {
       <div className="sticky top-0 flex flex-col items-center justify-center w-full md:min-h-192 h-screen -z-10">
         <div>
           <p className="text-xl tracking-widest text-center uppercase md:text-3xl">
-            Frontend Engineer🧑🏾‍💻
+            Frontend Engineer
           </p>
           <motion.h1
             initial={{ y: 100, opacity: 0 }}
@@ -109,37 +109,35 @@ const About = ({ children }: { children: React.ReactNode }) => {
             className="flex flex-col items-center justify-between w-full p-4 md:flex-row lg:px-8"
           >
             <p className="max-w-md text-3xl font-thin">
-              I build creative solutions for the web that are performant and
-              scalable, and having fun while doing it.
+              I build fast, intelligent, and creative solutions for the web, and
+              I have a lot of fun doing it.{" "}
+              <span className="font-bold">Hire me</span>...please.
             </p>
 
             {children}
           </motion.div>
         </div>
       </div>
-      <div className="relative xl:flex md:min-h-125 h-[60vh] xl:h-[80vh] px-4 lg:px-8 max-w-screen-2xl mx-auto overflow-hidden">
+      <div className="relative flex flex-col md:flex-row md:items-center gap-4 lg:gap-8 xl:gap-10 xl:min-h-125 xl:h-[80vh] px-4 lg:px-8 max-w-screen-2xl mx-auto overflow-hidden">
         <img
           src="/me.webp"
-          className="object-cover object-top w-full h-full rounded-lg xl:brightness-80 grayscale hover:grayscale-0 duration-300"
+          className="object-cover object-top w-full md:w-1/2 xl:w-full h-full rounded-lg xl:brightness-80 grayscale hover:grayscale-0 duration-300"
           alt="Mainasara Olulanke"
         />
-        <div className="absolute inset-0 flex text-white xl:static w-full h-full px-4 lg:px-8">
-          <div className="bg-linear-to-b from-transparent to-[#070b0f] w-full h-full flex flex-col justify-end xl:justify-center gap-2 md:gap-8 xl:text-left px-4 pb-4 lg:pb-0">
-            <p className="md:text-2xl text-neutral-400">
-              Going by this saying,
-            </p>
-            <h3
-              ref={textRef}
-              className="max-w-xl lg:max-w-3xl text-xl font-thin md:text-2xl lg:text-4xl opacity-0"
-            >
-              "Any fool can write code that a computer can understand. Good
-              programmers write code that humans can understand." - Martin
-              Fowler,
-            </h3>
-            <p className="md:text-2xl text-neutral-400">
-              then I'm a 10x developer (testing's for losers).
-            </p>
-          </div>
+        <div className="flex flex-col justify-center gap-2 text-white xl:pr-4">
+          <p className="lg:text-2xl text-neutral-400 xl:leading-10">
+            I'm a Frontend Engineer who somehow ended up training machine
+            learning models too, and honestly? I don't hate it.
+          </p>
+          <h3
+            ref={textRef}
+            className="max-w-xl lg:max-w-3xl text-xl font-thin lg:text-3xl xl:text-4xl opacity-0 xl:leading-12"
+          >
+            I've spent 3+ years building production web apps for real clients,
+            led frontend at AfriTransfer, and got my hands dirty with both code
+            and infrastructure at CWG PLC. I also taught a cohort of junior
+            developers how to stop fearing the terminal, a BIG W for me.
+          </h3>
         </div>
       </div>
     </>

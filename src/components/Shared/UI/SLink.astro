@@ -2,33 +2,58 @@
 import { Icon } from "astro-icon/components";
 
 interface Props {
-    href: string;
-    text: string;
-    icon?: string;
-    iconPosition?: string;
-    extraStyles?: string;
-    borderColor?: string;
-    iconWandH?: "small" | "medium" | "large";
-    newPage?: boolean;
+  href: string;
+  text: string;
+  icon?: string;
+  iconPosition?: string;
+  extraStyles?: string;
+  borderColor?: string;
+  iconWandH?: "small" | "medium" | "large";
+  newPage?: boolean;
 }
 
-const { href, text, icon, iconPosition, extraStyles, borderColor, iconWandH, newPage } = Astro.props
+const {
+  href,
+  text,
+  icon,
+  iconPosition,
+  extraStyles,
+  borderColor,
+  iconWandH,
+  newPage,
+} = Astro.props;
 ---
 
-<a href={href} target={newPage ? "_blank" : "_self"} rel="noopener noreferrer" class=`flex items-center rounded-full relative group overflow-hidden ${extraStyles}`>
-  <div class="absolute top-0 w-full h-full duration-300 rounded-full -left-full backdrop-invert group-hover:left-0"></div>
+<a
+  href={href}
+  target={newPage ? "_blank" : "_self"}
+  rel="noopener noreferrer"
+  class=`flex items-center rounded-full relative group overflow-hidden ${extraStyles}`
+>
+  <div
+    class="absolute top-0 w-full h-full duration-300 rounded-full -left-full backdrop-invert group-hover:left-0"
+  >
+  </div>
   <div class=`absolute inset-0 border-[2px] ${borderColor} rounded-full`></div>
-  {iconPosition === "left" && 
-    <span class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-3xl"} mr-1 flex items-center justify-center bg-black text-white rounded-full`}>
-      <Icon name={icon} />
-    </span>
+  {
+    iconPosition === "left" && (
+      <span
+        class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-3xl"} mr-1 flex items-center justify-center bg-black text-white rounded-full`}
+      >
+        <Icon name={icon} />
+      </span>
+    )
   }
 
   {text}{" "}
 
-  {iconPosition === "right" && 
-    <span class={`${iconWandH === "small" ? "text-lg w-8 h-8" : iconWandH === "medium" ? "text-xl w-8 h-8" : "text-3xl w-12 h-12"} flex items-center justify-center bg-black text-white rounded-full`}>
-      <Icon name={icon} />
-    </span>
+  {
+    iconPosition === "right" && (
+      <span
+        class={`${iconWandH === "small" ? "text-lg w-8 h-8" : iconWandH === "medium" ? "text-xl w-8 h-8" : "text-3xl w-12 h-12"} flex items-center justify-center bg-black text-white rounded-full`}
+      >
+        <Icon name={icon} />
+      </span>
+    )
   }
 </a>
