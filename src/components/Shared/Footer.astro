@@ -1,0 +1,101 @@
+---
+import ContactLinks from "../Shared/UI/ContactLinks.astro";
+import Bento from "./UI/Bento.tsx";
+import BentoCard from "./UI/BentoCard.tsx";
+import { now } from "@/data";
+import AboutImg from "@/images/me2.webp";
+
+const links = [
+  { name: "Home", href: "/" },
+  { name: "Projects", href: "/projects" },
+  { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
+];
+
+const bentoCards = [
+  {
+    title: "Reading now",
+    description: `${now.book.title} · ${now.book.author}`,
+    image: now.book.image,
+    href: now.book.link,
+  },
+  {
+    title: "Listening to",
+    description: `${now.song.title} · ${now.song.artist}`,
+    image: now.song.image,
+    href: now.song.link,
+  },
+];
+---
+
+<footer class="relative mt-32 text-white">
+  <div class="max-w-screen-2xl px-4 mx-auto lg:px-8">
+    <div class="pb-16">
+      <div class="mt-8 md:mt-16">
+        <Bento cards={bentoCards} client:visible />
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-start justify-between gap-12 py-6 border-t border-white/10 md:py-16 lg:flex-row lg:items-center lg:gap-0"
+    >
+      <div
+        class="flex flex-col flex-1 w-full gap-8 md:flex-row lg:items-stretch lg:pr-8 lg:border-r"
+      >
+        <div class="flex flex-col w-full gap-4 md:w-1/2">
+          {
+            links.map((link, index) => (
+              <a
+                href={link.href}
+                class="flex items-baseline justify-between py-4 duration-300 border-b border-white/10 group hover:text-background"
+              >
+                <span class="text-2xl md:text-3xl">{link.name}</span>
+                <sup class="text-sm text-gray-500 duration-300 group-hover:text-background">
+                  {"0" + (index + 1)}
+                </sup>
+              </a>
+            ))
+          }
+        </div>
+
+        <BentoCard
+          title="The Nerd"
+          description="Who the heck is this guy?"
+          image={AboutImg.src}
+          href="/the-nerd"
+          className="w-full md:w-1/2 h-96 md:h-auto"
+          client:visible
+        />
+      </div>
+
+      <div
+        class="flex flex-col items-start md:items-center justify-center w-full gap-6 lg:w-auto lg:items-start lg:pl-8 lg:shrink-0"
+      >
+        <p class="text-7xl leading-[0.9] md:text-8xl xl:text-9xl">
+          Let's talk!
+        </p>
+        <ContactLinks extraStyles="flex" />
+        <a
+          href="mailto:mainasara.o.olulanke@gmail.com"
+          class="text-xl duration-300 md:text-2xl text-gray-400 hover:text-background"
+        >
+          mainasara.o.olulanke@gmail.com
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="max-w-screen-2xl px-4 pt-6 mx-auto text-center border-t border-white/10 lg:px-8"
+  >
+    <p class="text-sm text-gray-500">© 2026 Mainasara Olulanke.</p>
+  </div>
+
+  <div class="overflow-hidden border-white/10">
+    <p
+      class="pt-4 text-8xl tracking-tight text-center uppercase select-none leading-[0.77] md:-translate-x-2 xl:-translate-x-3 md:text-[150px] lg:text-[190px] xl:text-[262.5px]"
+    >
+      Mainasara
+    </p>
+  </div>
+</footer>

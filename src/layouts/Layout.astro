@@ -1,6 +1,7 @@
 ---
-import DesktopNav from "../components/Shared/Nav/DesktopNav.astro";
-import MobileNav from "../components/Shared/Nav/MobileNav.astro";
+import Nav from "../components/Shared/Nav.astro";
+import Footer from "../components/Shared/Footer.astro";
+import SmoothScroll from "../components/Shared/UI/SmoothScroll.tsx";
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 
@@ -23,8 +24,9 @@ const { title } = Astro.props;
     <ClientRouter />
   </head>
   <body class="overflow-x-hidden">
-    <DesktopNav />
-    <MobileNav />
+    <SmoothScroll client:load />
+    <Nav />
     <slot />
+    <Footer />
   </body>
 </html>

@@ -1,0 +1,100 @@
+---
+import { Icon } from "astro-icon/components";
+import { process } from "@/data";
+---
+
+<section class="relative my-32 text-white">
+  <h2 class="px-4 text-6xl leading-[0.9] text-center md:text-8xl lg:px-8">
+    Process
+  </h2>
+
+  <div class="max-w-screen-2xl mx-auto mt-16 border-t border-white/10 md:mt-24">
+    {
+      process.map((step, index) => (
+        <div
+          class="relative flex flex-col items-start gap-6 px-4 py-10 overflow-hidden border-b process-row md:flex-row md:items-center md:gap-12 border-white/10 lg:px-8 md:py-14"
+          style={`--rotate-from: ${(index % 4) * 90}deg`}
+        >
+          <div class="flex items-center gap-6 md:contents">
+            <p class="shrink-0 text-[64px] leading-none md:text-[160px] font-light text-background md:w-56">
+              {"0" + (index + 1)}
+            </p>
+
+            <div class="flex items-center justify-center w-20 h-20 border shrink-0 md:w-28 md:h-28 rounded-2xl border-white/10 bg-white/5 process-icon-box">
+              <Icon
+                name={step.icon}
+                class="w-8 h-8 md:w-12 md:h-12 process-icon text-white/40"
+              />
+            </div>
+          </div>
+
+          <div class="max-w-2xl">
+            <h3 class="text-3xl font-light md:text-4xl">{step.name}</h3>
+            <p class="mt-2 text-xl font-thin opacity-70">{step.description}</p>
+          </div>
+
+          <svg
+            class="absolute hidden pointer-events-none process-ghost w-48 h-48 right-12 top-1/2 xl:block text-white/5"
+            viewBox="0 0 412 382"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g fill="currentColor">
+              <path d="M 62 26 L 150 26 A 36 36 0 0 1 186 62 L 186 356 L 186 356 L 62 356 A 36 36 0 0 1 26 320 L 26 62 A 36 36 0 0 1 62 26 Z" />
+              <path d="M 186 206 L 350 206 A 36 36 0 0 1 386 242 L 386 320 A 36 36 0 0 1 350 356 L 186 356 L 186 356 L 186 206 L 186 206 Z" />
+              <path d="M 186 170 C 186 197 193.2 206 222 206 H 186 Z" />
+            </g>
+          </svg>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .process-row {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition:
+      opacity 0.7s ease-out,
+      transform 0.7s ease-out;
+  }
+
+  .process-row.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .process-icon-box {
+    opacity: 0;
+    transform: scale(0.5);
+    transition:
+      transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+      opacity 0.4s ease;
+  }
+
+  .process-row.in-view .process-icon-box {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  .process-ghost {
+    transform: translateY(-50%) rotate(var(--rotate-from, 0deg));
+  }
+</style>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in-view");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.3 },
+  );
+
+  document
+    .querySelectorAll(".process-row")
+    .forEach((el) => observer.observe(el));
+</script>

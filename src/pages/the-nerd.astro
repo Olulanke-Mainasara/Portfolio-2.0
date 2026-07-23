@@ -1,28 +1,33 @@
 ---
-import Footer from "@/components/Home-Page/Footer.astro";
-import NerdCard from "@/components/Shared/UI/NerdCard.astro";
 import Layout from "@/layouts/Layout.astro";
-import { projects } from "@/data";
+import NerdFeature from "@/components/Shared/UI/NerdFeature.astro";
+import { nerdFacts } from "@/data";
 ---
 
 <Layout title="The Nerd - Mainasara Olulanke">
-  <main class="pt-8 md:pt-24 max-w-screen-2xl mx-auto">
-    <div>
-      <h1 class="text-7xl md:text-9xl text-white text-center">The Nerd</h1>
-      <p
-        class="text-2xl md:text-4xl text-gray-400 text-center mt-4 font-thin max-w-80 mx-auto md:max-w-xl"
+  <main class="mx-auto max-w-screen-2xl pt-14 md:pt-20">
+    <section class="px-4 text-center text-white lg:px-8">
+      <h1
+        class="mt-4 text-7xl leading-[0.85] font-normal tracking-tight sm:text-8xl md:text-[9rem] lg:text-[11rem]"
       >
-        Of course I have a life outside "Hello world", geez luweez
-      </p>
-    </div>
+        The Nerd<span class="text-background">.</span>
+      </h1>
+    </section>
 
-    <div class="flex flex-col gap-20 md:gap-0 text-white mt-14">
+    <div
+      class="mt-8 flex flex-col gap-28 px-4 text-white md:mt-14 md:gap-40 lg:px-8"
+    >
       {
-        projects.map((project, index) => {
-          return <NerdCard project={project} index={index + 1} />;
-        })
+        nerdFacts.map((fact, index) => (
+          <NerdFeature
+            index={index}
+            label={fact.label}
+            title={fact.title}
+            description={fact.description}
+            image={fact.image}
+          />
+        ))
       }
     </div>
   </main>
-  <Footer />
 </Layout>

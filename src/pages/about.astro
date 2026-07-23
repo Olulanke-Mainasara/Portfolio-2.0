@@ -1,0 +1,394 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Reveal from "@/components/Shared/UI/Reveal.astro";
+import Companies from "@/components/Home/Companies.astro";
+import SideQuestCard from "@/components/Shared/UI/SideQuestCard.astro";
+import InfiniteMenu from "@/components/Shared/UI/InfiniteMenu";
+import { Icon } from "astro-icon/components";
+import { technologies, sideQuests } from "@/data";
+import AboutImg from "@/images/me.webp";
+
+const email = "mainasara.o.olulanke@gmail.com";
+
+const socials = [
+  {
+    icon: "instagram",
+    href: "https://www.instagram.com/grim_redd?utm_source=qr",
+  },
+  {
+    icon: "linkedin",
+    href: "https://www.linkedin.com/in/mainasara-olulanke-01658a228/",
+  },
+  { icon: "github", href: "https://github.com/Olulanke-Mainasara" },
+  { icon: "x", href: "https://x.com/MainasaraOlu" },
+];
+
+function hexToRgb(hex: string): [number, number, number] {
+  const clean = hex.replace("#", "");
+  const value = parseInt(clean, 16);
+  return [(value >> 16) & 255, (value >> 8) & 255, value & 255];
+}
+
+function tint(hex: string, whiteRatio: number): string {
+  const [r, g, b] = hexToRgb(hex);
+  const mix = (c: number) =>
+    Math.round(c * (1 - whiteRatio) + 255 * whiteRatio);
+  return `#${[mix(r), mix(g), mix(b)]
+    .map((v) => v.toString(16).padStart(2, "0"))
+    .join("")}`;
+}
+
+// Fetches the real devicon artwork at build time and inlines it into a
+// self-contained data URI so the WebGL texture atlas never touches an
+// external image (avoids canvas-tainting on cross-origin loads). Icons are
+// composited onto a light tinted backdrop since several of them (Next.js,
+// GitHub, Vercel, Express) are solid black/near-black artwork that would
+// vanish against the sphere's black backdrop otherwise.
+async function buildToolIcon(iconUrl: string, color: string): Promise<string> {
+  const backdrop = tint(color, 0.85);
+  const size = 512;
+  const iconSize = 300;
+  const offset = (size - iconSize) / 2;
+
+  try {
+    const res = await fetch(iconUrl);
+    const raw = await res.text();
+    const viewBoxMatch = raw.match(/viewBox="([^"]+)"/);
+    const innerMatch = raw.match(/<svg[^>]*>([\s\S]*)<\/svg>/);
+    const viewBox = viewBoxMatch ? viewBoxMatch[1] : "0 0 24 24";
+    const inner = innerMatch ? innerMatch[1] : "";
+
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}">
+      <rect width="${size}" height="${size}" rx="72" fill="${backdrop}" />
+      <svg x="${offset}" y="${offset}" width="${iconSize}" height="${iconSize}" viewBox="${viewBox}">${inner}</svg>
+    </svg>`;
+    return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+  } catch {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}">
+      <rect width="${size}" height="${size}" rx="72" fill="${backdrop}" />
+    </svg>`;
+    return `data:image/svg+xml,${encodeURIComponent(svg)}`;
+  }
+}
+
+const menuItems = await Promise.all(
+  technologies.map(async (technology) => ({
+    image: await buildToolIcon(technology.icon, technology.color),
+    link: technology.link,
+    title: technology.name,
+    description: technology.description,
+  })),
+);
+---
+
+<Layout title="About - Mainasara Olulanke">
+  <main class="mx-auto max-w-screen-2xl pt-14 md:pt-20">
+    <section class="px-4 text-center text-white lg:px-8">
+      <h1
+        class="mt-4 text-7xl leading-[0.85] font-normal tracking-tight sm:text-8xl md:text-[9rem] lg:text-[11rem]"
+      >
+        More Than<span class="text-background">.</span>
+      </h1>
+    </section>
+
+    <Reveal type="slide" direction="up" distance="24px" class="mt-8 md:mt-14">
+      <section
+        class="flex flex-col items-center gap-4 lg:gap-8 px-4 text-white md:flex-row md:items-start xl:items-center lg:px-8 xl:min-h-125 xl:h-[80vh]"
+      >
+        <img
+          src={AboutImg.src}
+          alt="Mainasara Olulanke"
+          class="w-full h-full rounded-2xl object-cover object-top duration-300 grayscale hover:grayscale-0 md:w-1/2"
+        />
+        <div class="md:flex-1">
+          <h2 class="text-4xl leading-[1.05] md:text-4xl">
+            Hey, I'm Mainasara.
+          </h2>
+          <p class="mt-6 max-w-xl text-lg font-thin text-white/70 md:text-xl">
+            I've spent the last 3+ years turning designs into interfaces
+            people actually enjoy using: fintech dashboards, event platforms,
+            e-commerce, the works. Most of that time goes into obsessing over
+            the small stuff, the transition that feels a little off, the
+            state nobody thought to design for.
+          </p>
+          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 md:text-xl">
+            Good frontend work sits right between design and engineering,
+            and that's where I like to be. I care how something looks, but I
+            care just as much about whether it holds up: fast, accessible,
+            and built on code someone else can actually pick up later.
+          </p>
+          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 md:text-xl">
+            I spent time leading frontend architecture at AfriTransfer, a
+            pan-African fintech platform, and cut my teeth on both code and
+            infrastructure at CWG PLC. These days I work freelance full time,
+            and I've taught junior developers how to stop fearing the
+            terminal through two communities, Techies and RUNTechSpace.
+            Still one of my proudest wins.
+          </p>
+          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 md:text-xl">
+            Log me off and I'm probably deep in a DC trade paperback, adding
+            another piece to a Lego Technic build that actually steers, or
+            watching a Formula 1 session live because I refuse to miss a lap.
+            Getting to space one day is still on the list.
+          </p>
+        </div>
+      </section>
+    </Reveal>
+
+    <!-- <section class="mt-32 px-4 text-white lg:px-8">
+      <h2 class="text-center text-6xl leading-[0.9] md:text-8xl">
+        Side Quests
+      </h2>
+
+      <div class="mx-auto mt-8 flex max-w-7xl flex-col gap-24 md:gap-32">
+        {
+          sideQuests.map((quest, index) => (
+            <SideQuestCard quest={quest} index={index} />
+          ))
+        }
+      </div>
+    </section> -->
+
+    <section class="px-4 text-center text-white lg:px-8 mt-28">
+      <h2 class="text-6xl leading-[0.9] md:text-8xl">
+        Tools <span class="text-background">I</span>{" "}
+        <br class="md:hidden" />Reach For
+      </h2>
+    </section>
+
+    <section class="mt-8 px-4 md:mt-10 lg:px-8">
+      <p
+        class="mb-4 text-center text-sm tracking-widest text-white/40 uppercase"
+      >
+        Drag to spin · Click a tile to visit
+      </p>
+      <div
+        class="relative h-[90vh] min-h-[90vh] w-full overflow-hidden rounded-3xl border border-white/10 bg-black/40"
+      >
+        <InfiniteMenu items={menuItems} scale={1} client:visible />
+      </div>
+    </section>
+
+    <section id="contact" class="mt-32 scroll-mt-24 text-center text-white">
+      <h2 class="text-6xl leading-[0.9] md:text-8xl">
+        I<span class="text-background">'</span>m Active
+      </h2>
+    </section>
+
+    <section
+      class="mt-8 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8"
+    >
+      <a
+        href={`mailto:${email}`}
+        class="email-link group flex flex-wrap items-center gap-4 text-white"
+      >
+        <span class="email-text text-xl md:text-2xl lg:text-4xl break-all">
+          {email}
+        </span>
+        <span
+          class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-black duration-300 group-hover:rotate-45 group-hover:bg-background md:h-16 md:w-16"
+        >
+          <Icon name="arrow-right" size={22} />
+        </span>
+      </a>
+
+      <button
+        type="button"
+        data-copy-email={email}
+        class="copy-btn flex cursor-pointer items-center gap-2 text-sm tracking-widest text-white/40 uppercase duration-300 hover:text-background"
+      >
+        <Icon name="copy" size={25} />
+        <span data-copy-label>Copy Email</span>
+      </button>
+    </section>
+
+    <Reveal type="slide" direction="up" distance="24px" class="mt-12 md:mt-8">
+      <section
+        class="flex flex-col gap-12 px-4 text-white md:flex-row md:gap-10 lg:gap-20 lg:px-8"
+      >
+        <div>
+          <p
+            class="text-sm tracking-[0.3em] text-background uppercase md:text-base"
+          >
+            Keep Context?
+          </p>
+          <h3 class="mt-4 text-5xl leading-[1.05] md:text-6xl">
+            Start the <br /> conversation.
+          </h3>
+          <p class="mt-6 max-w-sm text-lg font-thin text-white/60">
+            Fill this out and it'll open your email client with everything ready
+            to go, no forms disappearing into the void.
+          </p>
+
+          <div class="mt-10 flex items-center gap-4">
+            {
+              socials.map((social) => (
+                <a
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-white"
+                >
+                  <Icon
+                    name={social.icon}
+                    size={26}
+                    class="duration-300 hover:-rotate-6 hover:scale-125 hover:text-background"
+                  />
+                </a>
+              ))
+            }
+          </div>
+        </div>
+
+        <form id="contact-form" class="flex w-full flex-col gap-8">
+          <div class="field-group">
+            <label for="name">Name</label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="What should I call you?"
+              required
+            />
+          </div>
+          <div class="field-group">
+            <label for="email-field">Email</label>
+            <input
+              id="email-field"
+              name="email"
+              type="email"
+              placeholder="Where can I reach you?"
+              required
+            />
+          </div>
+          <div class="field-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              placeholder="What are we building?"
+              required></textarea>
+          </div>
+          <button
+            type="submit"
+            class="group mt-2 flex w-fit items-center gap-3 rounded-full bg-white px-6 py-4 text-lg text-black duration-300 hover:bg-background cursor-pointer hover:text-white"
+          >
+            Send it my way
+            <Icon
+              name="send"
+              size={18}
+              class="duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
+            />
+          </button>
+        </form>
+      </section>
+    </Reveal>
+  </main>
+</Layout>
+
+<style>
+  .email-text {
+    background-image: linear-gradient(
+      var(--color-background),
+      var(--color-background)
+    );
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition:
+      background-size 0.4s ease,
+      color 0.3s ease;
+  }
+  .email-link:hover .email-text {
+    background-size: 100% 2px;
+    color: var(--color-background);
+  }
+
+  .field-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .field-group label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .field-group input,
+  .field-group textarea {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 300;
+    padding-block: 0.5rem;
+    resize: none;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .field-group input::placeholder,
+  .field-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+  }
+  .field-group input:focus,
+  .field-group textarea:focus {
+    border-color: var(--color-background);
+  }
+</style>
+
+<script>
+  function initEmailCopy() {
+    const btn = document.querySelector<HTMLButtonElement>(".copy-btn");
+    if (!btn) return;
+    const labelEl = btn.querySelector<HTMLElement>("[data-copy-label]");
+    const original = labelEl?.textContent ?? "Copy email address";
+
+    btn.addEventListener("click", async () => {
+      const value = btn.dataset.copyEmail;
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+      } catch {
+        window.location.href = `mailto:${value}`;
+        return;
+      }
+      if (labelEl) labelEl.textContent = "Copied!";
+      window.setTimeout(() => {
+        if (labelEl) labelEl.textContent = original;
+      }, 1600);
+    });
+  }
+
+  function initContactForm() {
+    const form = document.querySelector<HTMLFormElement>("#contact-form");
+    if (!form) return;
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = (
+        form.querySelector<HTMLInputElement>("#name")?.value ?? ""
+      ).trim();
+      const email = (
+        form.querySelector<HTMLInputElement>("#email-field")?.value ?? ""
+      ).trim();
+      const message = (
+        form.querySelector<HTMLTextAreaElement>("#message")?.value ?? ""
+      ).trim();
+
+      const subject = encodeURIComponent(
+        `New project inquiry from ${name || "your site"}`,
+      );
+      const body = encodeURIComponent(
+        `${message}\n\nFrom ${name}${email ? ` (${email})` : ""}`,
+      );
+      window.location.href = `mailto:mainasara.o.olulanke@gmail.com?subject=${subject}&body=${body}`;
+    });
+  }
+
+  document.addEventListener("astro:page-load", initEmailCopy);
+  document.addEventListener("astro:page-load", initContactForm);
+</script>

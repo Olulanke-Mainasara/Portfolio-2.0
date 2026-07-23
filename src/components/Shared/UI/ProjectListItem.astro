@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  index: number;
+  project: {
+    name: string;
+    link: string;
+    shortDescription: string;
+    image: ImageMetadata;
+  };
+}
+
+const { index, project } = Astro.props;
+const numeral = `(0${index})`;
+
+// Alternate the slant direction of the sharp reveal window per project.
+const restClip =
+  index % 2 === 0
+    ? "35% 30%, 75% 30%, 65% 70%, 25% 70%"
+    : "25% 30%, 65% 30%, 75% 70%, 35% 70%";
+---
+
+<div class="group project-reveal">
+  <a
+    href={project.link}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="relative block w-full overflow-hidden rounded-lg aspect-video"
+  >
+    <Image
+      src={project.image}
+      alt=""
+      aria-hidden="true"
+      class="absolute inset-0 w-full h-full object-cover scale-105 blur-2xl brightness-50"
+    />
+    <Image
+      src={project.image}
+      alt={project.name}
+      class="reveal-mask absolute inset-0 w-full h-full object-cover"
+      style={`--clip-rest: ${restClip}`}
+    />
+  </a>
+
+  <div class="flex items-center justify-between gap-4 mt-4 md:mt-6">
+    <div>
+      <p class="text-3xl md:text-5xl">{project.name}</p>
+      <p class="max-w-md mt-2 text-base font-thin md:text-lg opacity-70">
+        {project.shortDescription}
+      </p>
+    </div>
+    <div class="flex flex-col items-end gap-2 shrink-0">
+      <span class="text-xl md:text-2xl text-background">{numeral}</span>
+      <a
+        href={`/projects#${project.name}`}
+        class="flex items-center gap-2 text-sm group/link md:text-base"
+      >
+        <span>View details</span>
+        <span class="duration-300 group-hover/link:translate-x-1">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .reveal-mask {
+    clip-path: polygon(var(--clip-rest));
+    transition: clip-path 0.6s ease-out;
+  }
+
+  /* Touch devices have no hover, so reveal automatically on scroll instead. */
+  @media (hover: none) {
+    .project-reveal.in-view .reveal-mask {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+  }
+
+  @media (hover: hover) {
+    .group:hover .reveal-mask {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+  }
+</style>
+
+<script>
+  function initProjectReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    document
+      .querySelectorAll(".project-reveal:not(.in-view)")
+      .forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initProjectReveal);
+</script>

@@ -1,0 +1,75 @@
+---
+interface Props {
+  type?: "fade" | "slide" | "scale";
+  direction?: "up" | "down" | "left" | "right";
+  distance?: string;
+  duration?: string;
+  delay?: string;
+  class?: string;
+}
+
+const {
+  type = "fade",
+  direction = "up",
+  distance = "20px",
+  duration = "0.6s",
+  delay = "0s",
+  class: className = "",
+} = Astro.props;
+
+const offsets: Record<string, string> = {
+  up: `translateY(${distance})`,
+  down: `translateY(-${distance})`,
+  left: `translateX(${distance})`,
+  right: `translateX(-${distance})`,
+};
+const initialTransform =
+  type === "scale"
+    ? "scale(0.94)"
+    : type === "slide"
+      ? offsets[direction]
+      : "none";
+---
+
+<div
+  class={`reveal ${className}`}
+  style={`--reveal-transform: ${initialTransform}; --reveal-duration: ${duration}; --reveal-delay: ${delay};`}
+>
+  <slot />
+</div>
+
+<style>
+  .reveal {
+    opacity: 0;
+    transform: var(--reveal-transform);
+    transition:
+      opacity var(--reveal-duration) ease var(--reveal-delay),
+      transform var(--reveal-duration) ease var(--reveal-delay);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+
+<script>
+  let observer: IntersectionObserver | null = null;
+
+  function initReveal() {
+    observer?.disconnect();
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer?.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 },
+    );
+    document.querySelectorAll(".reveal").forEach((el) => observer!.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initReveal);
+</script>

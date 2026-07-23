@@ -1,0 +1,123 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  index: number;
+  quest: {
+    name: string;
+    date: string;
+    location: string;
+    description: string;
+    learned: string;
+    images: string[];
+  };
+}
+
+const { index, quest } = Astro.props;
+const reversed = index % 2 === 0;
+
+const rotations = [-6, 5, -3, 7, -4];
+const offsets = [
+  { x: 0, y: 0 },
+  { x: 26, y: 34 },
+  { x: -22, y: 58 },
+];
+---
+
+<div
+  class={`quest-reveal flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"} items-center gap-10 md:gap-16 lg:gap-20 overflow-x-hidden md:overflow-auto scrollbar-none`}
+>
+  <div class="quest-stack relative w-full shrink-0 md:w-2/5">
+    <div class="relative aspect-4/5 w-full max-w-sm mx-auto">
+      {
+        quest.images.map((src, i) => (
+          <div
+            class="quest-photo absolute inset-0 overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50"
+            style={`--r: ${rotations[i % rotations.length]}deg; --x: ${offsets[i % offsets.length].x}px; --y: ${offsets[i % offsets.length].y}px; z-index: ${quest.images.length - i};`}
+          >
+            <img src={src} alt="" class="h-full w-full object-cover" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="w-full md:flex-1">
+    <span class="text-xl text-background md:text-2xl">
+      {"0" + (index + 1)}
+    </span>
+    <h3 class="mt-2 text-4xl leading-[1.05] md:text-6xl">{quest.name}</h3>
+
+    <div
+      class="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm tracking-widest text-white/40 uppercase"
+    >
+      <span class="flex items-center gap-2">
+        <Icon name="calendar" size={16} />
+        {quest.date}
+      </span>
+      <span class="flex items-center gap-2">
+        <Icon name="map-pin" size={16} />
+        {quest.location}
+      </span>
+    </div>
+
+    <p class="mt-6 max-w-lg text-lg font-thin text-white/70 md:text-xl">
+      {quest.description}
+    </p>
+
+    <div class="mt-6 max-w-lg border-l-2 border-background/60 pl-5">
+      <p class="text-xs tracking-[0.3em] text-background uppercase">
+        What I learned
+      </p>
+      <p class="mt-2 text-lg font-thin text-white/70 md:text-xl">
+        {quest.learned}
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .quest-photo {
+    transform: translate(var(--x), var(--y)) rotate(var(--r));
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .quest-stack:hover .quest-photo {
+    transform: translate(calc(var(--x) * 1.5), calc(var(--y) * 1.2 - 14px))
+      rotate(calc(var(--r) * 1.6));
+  }
+
+  .quest-reveal {
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+
+  .quest-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  function initQuestReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.25 },
+    );
+
+    document
+      .querySelectorAll(".quest-reveal:not(.in-view)")
+      .forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initQuestReveal);
+</script>

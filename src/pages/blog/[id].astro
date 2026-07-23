@@ -1,0 +1,213 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Reveal from "@/components/Shared/UI/Reveal.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { getCollection, render } from "astro:content";
+import { getReadingTime } from "@/lib/readingTime";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const sorted = posts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
+
+  return sorted.map((post, index) => ({
+    params: { id: post.id },
+    props: {
+      post,
+      prev: sorted[index + 1] ?? null,
+      next: sorted[index - 1] ?? null,
+    },
+  }));
+}
+
+const { post, prev, next } = Astro.props;
+const { Content } = await render(post);
+const readingTime = getReadingTime(post.body ?? "");
+const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+---
+
+<Layout title={`${post.data.title} - Mainasara Olulanke`}>
+  <main class="mx-auto max-w-screen-2xl pt-8 md:pt-24">
+    <div class="px-4 lg:px-8">
+      <a
+        href="/blog"
+        class="group inline-flex items-center gap-2 text-sm tracking-widest text-white/50 uppercase duration-300 hover:text-background"
+      >
+        <span class="duration-300 group-hover:-translate-x-1">←</span>
+        All posts
+      </a>
+    </div>
+
+    <Reveal type="slide" direction="up" distance="24px" class="mt-8 px-4 lg:px-8">
+      <header class="text-white">
+        <div
+          class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm tracking-widest text-white/40 uppercase"
+        >
+          <span>{formattedDate}</span>
+          <span>{readingTime} min read</span>
+          {post.data.tags.map((tag) => <span>#{tag}</span>)}
+        </div>
+        <h1
+          class="mt-6 max-w-4xl text-5xl leading-[0.95] font-normal tracking-tight sm:text-7xl md:text-8xl"
+        >
+          {post.data.title}
+        </h1>
+        <p class="mt-6 max-w-2xl text-xl font-thin text-white/60 md:text-2xl">
+          {post.data.description}
+        </p>
+      </header>
+    </Reveal>
+
+    <div class="mt-10 px-4 md:mt-14 lg:px-8">
+      <Image
+        src={post.data.coverImage}
+        alt={post.data.coverImageAlt}
+        transition:name={`cover-${post.id}`}
+        class="aspect-video w-full rounded-2xl object-cover md:rounded-3xl"
+      />
+    </div>
+
+    <Reveal
+      type="fade"
+      class="prose mx-auto mt-12 max-w-2xl px-4 pb-32 text-white md:mt-16 lg:px-8"
+    >
+      <Content />
+    </Reveal>
+
+    {
+      (prev || next) && (
+        <div class="border-t border-white/10 px-4 py-16 lg:px-8">
+          <div class="mx-auto flex max-w-2xl flex-col gap-6 sm:flex-row sm:justify-between">
+            {prev ? (
+              <a
+                href={`/blog/${prev.id}`}
+                class="group flex flex-col gap-2 text-white"
+              >
+                <span class="flex items-center gap-2 text-sm tracking-widest text-white/40 uppercase">
+                  <Icon
+                    name="arrow-right"
+                    class="h-3 w-3 rotate-180 duration-300 group-hover:-translate-x-1"
+                  />
+                  Older
+                </span>
+                <span class="text-xl duration-300 group-hover:text-background md:text-2xl">
+                  {prev.data.title}
+                </span>
+              </a>
+            ) : (
+              <span />
+            )}
+
+            {next && (
+              <a
+                href={`/blog/${next.id}`}
+                class="group flex flex-col items-end gap-2 text-right text-white"
+              >
+                <span class="flex items-center gap-2 text-sm tracking-widest text-white/40 uppercase">
+                  Newer
+                  <Icon
+                    name="arrow-right"
+                    class="h-3 w-3 duration-300 group-hover:translate-x-1"
+                  />
+                </span>
+                <span class="text-xl duration-300 group-hover:text-background md:text-2xl">
+                  {next.data.title}
+                </span>
+              </a>
+            )}
+          </div>
+        </div>
+      )
+    }
+  </main>
+</Layout>
+
+<style is:global>
+  .prose {
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .prose > * + * {
+    margin-top: 1.5em;
+  }
+
+  .prose h2 {
+    margin-top: 2em;
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.1;
+    color: white;
+  }
+
+  .prose h3 {
+    margin-top: 1.75em;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: white;
+  }
+
+  .prose a {
+    color: var(--color-background);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+
+  .prose strong {
+    font-weight: 600;
+    color: white;
+  }
+
+  .prose ul,
+  .prose ol {
+    padding-left: 1.5em;
+  }
+
+  .prose ul {
+    list-style: disc;
+  }
+
+  .prose ol {
+    list-style: decimal;
+  }
+
+  .prose blockquote {
+    border-left: 2px solid var(--color-background);
+    padding-left: 1.25em;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .prose code {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 0.3em;
+    padding: 0.15em 0.4em;
+    font-size: 0.85em;
+  }
+
+  .prose pre {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.75em;
+    padding: 1.25em;
+    overflow-x: auto;
+  }
+
+  .prose pre code {
+    background: none;
+    padding: 0;
+  }
+
+  .prose img {
+    border-radius: 1em;
+  }
+</style>

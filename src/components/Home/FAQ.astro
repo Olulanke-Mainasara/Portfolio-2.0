@@ -1,0 +1,198 @@
+---
+import { Icon } from "astro-icon/components";
+import { faqs } from "@/data";
+---
+
+<section class="px-4 my-32 text-white lg:px-8 max-w-screen-2xl mx-auto">
+  <h2 class="text-6xl leading-[0.9] text-center md:text-8xl">
+    Your questions, <span class="text-neutral-500">answered</span>
+  </h2>
+
+  <div class="flex flex-col items-center gap-12 mt-16 lg:flex-row lg:gap-16">
+    <div class="w-full lg:flex-1">
+      <div
+        id="faq-list"
+        class="flex flex-col border-t divide-y divide-white/10 border-white/10"
+      >
+        {
+          faqs.map((faq, index) => (
+            <details
+              class="faq-item faq-reveal group"
+              style={`--i: ${index}`}
+              open={index === 0}
+            >
+              <summary class="flex items-center justify-between gap-4 py-5 list-none cursor-pointer [&::-webkit-details-marker]:hidden">
+                <span class="flex items-center gap-4">
+                  <span class="text-sm text-gray-500">{"0" + (index + 1)}</span>
+                  <span class="text-xl md:text-2xl">{faq.question}</span>
+                </span>
+                <span class="relative flex items-center justify-center w-8 h-8 border rounded-full shrink-0 border-white/20">
+                  <span class="absolute w-3 h-[1.5px] bg-white" />
+                  <span class="absolute w-[1.5px] h-3 bg-white duration-300 group-open:rotate-90 group-open:opacity-0" />
+                </span>
+              </summary>
+              <div class="faq-content">
+                <p class="max-w-xl pt-4 pb-5 pl-10 text-lg font-thin text-neutral-400">
+                  {faq.answer}
+                </p>
+              </div>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col justify-center w-full p-8 border rounded-2xl border-white/10 bg-white/5 lg:p-12 lg:flex-1 h-fit"
+    >
+      <img
+        src="/me.webp"
+        alt="Mainasara Olulanke"
+        class="object-cover w-16 h-16 rounded-full"
+      />
+      <p class="mt-6 text-xl text-neutral-400">Still on the fence?</p>
+      <p class="text-4xl md:text-5xl">Let's have a quick chat.</p>
+      <p class="max-w-sm mt-4 text-lg font-thin text-neutral-400">
+        Tell me about what you're building and how I can help you take it to the
+        next level.
+      </p>
+      <a
+        href="/about#contact"
+        class="flex items-center justify-center gap-2 px-6 py-4 mt-8 text-black duration-300 bg-white rounded-full w-fit group hover:bg-background hover:text-white"
+      >
+        <span>Get in touch</span>
+        <Icon
+          name="arrow-right"
+          size={18}
+          class="duration-300 group-hover:translate-x-1"
+        />
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  class FAQAccordion {
+    el: HTMLDetailsElement;
+    summary: HTMLElement;
+    content: HTMLElement;
+    animation: Animation | null = null;
+    isClosing = false;
+    isExpanding = false;
+
+    static instances: FAQAccordion[] = [];
+
+    constructor(el: HTMLDetailsElement) {
+      this.el = el;
+      this.summary = el.querySelector("summary")!;
+      this.content = el.querySelector<HTMLElement>(".faq-content")!;
+      this.summary.addEventListener("click", (e) => this.onClick(e));
+    }
+
+    onClick(e: Event) {
+      e.preventDefault();
+      this.el.style.overflow = "hidden";
+
+      if (this.isClosing || !this.el.open) {
+        FAQAccordion.instances
+          .filter((acc) => acc !== this && acc.el.open)
+          .forEach((acc) => acc.shrink());
+        this.open();
+      } else if (this.isExpanding || this.el.open) {
+        this.shrink();
+      }
+    }
+
+    shrink() {
+      this.isClosing = true;
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight}px`;
+
+      this.animation?.cancel();
+      this.animation = this.el.animate(
+        { height: [startHeight, endHeight] },
+        { duration: 300, easing: "ease-out" },
+      );
+      this.animation.onfinish = () => this.onAnimationFinish(false);
+      this.animation.oncancel = () => (this.isClosing = false);
+    }
+
+    open() {
+      this.el.style.height = `${this.el.offsetHeight}px`;
+      this.el.open = true;
+      requestAnimationFrame(() => this.expand());
+    }
+
+    expand() {
+      this.isExpanding = true;
+      const startHeight = `${this.el.offsetHeight}px`;
+      const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
+
+      this.animation?.cancel();
+      this.animation = this.el.animate(
+        { height: [startHeight, endHeight] },
+        { duration: 300, easing: "ease-out" },
+      );
+      this.animation.onfinish = () => this.onAnimationFinish(true);
+      this.animation.oncancel = () => (this.isExpanding = false);
+    }
+
+    onAnimationFinish(open: boolean) {
+      this.el.open = open;
+      this.animation = null;
+      this.isClosing = false;
+      this.isExpanding = false;
+      this.el.style.height = this.el.style.overflow = "";
+    }
+  }
+
+  function initFAQAccordions() {
+    FAQAccordion.instances = Array.from(
+      document.querySelectorAll<HTMLDetailsElement>(".faq-item"),
+      (el) => new FAQAccordion(el),
+    );
+  }
+
+  function initFAQReveal() {
+    const list = document.getElementById("faq-list");
+    if (!list) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target
+            .querySelectorAll(".faq-reveal")
+            .forEach((el) => el.classList.add("in-view"));
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.15 },
+    );
+
+    observer.observe(list);
+  }
+
+  document.addEventListener("astro:page-load", initFAQAccordions);
+  document.addEventListener("astro:page-load", initFAQReveal);
+</script>
+
+<style>
+  .faq-item {
+    overflow: hidden;
+  }
+
+  .faq-reveal {
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+    transition-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  .faq-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

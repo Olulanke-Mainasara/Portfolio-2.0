@@ -1,12 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Splash } from "../components/Splash/Splash.tsx";
-import Hero from "../components/Home-Page/Hero.astro";
-import About from "../components/Home-Page/About.tsx";
-import Projects from "../components/Home-Page/Projects.astro";
-import Process from "../components/Home-Page/Process.astro";
-import Footer from "../components/Home-Page/Footer.astro";
+import { Splash } from "../components/Home/Splash/Splash.tsx";
+import Hero from "../components/Home/Hero.astro";
+import About from "../components/Home/About.tsx";
+import Projects from "../components/Home/Projects.astro";
+import Process from "../components/Home/Process.astro";
+import FAQ from "../components/Home/FAQ.astro";
 import ContactLinks from "@/components/Shared/UI/ContactLinks.astro";
+import ScrollReveal from "./../components/Shared/UI/ScrollReveal.tsx";
 ---
 
 <Layout title="Mainasara Olulanke - Frontend Engineer">
@@ -20,22 +21,76 @@ import ContactLinks from "@/components/Shared/UI/ContactLinks.astro";
     </div>
 
     <p
-      class="text-5xl md:text-6xl xl:text-9xl px-4 lg:px-8 text-white text-center font-thin mt-32 max-w-screen-2xl mx-auto"
+      class="reveal-highlight text-5xl md:text-6xl xl:text-9xl px-4 lg:px-8 text-white text-center font-thin mt-32 max-w-screen-2xl mx-auto"
     >
-      From creating exquisite user interfaces, to crafting beautiful frontends,
-      I bring ideas to life with clean code and great design.
+      From creating <span class="key-word">exquisite</span>{" "}
+      user interfaces, to crafting <span class="key-word">beautiful</span>{" "}
+      frontends, I bring ideas to life with{" "}
+      <span class="key-word">clean code</span> and great design.
     </p>
 
     <Projects />
 
     <Process />
 
-    <p
-      class="text-5xl md:text-6xl xl:text-9xl text-left text-white font-thin mt-32 px-4 lg:px-8 max-w-screen-2xl mx-auto"
-    >
-      Building the future of the web & creating elegant solutions to complex
-      problems, one line of code at a time, using modern technologies.
-    </p>
+    <ScrollReveal
+      text="Building the future of the web & creating elegant solutions to complex problems, one line of code at a time, using modern technologies."
+      italicWords={["future", "solutions", "modern"]}
+      containerClassName="px-4 lg:px-8 max-w-screen-2xl mx-auto"
+      textClassName="text-5xl md:text-6xl xl:text-9xl text-left text-white font-thin"
+      baseOpacity={0.1}
+      enableBlur
+      baseRotation={6}
+      blurStrength={4}
+      client:load
+    />
+
+    <FAQ />
   </main>
-  <Footer />
 </Layout>
+
+<style>
+  .key-word {
+    font-style: italic;
+    color: var(--color-background);
+  }
+
+  .reveal-line {
+    display: block;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { SplitText } from "gsap/SplitText";
+
+  gsap.registerPlugin(SplitText);
+
+  document.querySelectorAll<HTMLElement>(".reveal-highlight").forEach((el) => {
+    const split = SplitText.create(el, {
+      type: "lines",
+      linesClass: "reveal-line",
+    });
+
+    gsap.set(split.lines, { filter: "blur(14px)", opacity: 0.3 });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          gsap.to(split.lines, {
+            filter: "blur(0px)",
+            opacity: 1,
+            duration: 0.9,
+            ease: "power2.out",
+            stagger: 0.15,
+          });
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.4 },
+    );
+
+    observer.observe(el);
+  });
+</script>

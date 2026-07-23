@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  index: number;
+  label: string;
+  title: string;
+  description: string;
+  image: ImageMetadata;
+}
+
+const { index, label, title, description, image } = Astro.props;
+const reversed = index % 2 === 1;
+const numeral = "0" + (index + 1);
+---
+
+<article
+  class={`nerd-feature-reveal flex flex-col items-center gap-12 md:gap-10 ${reversed ? "md:flex-row-reverse" : "md:flex-row"} lg:gap-12`}
+>
+  <div class="w-full shrink-0 md:w-2/5">
+    <div
+      class="mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50"
+    >
+      <Image src={image} alt={title} class="h-full w-full object-cover" />
+    </div>
+  </div>
+
+  <div class="w-full text-left md:max-w-lg">
+    <div class="flex items-baseline gap-4">
+      <span class="text-2xl text-background md:text-3xl">{numeral}</span>
+      <p class="text-sm tracking-[0.3em] text-white/40 uppercase">{label}</p>
+    </div>
+    <h2 class="mt-4 text-5xl leading-[0.95] md:text-7xl">{title}</h2>
+    <p class="mt-6 max-w-lg text-lg font-thin text-white/70 md:text-xl">
+      {description}
+    </p>
+  </div>
+</article>
+
+<style>
+  .nerd-feature-reveal {
+    opacity: 0;
+    transform: translateY(2.5rem);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+
+  .nerd-feature-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  function initNerdFeatureReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.25 },
+    );
+
+    document
+      .querySelectorAll(".nerd-feature-reveal:not(.in-view)")
+      .forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initNerdFeatureReveal);
+</script>

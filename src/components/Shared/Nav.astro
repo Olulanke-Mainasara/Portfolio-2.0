@@ -1,0 +1,94 @@
+---
+import Logo from "./Logo/Logo.astro";
+import StaggeredMenu from "./UI/StaggeredMenu.tsx";
+
+const menuItems = [
+  { label: "Home", ariaLabel: "Go to the homepage", link: "/" },
+  { label: "Projects", ariaLabel: "View my projects", link: "/projects" },
+  { label: "About", ariaLabel: "Learn more about me", link: "/about" },
+  { label: "Blog", ariaLabel: "Read the blog", link: "/blog" },
+  {
+    label: "Resume",
+    ariaLabel: "Open my resume",
+    link: "/Mainasara Olulanke Resume.pdf",
+    newTab: true,
+  },
+];
+
+const socialItems = [
+  {
+    label: "Instagram",
+    link: "https://www.instagram.com/grim_redd?utm_source=qr",
+  },
+  {
+    label: "LinkedIn",
+    link: "https://www.linkedin.com/in/mainasara-olulanke-01658a228/",
+  },
+  { label: "GitHub", link: "https://github.com/Olulanke-Mainasara" },
+  { label: "X", link: "https://x.com/MainasaraOlu" },
+];
+---
+
+<div
+  id="site-nav"
+  transition:persist
+  class="opacity-0 pointer-events-none transition-opacity duration-300"
+>
+  <a
+    href="/"
+    aria-label="Home"
+    class="fixed z-50 top-4 left-4 md:top-6 md:left-6"
+  >
+    <Logo fill="white" />
+  </a>
+
+  <StaggeredMenu
+    position="right"
+    items={menuItems}
+    socialItems={socialItems}
+    displaySocials
+    displayItemNumbering
+    isFixed
+    colors={["#12181d", "#78A199"]}
+    accentColor="#78A199"
+    menuButtonColor="#ffffff"
+    openMenuButtonColor="#ffffff"
+    currentPath={Astro.url.pathname}
+    client:load
+  />
+</div>
+
+<script is:inline>
+  function initNav() {
+    const nav = document.getElementById("site-nav");
+    const path = document.location.pathname;
+
+    // Remove any leftover scroll listener from the previous page
+    window.onscroll = null;
+
+    if (path !== "/") {
+      if (nav) {
+        nav.classList.remove("opacity-0", "pointer-events-none");
+      }
+      return;
+    }
+
+    // Reset to hidden on home page before attaching scroll listener
+    if (nav) {
+      nav.classList.add("opacity-0", "pointer-events-none");
+      nav.classList.remove("opacity-100", "pointer-events-auto");
+    }
+
+    window.onscroll = () => {
+      if (window.scrollY >= window.innerHeight) {
+        nav.classList.remove("opacity-0", "pointer-events-none");
+        nav.classList.add("opacity-100", "pointer-events-auto");
+      } else {
+        nav.classList.remove("opacity-100", "pointer-events-auto");
+        nav.classList.add("opacity-0", "pointer-events-none");
+      }
+    };
+  }
+
+  document.addEventListener("astro:page-load", initNav);
+</script>

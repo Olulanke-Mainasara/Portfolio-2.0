@@ -1,0 +1,102 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"blog">;
+  readingTime: number;
+}
+
+const { post, readingTime } = Astro.props;
+const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+---
+
+<article class="featured-post-reveal h-96 md:h-auto">
+  <a
+    href={`/blog/${post.id}`}
+    class="group relative flex aspect-video w-full h-full flex-col justify-end overflow-hidden rounded-2xl sm:aspect-16/10 md:rounded-3xl lg:aspect-21/9"
+  >
+    <Image
+      src={post.data.coverImage}
+      alt={post.data.coverImageAlt}
+      transition:name={`cover-${post.id}`}
+      class="absolute inset-0 h-full w-full scale-100 object-cover duration-700 group-hover:scale-105"
+    />
+    <div
+      class="absolute inset-0 bg-linear-to-t from-black/95 via-black/40 to-black/10"
+    >
+    </div>
+
+    <div class="relative flex flex-col gap-4 p-6 md:p-10">
+      <p
+        class="w-fit rounded-full border border-white/20 px-3 py-1 text-xs tracking-widest text-white/80 uppercase"
+      >
+        Latest post
+      </p>
+
+      <div class="flex items-end justify-between gap-4">
+        <h2 class="max-w-3xl text-4xl leading-[0.95] text-white md:text-7xl">
+          {post.data.title}
+        </h2>
+        <span
+          class="hidden h-16 w-16 shrink-0 items-center justify-center rounded-full bg-white text-black duration-300 group-hover:rotate-45 group-hover:bg-background md:flex"
+        >
+          <Icon name="arrow-right" class="h-6 w-6" />
+        </span>
+      </div>
+
+      <p class="max-w-xl text-lg font-thin text-white/70 md:text-xl">
+        {post.data.description}
+      </p>
+
+      <div
+        class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm tracking-widest text-white/50 uppercase"
+      >
+        <span>{formattedDate}</span>
+        <span>{readingTime} min read</span>
+        {post.data.tags.map((tag) => <span>#{tag}</span>)}
+      </div>
+    </div>
+  </a>
+</article>
+
+<style>
+  .featured-post-reveal {
+    opacity: 0;
+    transform: translateY(2rem);
+    transition:
+      opacity 0.8s ease-out,
+      transform 0.8s ease-out;
+  }
+
+  .featured-post-reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  function initFeaturedReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    document
+      .querySelectorAll(".featured-post-reveal:not(.in-view)")
+      .forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initFeaturedReveal);
+</script>
