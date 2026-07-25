@@ -18,11 +18,12 @@ const { index, project } = Astro.props;
 const techSlugs = JSON.stringify(
   project.technologies.map((tech) => tech.toLowerCase()),
 );
+const isFirst = index === 1;
 ---
 
 <article
   id={project.name}
-  class="work-entry project-feature-reveal scroll-mt-24 md:scroll-mt-32"
+  class={`work-entry project-feature-reveal scroll-mt-24 md:scroll-mt-32 ${isFirst ? "reveal-mobile-off" : ""}`}
   data-tech={techSlugs}
 >
   <a
@@ -90,6 +91,14 @@ const techSlugs = JSON.stringify(
   .project-feature-reveal.in-view {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (max-width: 767px) {
+    .project-feature-reveal.reveal-mobile-off {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 </style>
 

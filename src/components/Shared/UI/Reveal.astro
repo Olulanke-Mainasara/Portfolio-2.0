@@ -6,6 +6,7 @@ interface Props {
   duration?: string;
   delay?: string;
   class?: string;
+  disableOnMobile?: boolean;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   duration = "0.6s",
   delay = "0s",
   class: className = "",
+  disableOnMobile = false,
 } = Astro.props;
 
 const offsets: Record<string, string> = {
@@ -32,7 +34,7 @@ const initialTransform =
 ---
 
 <div
-  class={`reveal ${className}`}
+  class={`reveal ${disableOnMobile ? "reveal-mobile-off" : ""} ${className}`}
   style={`--reveal-transform: ${initialTransform}; --reveal-duration: ${duration}; --reveal-delay: ${delay};`}
 >
   <slot />
@@ -49,6 +51,14 @@ const initialTransform =
   .reveal.visible {
     opacity: 1;
     transform: none;
+  }
+
+  @media (max-width: 767px) {
+    .reveal-mobile-off {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 </style>
 
