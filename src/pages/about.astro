@@ -91,7 +91,13 @@ const menuItems = await Promise.all(
       </h1>
     </section>
 
-    <Reveal type="slide" direction="up" distance="24px" class="mt-8 md:mt-14">
+    <Reveal
+      type="slide"
+      direction="up"
+      distance="24px"
+      class="mt-8 md:mt-14"
+      disableOnMobile
+    >
       <section
         class="flex flex-col items-center gap-4 lg:gap-8 px-4 text-white md:flex-row md:items-start xl:items-center lg:px-8 xl:min-h-125 xl:h-[80vh]"
       >
@@ -220,7 +226,7 @@ const menuItems = await Promise.all(
             to go, no forms disappearing into the void.
           </p>
 
-          <div class="mt-10 flex items-center gap-4">
+          <div class="mt-10 hidden items-center gap-4 md:flex">
             {
               socials.map((social) => (
                 <a

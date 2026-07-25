@@ -47,7 +47,7 @@ export const Splash = () => {
   return (
     <>
       <motion.div
-        className="absolute bg-black h-full z-20 inset-0"
+        className="absolute bg-black h-screen z-20 inset-0"
         initial={{ opacity: 1 }}
         animate={{ opacity: 0, display: "none" }}
         transition={{

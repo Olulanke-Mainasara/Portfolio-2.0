@@ -12,10 +12,11 @@ interface Props {
 const { index, label, title, description, image } = Astro.props;
 const reversed = index % 2 === 1;
 const numeral = "0" + (index + 1);
+const isFirst = index === 0;
 ---
 
 <article
-  class={`nerd-feature-reveal flex flex-col items-center gap-12 md:gap-10 ${reversed ? "md:flex-row-reverse" : "md:flex-row"} lg:gap-12`}
+  class={`nerd-feature-reveal flex flex-col items-center gap-12 md:gap-10 ${reversed ? "md:flex-row-reverse" : "md:flex-row"} lg:gap-12 ${isFirst ? "reveal-mobile-off" : ""}`}
 >
   <div class="w-full shrink-0 md:w-2/5">
     <div
@@ -49,6 +50,14 @@ const numeral = "0" + (index + 1);
   .nerd-feature-reveal.in-view {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  @media (max-width: 767px) {
+    .nerd-feature-reveal.reveal-mobile-off {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 </style>
 
