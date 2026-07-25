@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { gsap } from "gsap";
+import { motion } from "framer-motion";
 
 export interface StaggeredMenuItem {
   label: string;
@@ -526,15 +527,29 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         </div>
 
         <header
-          className="staggered-menu-header absolute top-0 left-0 w-full flex items-center justify-center pointer-events-none z-20"
+          className="staggered-menu-header absolute top-0 left-0 w-full pointer-events-none z-20"
           aria-label="Main navigation header"
         >
-          <div
-            className={`sm-nav-pill flex items-center justify-between pointer-events-auto ${
-              scrolled
-                ? "sm-nav-pill--scrolled w-56 md:w-64 rounded-full bg-[#0b0f13]/80 shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur-md mt-3 px-4 py-2 md:mt-4 md:px-5 md:py-2.5"
-                : "w-full rounded-none bg-transparent shadow-none backdrop-blur-none mt-0 px-4 py-4 md:px-6 md:py-6"
-            }`}
+          <motion.div
+            initial={false}
+            animate={{
+              top: scrolled ? 20 : 0,
+              width: scrolled ? "98%" : "100%",
+              left: scrolled ? "1%" : "0%",
+              borderRadius: scrolled ? 35 : 0,
+              backgroundColor: scrolled
+                ? "rgba(11, 15, 19, 0.75)"
+                : "rgba(11, 15, 19, 0)",
+              borderColor: scrolled
+                ? "rgba(255, 255, 255, 0.15)"
+                : "rgba(255, 255, 255, 0)",
+              boxShadow: scrolled
+                ? "0 10px 30px rgba(0, 0, 0, 0.45)"
+                : "0 0px 0px rgba(0, 0, 0, 0)",
+              backdropFilter: scrolled ? "blur(15px)" : "blur(0px)",
+            }}
+            transition={{ duration: 0.4, ease: [0.65, 0, 0.35, 1] }}
+            className="sm-nav-pill absolute flex items-center justify-between border overflow-hidden pointer-events-auto px-4 py-4 md:px-6 md:py-6"
           >
             {children}
 
@@ -566,7 +581,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 />
               </span>
             </button>
-          </div>
+          </motion.div>
         </header>
 
         <aside
@@ -653,9 +668,8 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 
       <style>{`
 .sm-scope .staggered-menu-wrapper { position: relative; width: 100%; height: 100%; z-index: 40; pointer-events: none; }
-.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; display: flex; align-items: center; justify-content: center; background: transparent; pointer-events: none; z-index: 20; }
+.sm-scope .staggered-menu-header { position: absolute; top: 0; left: 0; width: 100%; background: transparent; pointer-events: none; z-index: 20; }
 .sm-scope .staggered-menu-header > * { pointer-events: auto; }
-.sm-scope .sm-nav-pill { transition: width 0.5s cubic-bezier(0.65,0,0.35,1), gap 0.5s cubic-bezier(0.65,0,0.35,1), margin 0.5s cubic-bezier(0.65,0,0.35,1), padding 0.5s cubic-bezier(0.65,0,0.35,1), border-radius 0.4s ease, background-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease; }
 .sm-scope .sm-toggle { position: relative; display: inline-flex; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; color: #e9e9ef; overflow: visible; }
 .sm-scope .sm-toggle:focus-visible { outline: 2px solid #ffffffaa; outline-offset: 4px; border-radius: 4px; }
 .sm-scope .sm-icon { position: relative; display: inline-flex; align-items: center; justify-content: center; will-change: transform; }
