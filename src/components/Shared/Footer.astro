@@ -4,6 +4,7 @@ import Bento from "./UI/Bento.tsx";
 import BentoCard from "./UI/BentoCard.tsx";
 import { now } from "@/data";
 import NerdImg from "@/images/me-shades.webp";
+import ObsessionImg from "@/images/videography.webp";
 
 const links = [
   { name: "Home", href: "/" },
@@ -20,10 +21,10 @@ const bentoCards = [
     href: now.book.link,
   },
   {
-    title: "Listening to",
-    description: `${now.song.title} · ${now.song.artist}`,
-    image: now.song.image,
-    href: now.song.link,
+    title: "Current obsession",
+    description: `${now.obsession.title} · ${now.obsession.description}`,
+    image: ObsessionImg.src,
+    href: "https://www.instagram.com/grim_redd?utm_source=qr",
   },
 ];
 ---
