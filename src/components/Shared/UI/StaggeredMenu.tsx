@@ -530,10 +530,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           aria-label="Main navigation header"
         >
           <div
-            className={`sm-nav-pill flex items-center pointer-events-auto ${
+            className={`sm-nav-pill flex items-center justify-between pointer-events-auto ${
               scrolled
-                ? "sm-nav-pill--scrolled justify-center gap-4 md:gap-6 rounded-full bg-[#0b0f13]/80 shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur-md mt-3 px-3 py-2 md:mt-4 md:px-4 md:py-2.5"
-                : "w-full justify-between rounded-none bg-transparent shadow-none backdrop-blur-none mt-0 px-4 py-4 md:px-6 md:py-6"
+                ? "sm-nav-pill--scrolled w-56 md:w-64 rounded-full bg-[#0b0f13]/80 shadow-[0_10px_30px_rgba(0,0,0,0.45)] backdrop-blur-md mt-3 px-4 py-2 md:mt-4 md:px-5 md:py-2.5"
+                : "w-full rounded-none bg-transparent shadow-none backdrop-blur-none mt-0 px-4 py-4 md:px-6 md:py-6"
             }`}
           >
             {children}

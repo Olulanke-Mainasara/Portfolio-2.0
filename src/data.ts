@@ -392,12 +392,9 @@ export const process = [
 
 // Update these whenever you feel like it, no live integrations (yet)
 export const now = {
-  song: {
-    title: "Praise Medley - Live",
-    artist: "SMJ - Samuel Giveson",
-    link: "https://open.spotify.com/track/2XWKWrjySaxP0lusBixkos",
-    image:
-      "https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02e734807685101df518765df3",
+  obsession: {
+    title: "Videography",
+    description: "Chasing better shots, gimbal moves, and edits",
   },
   book: {
     title: "Absolute Batman",
