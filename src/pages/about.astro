@@ -6,7 +6,7 @@ import SideQuestCard from "@/components/Shared/UI/SideQuestCard.astro";
 import InfiniteMenu from "@/components/Shared/UI/InfiniteMenu";
 import { Icon } from "astro-icon/components";
 import { technologies, sideQuests } from "@/data";
-import AboutImg from "@/images/me.webp";
+import AboutImg from "@/images/me-suit.webp";
 
 const email = "mainasara.o.olulanke@gmail.com";
 
@@ -104,7 +104,7 @@ const menuItems = await Promise.all(
         <img
           src={AboutImg.src}
           alt="Mainasara Olulanke"
-          class="w-full h-full rounded-2xl object-cover object-top duration-300 grayscale hover:grayscale-0 md:w-1/2"
+          class="w-full h-full rounded-2xl object-cover object-top duration-300 [@media(hover:hover)]:grayscale hover:grayscale-0 md:w-1/2"
         />
         <div class="md:flex-1">
           <h2 class="text-4xl leading-[1.05] md:text-4xl">
