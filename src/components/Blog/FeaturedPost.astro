@@ -16,7 +16,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
 });
 ---
 
-<article class="featured-post-reveal h-96 md:h-auto">
+<article class="h-96 md:h-auto">
   <a
     href={`/blog/${post.id}`}
     class="group relative flex aspect-video w-full h-full flex-col justify-end overflow-hidden rounded-2xl sm:aspect-16/10 md:rounded-3xl lg:aspect-21/9"
@@ -64,39 +64,3 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
     </div>
   </a>
 </article>
-
-<style>
-  .featured-post-reveal {
-    opacity: 0;
-    transform: translateY(2rem);
-    transition:
-      opacity 0.8s ease-out,
-      transform 0.8s ease-out;
-  }
-
-  .featured-post-reveal.in-view {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
-
-<script>
-  function initFeaturedReveal() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.2 },
-    );
-
-    document
-      .querySelectorAll(".featured-post-reveal:not(.in-view)")
-      .forEach((el) => observer.observe(el));
-  }
-
-  document.addEventListener("astro:page-load", initFeaturedReveal);
-</script>

@@ -8,6 +8,12 @@ const menuItems = [
   { label: "About", ariaLabel: "Learn more about me", link: "/about" },
   { label: "Blog", ariaLabel: "Read the blog", link: "/blog" },
   {
+    label: "The Nerd",
+    ariaLabel: "Meet the nerd behind the code",
+    link: "/the-nerd",
+    fontStyle: "comic" as const,
+  },
+  {
     label: "Resume",
     ariaLabel: "Open my resume",
     link: "/Mainasara Olulanke Resume.pdf",
@@ -34,14 +40,6 @@ const socialItems = [
   transition:persist
   class="opacity-0 pointer-events-none transition-opacity duration-300"
 >
-  <a
-    href="/"
-    aria-label="Home"
-    class="fixed z-50 top-4 left-4 md:top-6 md:left-6"
-  >
-    <Logo fill="white" />
-  </a>
-
   <StaggeredMenu
     position="right"
     items={menuItems}
@@ -55,7 +53,11 @@ const socialItems = [
     openMenuButtonColor="#ffffff"
     currentPath={Astro.url.pathname}
     client:load
-  />
+  >
+    <a href="/" aria-label="Home">
+      <Logo fill="white" />
+    </a>
+  </StaggeredMenu>
 </div>
 
 <script is:inline>

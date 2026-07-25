@@ -8,6 +8,7 @@ export interface BentoCardProps {
   href: string;
   glowColor?: string;
   className?: string;
+  imageClassName?: string;
 }
 
 const DEFAULT_GLOW_COLOR = "120, 161, 153";
@@ -25,6 +26,7 @@ const BentoCard: React.FC<BentoCardProps> = ({
   href,
   glowColor = DEFAULT_GLOW_COLOR,
   className = "",
+  imageClassName = "",
 }) => {
   const cardRef = useRef<HTMLAnchorElement>(null);
   const external = href.startsWith("http");
@@ -82,7 +84,7 @@ const BentoCard: React.FC<BentoCardProps> = ({
       <img
         src={image}
         alt=""
-        className="absolute inset-0 object-cover w-full h-full duration-500 group-hover:scale-105"
+        className={`absolute inset-0 object-cover w-full h-full duration-500 group-hover:scale-105 ${imageClassName}`}
       />
       <div
         className="absolute inset-0 pointer-events-none"

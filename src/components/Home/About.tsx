@@ -135,7 +135,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
       <div className="relative flex flex-col md:flex-row md:items-center gap-4 lg:gap-8 xl:gap-10 xl:min-h-125 xl:h-[80vh] px-4 lg:px-8 max-w-screen-2xl mx-auto overflow-hidden">
         <img
           src="/me.webp"
-          className="object-cover object-top w-full md:w-1/2 xl:w-full h-full rounded-lg xl:brightness-80 grayscale hover:grayscale-0 duration-300"
+          className="object-cover object-top w-full md:w-1/2 xl:w-full h-full rounded-lg xl:brightness-80 [@media(hover:hover)]:grayscale hover:grayscale-0 duration-300"
           alt="Mainasara Olulanke"
         />
         <div className="flex flex-col justify-center gap-2 text-white xl:pr-4 xl:w-4/5">

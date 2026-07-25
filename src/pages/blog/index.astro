@@ -1,6 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Reveal from "@/components/Shared/UI/Reveal.astro";
 import FeaturedPost from "@/components/Blog/FeaturedPost.astro";
 import PostCard from "@/components/Blog/PostCard.astro";
 import { getCollection } from "astro:content";
@@ -31,18 +30,12 @@ const tags = [
 
     {
       featured && (
-        <Reveal
-          type="slide"
-          direction="up"
-          distance="24px"
-          class="mt-8 md:mt-14 px-4 lg:px-8"
-          disableOnMobile
-        >
+        <div class="mt-8 md:mt-14 px-4 lg:px-8">
           <FeaturedPost
             post={featured}
             readingTime={getReadingTime(featured.body ?? "")}
           />
-        </Reveal>
+        </div>
       )
     }
 
