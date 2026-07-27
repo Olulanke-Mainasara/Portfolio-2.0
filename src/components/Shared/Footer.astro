@@ -43,7 +43,7 @@ const bentoCards = [
       <div
         class="flex flex-col flex-1 w-full gap-8 md:flex-row lg:items-stretch lg:pr-8 lg:border-r"
       >
-        <div class="flex flex-col w-full gap-4 md:w-1/2">
+        <div class="grid grid-cols-2 gap-x-6 gap-y-4 w-full md:flex md:flex-col md:gap-4 md:w-1/2">
           {
             links.map((link, index) => (
               <a
@@ -95,9 +95,14 @@ const bentoCards = [
 
   <div class="overflow-hidden border-white/10">
     <p
-      class="pt-4 text-8xl tracking-tight text-center uppercase select-none leading-[0.77] md:-translate-x-2 xl:-translate-x-3 md:text-[150px] lg:text-[190px] xl:text-[262.5px]"
+      class="hidden pt-4 tracking-tight text-center uppercase select-none leading-[0.77] md:block md:-translate-x-2 xl:-translate-x-3 md:text-[150px] lg:text-[190px] xl:text-[262.5px]"
     >
       Mainasara
+    </p>
+    <p
+      class="block pt-4 text-[32vw] tracking-tight text-center uppercase select-none whitespace-nowrap leading-[0.77] md:hidden"
+    >
+      Maina
     </p>
   </div>
 </footer>
