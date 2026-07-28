@@ -66,31 +66,37 @@ import ScrollReveal from "./../components/Shared/UI/ScrollReveal.tsx";
 
   gsap.registerPlugin(SplitText);
 
-  document.querySelectorAll<HTMLElement>(".reveal-highlight").forEach((el) => {
-    const split = SplitText.create(el, {
-      type: "lines",
-      linesClass: "reveal-line",
-    });
-
-    gsap.set(split.lines, { filter: "blur(14px)", opacity: 0.3 });
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          gsap.to(split.lines, {
-            filter: "blur(0px)",
-            opacity: 1,
-            duration: 0.9,
-            ease: "power2.out",
-            stagger: 0.15,
-          });
-          observer.unobserve(entry.target);
+  function initRevealHighlight() {
+    document
+      .querySelectorAll<HTMLElement>(".reveal-highlight")
+      .forEach((el) => {
+        const split = SplitText.create(el, {
+          type: "lines",
+          linesClass: "reveal-line",
         });
-      },
-      { threshold: 0.4 },
-    );
 
-    observer.observe(el);
-  });
+        gsap.set(split.lines, { filter: "blur(14px)", opacity: 0.3 });
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              gsap.to(split.lines, {
+                filter: "blur(0px)",
+                opacity: 1,
+                duration: 0.9,
+                ease: "power2.out",
+                stagger: 0.15,
+              });
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.4 },
+        );
+
+        observer.observe(el);
+      });
+  }
+
+  document.addEventListener("astro:page-load", initRevealHighlight);
 </script>

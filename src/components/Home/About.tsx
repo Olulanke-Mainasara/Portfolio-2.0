@@ -101,8 +101,8 @@ const About = ({ children }: { children: React.ReactNode }) => {
             className="flex items-center justify-end w-full p-4 lg:px-8"
           >
             <p className="max-w-md text-3xl font-thin text-right">
-              Hey, I'm Mainasara Olulanke, Frontend Engineer by day, Capt. Space
-              Rockstar by night.
+              Hey, I'm Mainasara Olulanke, Frontend Engineer by day, aspiring
+              astronaut by night.
             </p>
           </motion.div>
 
