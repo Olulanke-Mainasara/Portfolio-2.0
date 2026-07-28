@@ -40,17 +40,17 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = "" }) => {
       aria-label={isLight ? "Switch to dark mode" : "Switch to light mode"}
       className={`theme-toggle relative inline-flex shrink-0 items-center justify-center overflow-hidden bg-transparent border-0 cursor-pointer p-2 -m-2 text-white light:text-neutral-900 ${className}`}
     >
-      <span className="relative inline-flex h-4 w-4 items-center justify-center md:h-[18px] md:w-[18px]">
+      <span className="relative inline-flex h-5 w-5 items-center justify-center md:h-6 md:w-6">
         <AnimatePresence initial={false} mode="wait">
           <motion.span
-            key={isLight ? "sun" : "moon"}
+            key={isLight ? "moon" : "sun"}
             initial={{ opacity: 0, rotate: -90, scale: 0.5 }}
             animate={{ opacity: 1, rotate: 0, scale: 1 }}
             exit={{ opacity: 0, rotate: 90, scale: 0.5 }}
             transition={{ duration: 0.35, ease: [0.65, 0, 0.35, 1] }}
             className="absolute inset-0"
           >
-            {isLight ? <SunIcon /> : <MoonIcon />}
+            {isLight ? <MoonIcon /> : <SunIcon />}
           </motion.span>
         </AnimatePresence>
       </span>

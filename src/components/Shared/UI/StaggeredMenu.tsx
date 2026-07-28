@@ -645,7 +645,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
               {children}
             </NavChip>
 
-            <div className="flex items-center gap-3 md:gap-4">
+            <div className="flex items-center gap-5 md:gap-7">
               <NavChip active={isDesktop} scrolled={scrolled} isLight={isLight}>
                 <ThemeToggle />
               </NavChip>
