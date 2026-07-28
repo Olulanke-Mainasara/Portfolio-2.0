@@ -20,7 +20,7 @@ const isFirst = index === 0;
 >
   <div class="w-full shrink-0 md:w-2/5">
     <div
-      class="mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/50"
+      class="mx-auto aspect-4/5 w-full max-w-sm overflow-hidden rounded-2xl border border-white/10 light:border-black/10 shadow-2xl shadow-black/50"
     >
       <Image src={image} alt={title} class="h-full w-full object-cover" />
     </div>
@@ -29,10 +29,10 @@ const isFirst = index === 0;
   <div class="w-full text-left md:max-w-lg">
     <div class="flex items-baseline gap-4">
       <span class="text-2xl text-background md:text-3xl">{numeral}</span>
-      <p class="text-sm tracking-[0.3em] text-white/40 uppercase">{label}</p>
+      <p class="text-sm tracking-[0.3em] text-white/40 light:text-neutral-900/40 uppercase">{label}</p>
     </div>
     <h2 class="mt-4 text-5xl leading-[0.95] md:text-7xl">{title}</h2>
-    <p class="mt-6 max-w-lg text-lg font-thin text-white/70 md:text-xl">
+    <p class="mt-6 max-w-lg text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
       {description}
     </p>
   </div>

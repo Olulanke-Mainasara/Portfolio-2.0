@@ -4,14 +4,14 @@ import { companies } from "@/data";
 const row = [...companies, ...companies, ...companies];
 ---
 
-<section class="my-32 text-white">
+<section class="my-32 text-white light:text-neutral-900">
   <h2 class="px-4 text-6xl text-center md:text-8xl lg:px-8">Worked With</h2>
 
   <div class="flex flex-col gap-4 mt-12 companies-marquee md:gap-6 md:mt-16">
     <div class="flex w-max companies-track companies-track-a gap-4 px-4 lg:px-8 md:gap-6">
       {
         row.map((company) => (
-          <div class="flex items-center justify-center w-56 duration-300 border shrink-0 h-28 md:h-32 md:w-64 rounded-2xl border-white/10 bg-white/5 hover:border-background/50">
+          <div class="flex items-center justify-center w-56 duration-300 border shrink-0 h-28 md:h-32 md:w-64 rounded-2xl border-white/10 light:border-black/10 bg-white/5 light:bg-black/5 hover:border-background/50">
             <p class="text-2xl md:text-3xl">{company.name}</p>
           </div>
         ))
@@ -21,7 +21,7 @@ const row = [...companies, ...companies, ...companies];
     <div class="flex w-max companies-track companies-track-b gap-4 px-4 lg:px-8 md:gap-6">
       {
         row.map((company) => (
-          <div class="flex items-center justify-center w-56 duration-300 border shrink-0 h-28 md:h-32 md:w-64 rounded-2xl border-white/10 bg-white/5 hover:border-background/50">
+          <div class="flex items-center justify-center w-56 duration-300 border shrink-0 h-28 md:h-32 md:w-64 rounded-2xl border-white/10 light:border-black/10 bg-white/5 light:bg-black/5 hover:border-background/50">
             <p class="text-2xl md:text-3xl">{company.name}</p>
           </div>
         ))

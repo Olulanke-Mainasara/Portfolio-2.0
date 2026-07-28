@@ -20,7 +20,7 @@ const tags = [
 
 <Layout title="Blog - Mainasara Olulanke">
   <main class="mx-auto max-w-screen-2xl pt-16 md:pt-20">
-    <section class="px-4 text-center text-white lg:px-8">
+    <section class="px-4 text-center text-white light:text-neutral-900 lg:px-8">
       <h1
         class="mt-4 text-7xl leading-[0.85] font-normal tracking-tight sm:text-8xl md:text-[9rem] lg:text-[11rem]"
       >
@@ -50,7 +50,7 @@ const tags = [
               <button
                 type="button"
                 data-tag-filter="all"
-                class="tag-chip active rounded-full border border-white/15 px-4 py-2 text-sm tracking-widest text-white uppercase duration-300"
+                class="tag-chip active rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm tracking-widest text-white light:text-neutral-900 uppercase duration-300"
               >
                 All
               </button>
@@ -58,7 +58,7 @@ const tags = [
                 <button
                   type="button"
                   data-tag-filter={tag}
-                  class="tag-chip rounded-full border border-white/15 px-4 py-2 text-sm tracking-widest text-white/50 uppercase duration-300"
+                  class="tag-chip rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm tracking-widest text-white/50 light:text-neutral-900/50 uppercase duration-300"
                 >
                   {tag}
                 </button>
@@ -66,7 +66,7 @@ const tags = [
             </div>
           )}
 
-          <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-16 px-4 text-white md:mt-16 md:grid-cols-2 lg:px-8">
+          <div class="mt-10 grid grid-cols-1 gap-x-8 gap-y-16 px-4 text-white light:text-neutral-900 md:mt-16 md:grid-cols-2 lg:px-8">
             {rest.map((post, index) => (
               <PostCard
                 post={post}

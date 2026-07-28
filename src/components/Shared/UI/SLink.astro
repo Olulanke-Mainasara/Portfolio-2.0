@@ -38,7 +38,7 @@ const {
   {
     iconPosition === "left" && (
       <span
-        class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-3xl"} mr-1 flex items-center justify-center bg-black text-white rounded-full`}
+        class={`${iconWandH === "small" ? "text-lg" : iconWandH === "medium" ? "text-xl" : "text-3xl"} mr-1 flex items-center justify-center bg-black text-white light:bg-white light:text-neutral-900 rounded-full`}
       >
         <Icon name={icon} />
       </span>
@@ -50,7 +50,7 @@ const {
   {
     iconPosition === "right" && (
       <span
-        class={`${iconWandH === "small" ? "text-lg w-8 h-8" : iconWandH === "medium" ? "text-xl w-8 h-8" : "text-3xl w-12 h-12"} flex items-center justify-center bg-black text-white rounded-full`}
+        class={`${iconWandH === "small" ? "text-lg w-8 h-8" : iconWandH === "medium" ? "text-xl w-8 h-8" : "text-3xl w-12 h-12"} flex items-center justify-center bg-black text-white light:bg-white light:text-neutral-900 rounded-full`}
       >
         <Icon name={icon} />
       </span>

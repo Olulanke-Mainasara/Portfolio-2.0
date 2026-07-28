@@ -37,7 +37,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
     <div class="px-4 lg:px-8">
       <a
         href="/blog"
-        class="group inline-flex items-center gap-2 text-sm tracking-widest text-white/50 uppercase duration-300 hover:text-background"
+        class="group inline-flex items-center gap-2 text-sm tracking-widest text-white/50 light:text-neutral-900/50 uppercase duration-300 hover:text-background"
       >
         <span class="duration-300 group-hover:-translate-x-1">←</span>
         All posts
@@ -45,9 +45,9 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
     </div>
 
     <Reveal type="slide" direction="up" distance="24px" class="mt-8 px-4 lg:px-8">
-      <header class="text-white">
+      <header class="text-white light:text-neutral-900">
         <div
-          class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm tracking-widest text-white/40 uppercase"
+          class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm tracking-widest text-white/40 light:text-neutral-900/40 uppercase"
         >
           <span>{formattedDate}</span>
           <span>{readingTime} min read</span>
@@ -58,7 +58,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
         >
           {post.data.title}
         </h1>
-        <p class="mt-6 max-w-2xl text-xl font-thin text-white/60 md:text-2xl">
+        <p class="mt-6 max-w-2xl text-xl font-thin text-white/60 light:text-neutral-900/60 md:text-2xl">
           {post.data.description}
         </p>
       </header>
@@ -75,21 +75,21 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
 
     <Reveal
       type="fade"
-      class="prose mx-auto mt-12 max-w-2xl px-4 pb-32 text-white md:mt-16 lg:px-8"
+      class="prose mx-auto mt-12 max-w-2xl px-4 pb-32 text-white light:text-neutral-900 md:mt-16 lg:px-8"
     >
       <Content />
     </Reveal>
 
     {
       (prev || next) && (
-        <div class="border-t border-white/10 px-4 py-16 lg:px-8">
+        <div class="border-t border-white/10 light:border-black/10 px-4 py-16 lg:px-8">
           <div class="mx-auto flex max-w-2xl flex-col gap-6 sm:flex-row sm:justify-between">
             {prev ? (
               <a
                 href={`/blog/${prev.id}`}
-                class="group flex flex-col gap-2 text-white"
+                class="group flex flex-col gap-2 text-white light:text-neutral-900"
               >
-                <span class="flex items-center gap-2 text-sm tracking-widest text-white/40 uppercase">
+                <span class="flex items-center gap-2 text-sm tracking-widest text-white/40 light:text-neutral-900/40 uppercase">
                   <Icon
                     name="arrow-right"
                     class="h-3 w-3 rotate-180 duration-300 group-hover:-translate-x-1"
@@ -107,9 +107,9 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
             {next && (
               <a
                 href={`/blog/${next.id}`}
-                class="group flex flex-col items-end gap-2 text-right text-white"
+                class="group flex flex-col items-end gap-2 text-right text-white light:text-neutral-900"
               >
-                <span class="flex items-center gap-2 text-sm tracking-widest text-white/40 uppercase">
+                <span class="flex items-center gap-2 text-sm tracking-widest text-white/40 light:text-neutral-900/40 uppercase">
                   Newer
                   <Icon
                     name="arrow-right"
@@ -209,5 +209,24 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
 
   .prose img {
     border-radius: 1em;
+  }
+
+  html.light .prose {
+    color: rgba(20, 24, 26, 0.8);
+  }
+  html.light .prose h2,
+  html.light .prose h3,
+  html.light .prose strong {
+    color: #14181a;
+  }
+  html.light .prose blockquote {
+    color: rgba(20, 24, 26, 0.6);
+  }
+  html.light .prose code {
+    background: rgba(20, 24, 26, 0.06);
+  }
+  html.light .prose pre {
+    background: rgba(20, 24, 26, 0.04);
+    border: 1px solid rgba(20, 24, 26, 0.1);
   }
 </style>
