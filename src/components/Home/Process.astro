@@ -83,18 +83,22 @@ import { process } from "@/data";
 </style>
 
 <script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("in-view");
-        observer.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.3 },
-  );
+  function initProcessReveal() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("in-view");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.3 },
+    );
 
-  document
-    .querySelectorAll(".process-row")
-    .forEach((el) => observer.observe(el));
+    document
+      .querySelectorAll(".process-row:not(.in-view)")
+      .forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initProcessReveal);
 </script>
