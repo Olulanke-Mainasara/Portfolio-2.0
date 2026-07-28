@@ -15,6 +15,10 @@
   stroke-linecap: round;
 }
 
+html.light .item {
+  stroke: #14181a;
+}
+
 .left-arrow {
   position: absolute;
   left: -50px;

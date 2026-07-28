@@ -15,6 +15,33 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
+    <script is:inline>
+      (function () {
+        function resolveTheme() {
+          var stored = localStorage.getItem("theme");
+          return (
+            stored ||
+            (window.matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark")
+          );
+        }
+        // Run immediately (before first paint) to avoid a flash.
+        document.documentElement.classList.toggle(
+          "light",
+          resolveTheme() === "light",
+        );
+        // The router swaps in a freshly-fetched document on every
+        // navigation, which has no way to know the client's stored theme
+        // preference — apply it to the incoming document before it goes live.
+        document.addEventListener("astro:before-swap", function (event) {
+          event.newDocument.documentElement.classList.toggle(
+            "light",
+            resolveTheme() === "light",
+          );
+        });
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />

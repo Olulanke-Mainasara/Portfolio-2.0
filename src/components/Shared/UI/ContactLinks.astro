@@ -5,7 +5,7 @@ import SLink from "./SLink.astro";
 const { extraStyles } = Astro.props;
 ---
 
-<div class={`items-center gap-4 text-white ${extraStyles}`}>
+<div class={`items-center gap-4 text-white light:text-neutral-900 ${extraStyles}`}>
   <a
     href="https://www.instagram.com/grim_redd?utm_source=qr"
     target="_blank"
@@ -55,7 +55,7 @@ const { extraStyles } = Astro.props;
     text="Contact me"
     iconPosition="right"
     icon="arrow-right"
-    extraStyles="hidden md:flex text-3xl text-black gap-3 bg-white pl-4 pr-[6px] py-[6px]"
+    extraStyles="hidden md:flex text-3xl text-black light:bg-neutral-900 light:text-white gap-3 bg-white pl-4 pr-[6px] py-[6px]"
     iconWandH="large"
   />
 </div>

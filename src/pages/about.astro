@@ -83,7 +83,7 @@ const menuItems = await Promise.all(
 
 <Layout title="About - Mainasara Olulanke">
   <main class="mx-auto max-w-screen-2xl pt-14 md:pt-20">
-    <section class="px-4 text-center text-white lg:px-8">
+    <section class="px-4 text-center text-white light:text-neutral-900 lg:px-8">
       <h1
         class="mt-4 text-7xl leading-[0.85] font-normal tracking-tight sm:text-8xl md:text-[9rem] lg:text-[11rem]"
       >
@@ -99,7 +99,7 @@ const menuItems = await Promise.all(
       disableOnMobile
     >
       <section
-        class="flex flex-col items-center gap-4 lg:gap-8 px-4 text-white md:flex-row md:items-start xl:items-center lg:px-8 xl:min-h-125 xl:h-[80vh]"
+        class="flex flex-col items-center gap-4 lg:gap-8 px-4 text-white light:text-neutral-900 md:flex-row md:items-start xl:items-center lg:px-8 xl:min-h-125 xl:h-[80vh]"
       >
         <img
           src={AboutImg.src}
@@ -110,20 +110,20 @@ const menuItems = await Promise.all(
           <h2 class="text-4xl leading-[1.05] md:text-4xl">
             Hey, I'm Mainasara.
           </h2>
-          <p class="mt-6 max-w-xl text-lg font-thin text-white/70 md:text-xl">
+          <p class="mt-6 max-w-xl text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
             I've spent the last 3+ years turning designs into interfaces
             people actually enjoy using: fintech dashboards, event platforms,
             e-commerce, the works. Most of that time goes into obsessing over
             the small stuff, the transition that feels a little off, the
             state nobody thought to design for.
           </p>
-          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 md:text-xl">
+          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
             Good frontend work sits right between design and engineering,
             and that's where I like to be. I care how something looks, but I
             care just as much about whether it holds up: fast, accessible,
             and built on code someone else can actually pick up later.
           </p>
-          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 md:text-xl">
+          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
             I spent time leading frontend architecture at AfriTransfer, a
             pan-African fintech platform, and cut my teeth on both code and
             infrastructure at CWG PLC. These days I work freelance full time,
@@ -131,7 +131,7 @@ const menuItems = await Promise.all(
             terminal through two communities, Techies and RUNTechSpace.
             Still one of my proudest wins.
           </p>
-          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 md:text-xl">
+          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
             Log me off and I'm probably deep in a DC trade paperback, adding
             another piece to a Lego Technic build that actually steers, or
             watching a Formula 1 session live because I refuse to miss a lap.
@@ -155,7 +155,7 @@ const menuItems = await Promise.all(
       </div>
     </section> -->
 
-    <section class="px-4 text-center text-white lg:px-8 mt-28">
+    <section class="px-4 text-center text-white light:text-neutral-900 lg:px-8 mt-28">
       <h2 class="text-6xl leading-[0.9] md:text-8xl">
         Tools <span class="text-background">I</span>{" "}
         <br class="md:hidden" />Reach For
@@ -164,18 +164,18 @@ const menuItems = await Promise.all(
 
     <section class="mt-8 px-4 md:mt-10 lg:px-8">
       <p
-        class="mb-4 text-center text-sm tracking-widest text-white/40 uppercase"
+        class="mb-4 text-center text-sm tracking-widest text-white/40 light:text-neutral-900/40 uppercase"
       >
         Drag to spin · Click a tile to visit
       </p>
       <div
-        class="relative h-[90vh] min-h-[90vh] w-full overflow-hidden rounded-3xl border border-white/10 bg-black/40"
+        class="relative h-[90vh] min-h-[90vh] w-full overflow-hidden rounded-3xl border border-white/10 light:border-black/10 bg-black/40 light:bg-black/5"
       >
         <InfiniteMenu items={menuItems} scale={1} client:visible />
       </div>
     </section>
 
-    <section id="contact" class="mt-32 scroll-mt-24 text-center text-white">
+    <section id="contact" class="mt-32 scroll-mt-24 text-center text-white light:text-neutral-900">
       <h2 class="text-6xl leading-[0.9] md:text-8xl">
         I<span class="text-background">'</span>m Active
       </h2>
@@ -186,13 +186,13 @@ const menuItems = await Promise.all(
     >
       <a
         href={`mailto:${email}`}
-        class="email-link group flex flex-wrap items-center gap-4 text-white"
+        class="email-link group flex flex-wrap items-center gap-4 text-white light:text-neutral-900"
       >
         <span class="email-text text-xl md:text-2xl lg:text-4xl break-all">
           {email}
         </span>
         <span
-          class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-black duration-300 group-hover:rotate-45 group-hover:bg-background md:h-16 md:w-16"
+          class="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-white text-black light:bg-neutral-900 light:text-white duration-300 group-hover:rotate-45 group-hover:bg-background md:h-16 md:w-16"
         >
           <Icon name="arrow-right" size={22} />
         </span>
@@ -201,7 +201,7 @@ const menuItems = await Promise.all(
       <button
         type="button"
         data-copy-email={email}
-        class="copy-btn flex cursor-pointer items-center gap-2 text-sm tracking-widest text-white/40 uppercase duration-300 hover:text-background"
+        class="copy-btn flex cursor-pointer items-center gap-2 text-sm tracking-widest text-white/40 light:text-neutral-900/40 uppercase duration-300 hover:text-background"
       >
         <Icon name="copy" size={25} />
         <span data-copy-label>Copy Email</span>
@@ -210,7 +210,7 @@ const menuItems = await Promise.all(
 
     <Reveal type="slide" direction="up" distance="24px" class="mt-12 md:mt-8">
       <section
-        class="flex flex-col gap-12 px-4 text-white md:flex-row md:gap-10 lg:gap-20 lg:px-8"
+        class="flex flex-col gap-12 px-4 text-white light:text-neutral-900 md:flex-row md:gap-10 lg:gap-20 lg:px-8"
       >
         <div>
           <p
@@ -221,7 +221,7 @@ const menuItems = await Promise.all(
           <h3 class="mt-4 text-5xl leading-[1.05] md:text-6xl">
             Start the <br /> conversation.
           </h3>
-          <p class="mt-6 max-w-sm text-lg font-thin text-white/60">
+          <p class="mt-6 max-w-sm text-lg font-thin text-white/60 light:text-neutral-900/60">
             Fill this out and it'll open your email client with everything ready
             to go, no forms disappearing into the void.
           </p>
@@ -233,7 +233,7 @@ const menuItems = await Promise.all(
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-white"
+                  class="text-white light:text-neutral-900"
                 >
                   <Icon
                     name={social.icon}
@@ -278,7 +278,7 @@ const menuItems = await Promise.all(
           </div>
           <button
             type="submit"
-            class="group mt-2 flex w-fit items-center gap-3 rounded-full bg-white px-6 py-4 text-lg text-black duration-300 hover:bg-background cursor-pointer hover:text-white"
+            class="group mt-2 flex w-fit items-center gap-3 rounded-full bg-white light:bg-neutral-900 px-6 py-4 text-lg text-black light:text-white duration-300 hover:bg-background cursor-pointer hover:text-white"
           >
             Send it my way
             <Icon
@@ -343,6 +343,19 @@ const menuItems = await Promise.all(
   .field-group input:focus,
   .field-group textarea:focus {
     border-color: var(--color-background);
+  }
+
+  html.light .field-group label {
+    color: rgba(20, 24, 26, 0.5);
+  }
+  html.light .field-group input,
+  html.light .field-group textarea {
+    border-bottom: 1px solid rgba(20, 24, 26, 0.15);
+    color: #14181a;
+  }
+  html.light .field-group input::placeholder,
+  html.light .field-group textarea::placeholder {
+    color: rgba(20, 24, 26, 0.3);
   }
 </style>
 

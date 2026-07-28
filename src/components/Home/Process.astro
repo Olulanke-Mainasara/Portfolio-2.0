@@ -3,16 +3,16 @@ import { Icon } from "astro-icon/components";
 import { process } from "@/data";
 ---
 
-<section class="relative my-32 text-white">
+<section class="relative my-32 text-white light:text-neutral-900">
   <h2 class="px-4 text-6xl leading-[0.9] text-center md:text-8xl lg:px-8">
     Process
   </h2>
 
-  <div class="max-w-screen-2xl mx-auto mt-16 border-t border-white/10 md:mt-24">
+  <div class="max-w-screen-2xl mx-auto mt-16 border-t border-white/10 light:border-black/10 md:mt-24">
     {
       process.map((step, index) => (
         <div
-          class="relative flex flex-col items-start gap-6 px-4 py-10 overflow-hidden border-b process-row md:flex-row md:items-center md:gap-12 border-white/10 lg:px-8 md:py-14"
+          class="relative flex flex-col items-start gap-6 px-4 py-10 overflow-hidden border-b process-row md:flex-row md:items-center md:gap-12 border-white/10 light:border-black/10 lg:px-8 md:py-14"
           style={`--rotate-from: ${(index % 4) * 90}deg`}
         >
           <div class="flex items-center gap-6 md:contents">
@@ -20,10 +20,10 @@ import { process } from "@/data";
               {"0" + (index + 1)}
             </p>
 
-            <div class="flex items-center justify-center w-20 h-20 border shrink-0 md:w-28 md:h-28 rounded-2xl border-white/10 bg-white/5 process-icon-box">
+            <div class="flex items-center justify-center w-20 h-20 border shrink-0 md:w-28 md:h-28 rounded-2xl border-white/10 light:border-black/10 bg-white/5 light:bg-black/5 process-icon-box">
               <Icon
                 name={step.icon}
-                class="w-8 h-8 md:w-12 md:h-12 process-icon text-white/40"
+                class="w-8 h-8 md:w-12 md:h-12 process-icon text-white/40 light:text-neutral-900/40"
               />
             </div>
           </div>
@@ -34,7 +34,7 @@ import { process } from "@/data";
           </div>
 
           <svg
-            class="absolute hidden pointer-events-none process-ghost w-48 h-48 right-12 top-1/2 xl:block text-white/5"
+            class="absolute hidden pointer-events-none process-ghost w-48 h-48 right-12 top-1/2 xl:block text-white/5 light:text-neutral-900/5"
             viewBox="0 0 412 382"
             xmlns="http://www.w3.org/2000/svg"
           >

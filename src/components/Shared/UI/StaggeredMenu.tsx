@@ -7,6 +7,57 @@ import React, {
 } from "react";
 import { gsap } from "gsap";
 import { motion } from "framer-motion";
+import ThemeToggle from "./ThemeToggle";
+
+interface NavChipProps {
+  active: boolean;
+  scrolled: boolean;
+  isLight: boolean;
+  className?: string;
+  children?: React.ReactNode;
+}
+
+const NavChip: React.FC<NavChipProps> = ({
+  active,
+  scrolled,
+  isLight,
+  className = "",
+  children,
+}) => (
+  <motion.div
+    initial={false}
+    animate={
+      active
+        ? {
+            backgroundColor: scrolled
+              ? isLight
+                ? "rgba(255, 255, 255, 0.8)"
+                : "rgba(11, 15, 19, 0.75)"
+              : isLight
+                ? "rgba(255, 255, 255, 0)"
+                : "rgba(11, 15, 19, 0)",
+            borderColor: scrolled
+              ? isLight
+                ? "rgba(20, 24, 26, 0.1)"
+                : "rgba(255, 255, 255, 0.15)"
+              : isLight
+                ? "rgba(20, 24, 26, 0)"
+                : "rgba(255, 255, 255, 0)",
+            boxShadow: scrolled
+              ? isLight
+                ? "0 10px 30px rgba(20, 24, 26, 0.12)"
+                : "0 10px 30px rgba(0, 0, 0, 0.45)"
+              : "0 0px 0px rgba(0, 0, 0, 0)",
+            backdropFilter: scrolled ? "blur(15px)" : "blur(0px)",
+          }
+        : undefined
+    }
+    transition={{ duration: 0.4, ease: [0.65, 0, 0.35, 1] }}
+    className={`flex items-center overflow-hidden rounded-full ${active ? "border px-4 py-3" : "border-0 p-0"} ${className}`}
+  >
+    {children}
+  </motion.div>
+);
 
 export interface StaggeredMenuItem {
   label: string;
@@ -68,12 +119,33 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   const openRef = useRef(false);
   const [activePath, setActivePath] = useState(currentPath);
   const [scrolled, setScrolled] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isLight, setIsLight] = useState(false);
+  const resolvedMenuButtonColor = isLight ? "#14181a" : menuButtonColor;
+  const resolvedOpenMenuButtonColor = isLight ? "#14181a" : openMenuButtonColor;
+
+  useEffect(() => {
+    setIsLight(document.documentElement.classList.contains("light"));
+    const onThemeChange = (e: Event) => {
+      setIsLight((e as CustomEvent<{ light: boolean }>).detail.light);
+    };
+    window.addEventListener("themechange", onThemeChange);
+    return () => window.removeEventListener("themechange", onThemeChange);
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const onChange = () => setIsDesktop(mq.matches);
+    onChange();
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   // The nav island persists across Astro view transitions (transition:persist),
@@ -139,10 +211,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       if (overlayRef.current) gsap.set(overlayRef.current, { opacity: 0 });
 
       if (toggleBtnRef.current)
-        gsap.set(toggleBtnRef.current, { color: menuButtonColor });
+        gsap.set(toggleBtnRef.current, { color: resolvedMenuButtonColor });
     });
     return () => ctx.revert();
-  }, [menuButtonColor, position]);
+  }, [resolvedMenuButtonColor, position]);
 
   const buildOpenTimeline = useCallback(() => {
     const panel = panelRef.current;
@@ -369,7 +441,9 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
       if (!btn) return;
       colorTweenRef.current?.kill();
       if (changeMenuColorOnOpen) {
-        const targetColor = opening ? openMenuButtonColor : menuButtonColor;
+        const targetColor = opening
+          ? resolvedOpenMenuButtonColor
+          : resolvedMenuButtonColor;
         colorTweenRef.current = gsap.to(btn, {
           color: targetColor,
           delay: 0.18,
@@ -377,24 +451,24 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
           ease: "power2.out",
         });
       } else {
-        gsap.set(btn, { color: menuButtonColor });
+        gsap.set(btn, { color: resolvedMenuButtonColor });
       }
     },
-    [openMenuButtonColor, menuButtonColor, changeMenuColorOnOpen],
+    [resolvedOpenMenuButtonColor, resolvedMenuButtonColor, changeMenuColorOnOpen],
   );
 
   React.useEffect(() => {
     if (toggleBtnRef.current) {
       if (changeMenuColorOnOpen) {
         const targetColor = openRef.current
-          ? openMenuButtonColor
-          : menuButtonColor;
+          ? resolvedOpenMenuButtonColor
+          : resolvedMenuButtonColor;
         gsap.set(toggleBtnRef.current, { color: targetColor });
       } else {
-        gsap.set(toggleBtnRef.current, { color: menuButtonColor });
+        gsap.set(toggleBtnRef.current, { color: resolvedMenuButtonColor });
       }
     }
-  }, [changeMenuColorOnOpen, menuButtonColor, openMenuButtonColor]);
+  }, [changeMenuColorOnOpen, resolvedMenuButtonColor, resolvedOpenMenuButtonColor]);
 
   const toggleMenu = useCallback(() => {
     const target = !openRef.current;
@@ -534,53 +608,79 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             initial={false}
             animate={{
               top: scrolled ? 20 : 0,
-              width: scrolled ? "98%" : "100%",
-              left: scrolled ? "1%" : "0%",
-              borderRadius: scrolled ? 35 : 0,
-              backgroundColor: scrolled
-                ? "rgba(11, 15, 19, 0.75)"
-                : "rgba(11, 15, 19, 0)",
-              borderColor: scrolled
-                ? "rgba(255, 255, 255, 0.15)"
-                : "rgba(255, 255, 255, 0)",
-              boxShadow: scrolled
-                ? "0 10px 30px rgba(0, 0, 0, 0.45)"
-                : "0 0px 0px rgba(0, 0, 0, 0)",
-              backdropFilter: scrolled ? "blur(15px)" : "blur(0px)",
+              width: isDesktop ? "100%" : scrolled ? "98%" : "100%",
+              left: isDesktop ? "0%" : scrolled ? "1%" : "0%",
+              borderRadius: isDesktop ? 0 : scrolled ? 35 : 0,
+              backgroundColor: isDesktop
+                ? "rgba(11, 15, 19, 0)"
+                : scrolled
+                  ? isLight
+                    ? "rgba(255, 255, 255, 0.8)"
+                    : "rgba(11, 15, 19, 0.75)"
+                  : "rgba(11, 15, 19, 0)",
+              borderColor: isDesktop
+                ? "rgba(255, 255, 255, 0)"
+                : scrolled
+                  ? isLight
+                    ? "rgba(20, 24, 26, 0.1)"
+                    : "rgba(255, 255, 255, 0.15)"
+                  : "rgba(255, 255, 255, 0)",
+              boxShadow: isDesktop
+                ? "0 0px 0px rgba(0, 0, 0, 0)"
+                : scrolled
+                  ? isLight
+                    ? "0 10px 30px rgba(20, 24, 26, 0.12)"
+                    : "0 10px 30px rgba(0, 0, 0, 0.45)"
+                  : "0 0px 0px rgba(0, 0, 0, 0)",
+              backdropFilter: isDesktop
+                ? "blur(0px)"
+                : scrolled
+                  ? "blur(15px)"
+                  : "blur(0px)",
             }}
             transition={{ duration: 0.4, ease: [0.65, 0, 0.35, 1] }}
             className="sm-nav-pill absolute flex items-center justify-between border overflow-hidden pointer-events-auto px-4 py-4 md:px-6 md:py-6"
           >
-            {children}
+            <NavChip active={isDesktop} scrolled={scrolled} isLight={isLight}>
+              {children}
+            </NavChip>
 
-            <button
-              ref={toggleBtnRef}
-              className="sm-toggle relative inline-flex items-center justify-center bg-transparent border-0 cursor-pointer overflow-visible pointer-events-auto p-2 -m-2 shrink-0"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              aria-controls="staggered-menu-panel"
-              onClick={toggleMenu}
-              type="button"
-            >
-              <span
-                ref={iconRef}
-                className="sm-icon relative w-8 h-8 md:w-9 md:h-9 shrink-0 inline-flex items-center justify-center [will-change:transform]"
-                aria-hidden="true"
-              >
-                <span
-                  ref={lineTopRef}
-                  className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
-                />
-                <span
-                  ref={lineMidRef}
-                  className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
-                />
-                <span
-                  ref={lineBotRef}
-                  className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
-                />
-              </span>
-            </button>
+            <div className="flex items-center gap-3 md:gap-4">
+              <NavChip active={isDesktop} scrolled={scrolled} isLight={isLight}>
+                <ThemeToggle />
+              </NavChip>
+
+              <NavChip active={isDesktop} scrolled={scrolled} isLight={isLight}>
+                <button
+                  ref={toggleBtnRef}
+                  className="sm-toggle relative inline-flex items-center justify-center bg-transparent border-0 cursor-pointer overflow-visible pointer-events-auto p-2 -m-2 shrink-0"
+                  aria-label={open ? "Close menu" : "Open menu"}
+                  aria-expanded={open}
+                  aria-controls="staggered-menu-panel"
+                  onClick={toggleMenu}
+                  type="button"
+                >
+                  <span
+                    ref={iconRef}
+                    className="sm-icon relative w-8 h-8 md:w-9 md:h-9 shrink-0 inline-flex items-center justify-center [will-change:transform]"
+                    aria-hidden="true"
+                  >
+                    <span
+                      ref={lineTopRef}
+                      className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
+                    />
+                    <span
+                      ref={lineMidRef}
+                      className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
+                    />
+                    <span
+                      ref={lineBotRef}
+                      className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
+                    />
+                  </span>
+                </button>
+              </NavChip>
+            </div>
           </motion.div>
         </header>
 
@@ -706,6 +806,10 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-panel-item[data-active] { cursor: default; }
 .sm-scope .sm-panel-item[data-active]:hover { color: #fff; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item[data-active]::after { content: ""; font-size: 0.22em; letter-spacing: 0.08em; }
+html.light .sm-scope .staggered-menu-panel { background: #ffffff; }
+html.light .sm-scope .sm-panel-item { color: #14181a; }
+html.light .sm-scope .sm-panel-item[data-active]:hover { color: #14181a; }
+html.light .sm-scope .sm-socials-link { color: rgba(20, 24, 26, 0.7); }
 @media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .sm-prelayers { width: 100%; left: 0; right: 0; } }
       `}</style>
     </div>

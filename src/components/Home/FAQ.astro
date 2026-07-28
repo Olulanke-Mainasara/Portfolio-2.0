@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 import { faqs } from "@/data";
 ---
 
-<section class="px-4 my-32 text-white lg:px-8 max-w-screen-2xl mx-auto">
+<section class="px-4 my-32 text-white light:text-neutral-900 lg:px-8 max-w-screen-2xl mx-auto">
   <h2 class="text-6xl leading-[0.9] text-center md:text-8xl">
     Your questions, <span class="text-neutral-500">answered</span>
   </h2>
@@ -12,7 +12,7 @@ import { faqs } from "@/data";
     <div class="w-full lg:flex-1">
       <div
         id="faq-list"
-        class="flex flex-col border-t divide-y divide-white/10 border-white/10"
+        class="flex flex-col border-t divide-y divide-white/10 light:divide-black/10 border-white/10 light:border-black/10"
       >
         {
           faqs.map((faq, index) => (
@@ -26,9 +26,9 @@ import { faqs } from "@/data";
                   <span class="text-sm text-gray-500">{"0" + (index + 1)}</span>
                   <span class="text-xl md:text-2xl">{faq.question}</span>
                 </span>
-                <span class="relative flex items-center justify-center w-8 h-8 border rounded-full shrink-0 border-white/20">
-                  <span class="absolute w-3 h-[1.5px] bg-white" />
-                  <span class="absolute w-[1.5px] h-3 bg-white duration-300 group-open:rotate-90 group-open:opacity-0" />
+                <span class="relative flex items-center justify-center w-8 h-8 border rounded-full shrink-0 border-white/20 light:border-black/20">
+                  <span class="absolute w-3 h-[1.5px] bg-white light:bg-neutral-900" />
+                  <span class="absolute w-[1.5px] h-3 bg-white light:bg-neutral-900 duration-300 group-open:rotate-90 group-open:opacity-0" />
                 </span>
               </summary>
               <div class="faq-content">
@@ -43,7 +43,7 @@ import { faqs } from "@/data";
     </div>
 
     <div
-      class="flex flex-col justify-center w-full p-8 border rounded-2xl border-white/10 bg-white/5 lg:p-12 lg:flex-1 h-fit"
+      class="flex flex-col justify-center w-full p-8 border rounded-2xl border-white/10 light:border-black/10 bg-white/5 light:bg-black/5 lg:p-12 lg:flex-1 h-fit"
     >
       <img
         src="/me.webp"
@@ -58,7 +58,7 @@ import { faqs } from "@/data";
       </p>
       <a
         href="/about#contact"
-        class="flex items-center justify-center gap-2 px-6 py-4 mt-8 text-black duration-300 bg-white rounded-full w-fit group hover:bg-background hover:text-white"
+        class="flex items-center justify-center gap-2 px-6 py-4 mt-8 text-black light:bg-neutral-900 light:text-white duration-300 bg-white rounded-full w-fit group hover:bg-background hover:text-white"
       >
         <span>Get in touch</span>
         <Icon

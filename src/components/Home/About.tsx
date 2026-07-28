@@ -12,7 +12,7 @@ const HeroH1 = () => {
   return (
     <div
       ref={ref}
-      className="absolute top-0 md:min-h-384 h-[200vh] w-full text-white"
+      className="absolute top-0 md:min-h-384 h-[200vh] w-full text-white light:text-neutral-900"
     >
       <div className="sticky top-0 flex flex-col items-center justify-center w-full md:min-h-192 h-screen -z-10">
         <div>
@@ -93,7 +93,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
       <HeroH1 />
       <div
         ref={ref}
-        className="absolute top-0 md:min-h-384 h-[200vh] w-full text-white"
+        className="absolute top-0 md:min-h-384 h-[200vh] w-full text-white light:text-neutral-900"
       >
         <div className="sticky top-0 flex flex-col items-center w-full md:min-h-192 h-screen justify-evenly max-w-screen-2xl mx-auto">
           <motion.div
@@ -138,7 +138,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
           className="object-cover object-top w-full md:w-1/2 xl:w-full h-full rounded-lg xl:brightness-80 [@media(hover:hover)]:grayscale hover:grayscale-0 duration-300"
           alt="Mainasara Olulanke"
         />
-        <div className="flex flex-col justify-center gap-2 text-white xl:pr-4 xl:w-4/5">
+        <div className="flex flex-col justify-center gap-2 text-white light:text-neutral-900 xl:pr-4 xl:w-4/5">
           <h3
             ref={textRef}
             className="max-w-xl lg:max-w-3xl text-xl font-thin lg:text-3xl xl:text-4xl opacity-0 xl:leading-12"

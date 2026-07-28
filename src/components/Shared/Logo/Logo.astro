@@ -5,7 +5,7 @@ const { fill } = Astro.props;
 
 <div class="logo-container">
   <svg
-    class={`logo-item logo-left-arrow ${fill === "white" ? "stroke-white" : "stroke-black"}`}
+    class={`logo-item logo-left-arrow ${fill === "white" ? "stroke-white light:stroke-neutral-900" : "stroke-black"}`}
     viewBox="0 0 39 56"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -14,7 +14,7 @@ const { fill } = Astro.props;
   </svg>
 
   <svg
-    class={`logo-item ${fill === "white" ? "stroke-white" : "stroke-black"}`}
+    class={`logo-item ${fill === "white" ? "stroke-white light:stroke-neutral-900" : "stroke-black"}`}
     viewBox="0 0 82 86"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -28,7 +28,7 @@ const { fill } = Astro.props;
   </svg>
 
   <svg
-    class={`logo-item logo-right-arrow ${fill === "white" ? "stroke-white" : "stroke-black"}`}
+    class={`logo-item logo-right-arrow ${fill === "white" ? "stroke-white light:stroke-neutral-900" : "stroke-black"}`}
     viewBox="0 0 38 56"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"

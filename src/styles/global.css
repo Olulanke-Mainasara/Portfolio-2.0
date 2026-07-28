@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant light (&:where(.light, .light *));
+
 @theme {
   --color-background: rgb(120, 161, 153);
 }
@@ -10,4 +12,12 @@ html {
 
 body {
   background-color: #070b0f;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+html.light body {
+  background-color: #f7f5f2;
+  color: #14181a;
 }
