@@ -12,7 +12,7 @@ const HeroH1 = () => {
   return (
     <div
       ref={ref}
-      className="absolute top-0 md:min-h-384 h-[200vh] w-full text-white light:text-neutral-900"
+      className="absolute top-0 md:min-h-384 h-[200vh] w-full text-white"
     >
       <div className="sticky top-0 flex flex-col items-center justify-center w-full md:min-h-192 h-screen -z-10">
         <div>

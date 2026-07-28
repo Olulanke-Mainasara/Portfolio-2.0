@@ -34,6 +34,7 @@ export const projects = [
       "XGBoost",
       "Machine Learning",
     ],
+    highlights: ["Next.js", "Express", "FastAPI", "XGBoost"],
   },
   {
     name: "Cave Foundation",
@@ -44,6 +45,7 @@ export const projects = [
     image: Project9,
     link: "https://www.cavefoundation.com/",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Motion"],
+    highlights: ["Next.js", "Tailwind CSS", "Motion"],
   },
   {
     name: "Afritransfer",
@@ -61,6 +63,7 @@ export const projects = [
       "Google Gemini",
       "REST APIs",
     ],
+    highlights: ["Next.js", "Google Gemini", "Motion", "REST APIs"],
   },
   {
     name: "TeXcellence 4.0",
@@ -71,6 +74,7 @@ export const projects = [
     image: Project7,
     link: "https://texcellence-4.vercel.app/",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Motion"],
+    highlights: ["Next.js", "Tailwind CSS", "Motion"],
   },
   {
     name: "Coded In Motion",
@@ -87,6 +91,7 @@ export const projects = [
       "Motion",
       "Sanity CMS",
     ],
+    highlights: ["Next.js", "Motion", "Sanity CMS"],
   },
   {
     name: "My Butler",
@@ -105,6 +110,7 @@ export const projects = [
       "TensorFlow",
       "Machine Learning",
     ],
+    highlights: ["Next.js", "Supabase", "TensorFlow", "Motion"],
   },
   {
     name: "Moova",
@@ -123,6 +129,7 @@ export const projects = [
       "Google Gemini",
       "Clerk",
     ],
+    highlights: ["Next.js", "Google Gemini", "Supabase", "Clerk"],
   },
   {
     name: "NextGen Patients",
@@ -133,6 +140,7 @@ export const projects = [
     image: Project3,
     link: "https://next-gen-patients.vercel.app/",
     technologies: ["Next.js", "Tailwind CSS", "Motion", "Appwrite", "Jest"],
+    highlights: ["Next.js", "Appwrite", "Motion", "Jest"],
   },
   {
     name: "Agency.io",
@@ -149,6 +157,7 @@ export const projects = [
       "Motion",
       "Firebase",
     ],
+    highlights: ["Next.js", "Firebase", "Motion"],
   },
   {
     name: "FunXplorer",
@@ -159,6 +168,7 @@ export const projects = [
     image: Project1,
     link: "https://fun-xplorer.vercel.app/",
     technologies: ["HTML", "CSS", "JavaScript"],
+    highlights: ["HTML", "CSS", "JavaScript"],
   },
 ];
 
