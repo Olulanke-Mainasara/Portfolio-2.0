@@ -1,54 +1,92 @@
-# Astro Starter Kit: Basics
+<div align="center">
 
-```sh
-npm create astro@latest -- --template basics
-```
+# Mainasara Olulanke — Portfolio
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+A fast, animation-heavy personal portfolio built with Astro, React, and Tailwind CSS.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[mainasaraolulanke.com](https://mainasaraolulanke.com)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+</div>
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## About
+
+This is the source for my personal site: a frontend engineer's portfolio covering my work, a bit about me, and a blog. It's built to be fast by default (Astro ships zero JS unless a component needs it) while still being expressive — scroll-driven reveals, staggered text splits, a WebGL project menu, and a light/dark theme that persists across visits.
+
+## Features
+
+- **Content-driven blog** using Astro's Content Layer API, with reading-time estimates and prev/next post navigation
+- **Light & dark themes** with system-preference detection, `localStorage` persistence, and no flash-of-wrong-theme on load
+- **Scroll-linked animations** — parallax hero text, curtain reveals, and scroll-triggered fades built with Framer Motion and GSAP (SplitText, ScrollTrigger)
+- **Responsive nav** that collapses into individually confined pill chips on desktop and a full staggered slide-out menu on mobile
+- **WebGL tool carousel** (`InfiniteMenu`) for browsing the tech stack I reach for
+- **Smooth scrolling** via Lenis, synced with Astro's View Transitions for soft navigation between pages
+- **Working contact form** that opens a pre-filled `mailto:` link — no backend required
+
+## Tech Stack
+
+| Layer | Tools |
+| --- | --- |
+| Framework | [Astro](https://astro.build) 7, [React](https://react.dev) 19 (islands) |
+| Styling | [Tailwind CSS](https://tailwindcss.com) v4 |
+| Motion | [Framer Motion](https://www.framer.com/motion/), [GSAP](https://gsap.com) (SplitText, ScrollTrigger), [motion-plus](https://motion.dev) |
+| Scrolling | [Lenis](https://lenis.darkroom.engineering) |
+| Content | Astro Content Layer API (Markdown collections) |
+| Icons | [astro-icon](https://www.astroicon.dev) |
+| Type checking | TypeScript, `astro check` |
+
+## Project Structure
 
 ```text
 /
-├── public/
-│   └── favicon.svg
+├── public/                  # Static assets (images, favicon)
 ├── src/
 │   ├── components/
-│   │   └── Card.astro
+│   │   ├── Home/             # Homepage-only sections (Hero, About, Projects, FAQ...)
+│   │   ├── Blog/              # Blog post card, listing pieces
+│   │   └── Shared/            # Nav, Footer, and reusable UI (theme toggle, reveals, etc.)
+│   ├── content/
+│   │   └── blog/               # Markdown blog posts
+│   ├── content.config.ts       # Content collection schema
+│   ├── data/                   # Static site data (projects, technologies, FAQs...)
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   │   └── Layout.astro        # Root document shell, theme script, nav/footer
+│   ├── lib/                    # Small utilities (e.g. reading-time calculator)
+│   ├── pages/                  # File-based routes
+│   └── styles/
+│       └── global.css          # Tailwind import + theme tokens
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Getting Started
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```sh
+# Install dependencies
+npm install
 
-Any static assets, like images, can be placed in the `public/` directory.
+# Start the dev server at localhost:4321
+npm run dev
+```
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command | Action |
+| --- | --- |
+| `npm install` | Installs dependencies |
+| `npm run dev` | Starts the local dev server at `localhost:4321` |
+| `npm run build` | Type-checks with `astro check`, then builds to `./dist/` |
+| `npm run preview` | Previews the production build locally |
+| `npm run astro ...` | Runs Astro CLI commands (e.g. `astro add`, `astro check`) |
 
-## 👀 Want to learn more?
+## Deployment
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The site is deployed on [Vercel](https://vercel.com), building automatically from the `main` branch.
+
+## Contact
+
+- Email: [mainasara.o.olulanke@gmail.com](mailto:mainasara.o.olulanke@gmail.com)
+- LinkedIn: [mainasara-olulanke](https://www.linkedin.com/in/mainasara-olulanke-01658a228/)
+- X: [@MainasaraOlu](https://x.com/MainasaraOlu)
