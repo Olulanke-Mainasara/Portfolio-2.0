@@ -39,6 +39,25 @@ const isFirst = index === 1;
       alt={project.name}
       class="absolute inset-0 h-full w-full scale-100 object-cover duration-700 group-hover:scale-105"
     />
+    <div
+      class="absolute inset-0 hidden bg-linear-to-t from-black/95 via-black/30 to-black/10 md:block"
+    >
+    </div>
+
+    <div class="absolute inset-x-0 bottom-0 hidden flex-col gap-3 p-6 md:flex md:gap-4 md:p-10">
+      <h3 class="text-3xl leading-none text-white md:text-6xl">
+        {project.name}
+      </h3>
+      <div class="flex flex-wrap gap-2">
+        {
+          highlights.map((tech) => (
+            <span class="rounded-full border border-white/20 px-3 py-1 text-xs text-white/80 md:text-sm">
+              {tech}
+            </span>
+          ))
+        }
+      </div>
+    </div>
 
     <span
       class="absolute right-6 bottom-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-black shadow-lg shadow-black/30 duration-300 group-hover:rotate-45 group-hover:bg-background md:right-10 md:bottom-10 md:h-16 md:w-16"
@@ -47,14 +66,14 @@ const isFirst = index === 1;
     </span>
   </a>
 
-  <div class="mt-6 flex flex-col gap-4 md:gap-5">
-    <h3 class="text-3xl leading-none text-white light:text-neutral-900 md:text-6xl">
+  <div class="mt-6 flex flex-col gap-4 md:hidden">
+    <h3 class="text-3xl leading-none text-white light:text-neutral-900">
       {project.name}
     </h3>
     <div class="flex flex-wrap gap-2">
       {
         highlights.map((tech) => (
-          <span class="rounded-full border border-white/20 light:border-black/20 px-3 py-1 text-xs text-white/80 light:text-neutral-900/80 md:text-sm">
+          <span class="rounded-full border border-white/20 light:border-black/20 px-3 py-1 text-xs text-white/80 light:text-neutral-900/80">
             {tech}
           </span>
         ))
@@ -63,13 +82,33 @@ const isFirst = index === 1;
   </div>
 
   <div
-    class="mt-6 flex flex-col gap-8 md:flex-row md:items-start md:justify-between"
+    class="mt-6 flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-8"
   >
     <p
       class="max-w-2xl text-lg leading-relaxed font-normal text-white/80 light:text-neutral-900/80 md:text-xl"
     >
       {project.description}
     </p>
+
+    <div
+      class="flex items-center justify-between gap-4 md:shrink-0 md:flex-col md:items-end md:justify-start md:gap-4"
+    >
+      <span class="text-6xl leading-none text-background md:text-8xl">
+        {String(index).padStart(2, "0")}
+      </span>
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group/link flex items-center gap-2 text-sm text-white light:text-neutral-900 duration-300 hover:text-background md:text-base"
+      >
+        <span>Visit site</span>
+        <Icon
+          name="arrow-right"
+          class="h-4 w-4 duration-300 group-hover/link:translate-x-1"
+        />
+      </a>
+    </div>
   </div>
 </article>
 
