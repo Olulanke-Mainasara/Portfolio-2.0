@@ -91,16 +91,16 @@ const isFirst = index === 1;
     </p>
 
     <div
-      class="flex items-center justify-between gap-4 md:shrink-0 md:flex-col md:items-end md:justify-start md:gap-4"
+      class="hidden shrink-0 flex-col items-end gap-4 md:flex"
     >
-      <span class="text-6xl leading-none text-background md:text-8xl">
+      <span class="text-8xl leading-none text-background">
         {String(index).padStart(2, "0")}
       </span>
       <a
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
-        class="group/link flex items-center gap-2 text-sm text-white light:text-neutral-900 duration-300 hover:text-background md:text-base"
+        class="group/link flex items-center gap-2 text-base text-white light:text-neutral-900 duration-300 hover:text-background"
       >
         <span>Visit site</span>
         <Icon
