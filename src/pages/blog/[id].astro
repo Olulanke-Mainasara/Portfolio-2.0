@@ -33,11 +33,11 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
 ---
 
 <Layout title={`${post.data.title} - Mainasara Olulanke`}>
-  <main class="mx-auto max-w-screen-2xl pt-14 md:pt-24">
+  <main class="mx-auto max-w-screen-2xl pt-24">
     <div class="px-4 lg:px-8">
       <a
         href="/blog"
-        class="group inline-flex items-center gap-2 text-sm tracking-widest text-white/50 light:text-neutral-900/50 uppercase duration-300 hover:text-background"
+        class="group inline-flex items-center gap-2 text-sm font-medium tracking-widest text-white/70 light:text-neutral-900/70 uppercase duration-300 hover:text-background"
       >
         <span class="duration-300 group-hover:-translate-x-1">←</span>
         All posts
@@ -47,7 +47,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
     <Reveal type="slide" direction="up" distance="24px" class="mt-8 px-4 lg:px-8">
       <header class="text-white light:text-neutral-900">
         <div
-          class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm tracking-widest text-white/40 light:text-neutral-900/40 uppercase"
+          class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium tracking-widest text-white/60 light:text-neutral-900/60 uppercase"
         >
           <span>{formattedDate}</span>
           <span>{readingTime} min read</span>
@@ -58,7 +58,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
         >
           {post.data.title}
         </h1>
-        <p class="mt-6 max-w-2xl text-xl font-thin text-white/60 light:text-neutral-900/60 md:text-2xl">
+        <p class="mt-6 max-w-2xl text-xl font-normal text-white/80 light:text-neutral-900/80 md:text-2xl">
           {post.data.description}
         </p>
       </header>

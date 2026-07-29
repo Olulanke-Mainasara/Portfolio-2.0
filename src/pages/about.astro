@@ -110,20 +110,20 @@ const menuItems = await Promise.all(
           <h2 class="text-4xl leading-[1.05] md:text-4xl">
             Hey, I'm Mainasara.
           </h2>
-          <p class="mt-6 max-w-xl text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
+          <p class="mt-6 max-w-xl text-lg font-normal text-white/85 light:text-neutral-900/85 md:text-xl">
             I've spent the last 3+ years turning designs into interfaces
             people actually enjoy using: fintech dashboards, event platforms,
             e-commerce, the works. Most of that time goes into obsessing over
             the small stuff, the transition that feels a little off, the
             state nobody thought to design for.
           </p>
-          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
+          <p class="mt-4 max-w-xl text-lg font-normal text-white/85 light:text-neutral-900/85 md:text-xl">
             Good frontend work sits right between design and engineering,
             and that's where I like to be. I care how something looks, but I
             care just as much about whether it holds up: fast, accessible,
             and built on code someone else can actually pick up later.
           </p>
-          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
+          <p class="mt-4 max-w-xl text-lg font-normal text-white/85 light:text-neutral-900/85 md:text-xl">
             I spent time leading frontend architecture at AfriTransfer, a
             pan-African fintech platform, and cut my teeth on both code and
             infrastructure at CWG PLC. These days I work freelance full time,
@@ -131,7 +131,7 @@ const menuItems = await Promise.all(
             terminal through two communities, Techies and RUNTechSpace.
             Still one of my proudest wins.
           </p>
-          <p class="mt-4 max-w-xl text-lg font-thin text-white/70 light:text-neutral-900/70 md:text-xl">
+          <p class="mt-4 max-w-xl text-lg font-normal text-white/85 light:text-neutral-900/85 md:text-xl">
             Log me off and I'm probably deep in a DC trade paperback, adding
             another piece to a Lego Technic build that actually steers, or
             watching a Formula 1 session live because I refuse to miss a lap.
@@ -221,7 +221,7 @@ const menuItems = await Promise.all(
           <h3 class="mt-4 text-5xl leading-[1.05] md:text-6xl">
             Start the <br /> conversation.
           </h3>
-          <p class="mt-6 max-w-sm text-lg font-thin text-white/60 light:text-neutral-900/60">
+          <p class="mt-6 max-w-sm text-lg font-normal text-white/80 light:text-neutral-900/80">
             Fill this out and it'll open your email client with everything ready
             to go, no forms disappearing into the void.
           </p>
@@ -319,9 +319,10 @@ const menuItems = await Promise.all(
   }
   .field-group label {
     font-size: 0.75rem;
+    font-weight: 500;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.6);
   }
   .field-group input,
   .field-group textarea {
@@ -330,7 +331,7 @@ const menuItems = await Promise.all(
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     color: white;
     font-size: 1.8rem;
-    font-weight: 300;
+    font-weight: 400;
     padding-block: 0.5rem;
     resize: none;
     outline: none;
@@ -338,7 +339,7 @@ const menuItems = await Promise.all(
   }
   .field-group input::placeholder,
   .field-group textarea::placeholder {
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.4);
   }
   .field-group input:focus,
   .field-group textarea:focus {
@@ -346,7 +347,7 @@ const menuItems = await Promise.all(
   }
 
   html.light .field-group label {
-    color: rgba(20, 24, 26, 0.5);
+    color: rgba(20, 24, 26, 0.65);
   }
   html.light .field-group input,
   html.light .field-group textarea {
@@ -355,7 +356,7 @@ const menuItems = await Promise.all(
   }
   html.light .field-group input::placeholder,
   html.light .field-group textarea::placeholder {
-    color: rgba(20, 24, 26, 0.3);
+    color: rgba(20, 24, 26, 0.45);
   }
 </style>
 

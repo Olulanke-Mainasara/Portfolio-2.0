@@ -627,7 +627,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                   : "rgba(255, 255, 255, 0)",
               boxShadow: isDesktop
                 ? "0 0px 0px rgba(0, 0, 0, 0)"
-                : scrolled
+                : scrolled && !open
                   ? isLight
                     ? "0 10px 30px rgba(20, 24, 26, 0.12)"
                     : "0 10px 30px rgba(0, 0, 0, 0.45)"
