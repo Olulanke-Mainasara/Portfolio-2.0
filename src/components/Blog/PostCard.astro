@@ -26,9 +26,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
   class="group post-card-reveal block"
   data-tags={JSON.stringify(post.data.tags.map((t) => t.toLowerCase()))}
 >
-  <div
-    class="relative aspect-video w-full overflow-hidden rounded-lg"
-  >
+  <div class="relative aspect-video w-full overflow-hidden rounded-lg">
     <Image
       src={post.data.coverImage}
       alt=""
@@ -47,7 +45,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
   <div class="mt-4 flex items-center justify-between gap-4 md:mt-6">
     <div>
       <p class="text-3xl md:text-5xl">{post.data.title}</p>
-      <p class="mt-2 max-w-md text-base font-thin opacity-70 md:text-lg">
+      <p class="mt-2 max-w-md text-base font-thin opacity-80 md:text-lg">
         {post.data.description}
       </p>
       <div
@@ -59,9 +57,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
     </div>
     <div class="flex shrink-0 flex-col items-end gap-2">
       <span class="text-xl text-background md:text-2xl">{numeral}</span>
-      <span
-        class="flex items-center gap-2 text-sm group/link md:text-base"
-      >
+      <span class="flex items-center gap-2 text-sm group/link md:text-base">
         <span>Read</span>
         <span class="duration-300 group-hover/link:translate-x-1">→</span>
       </span>

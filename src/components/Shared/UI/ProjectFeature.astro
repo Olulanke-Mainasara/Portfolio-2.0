@@ -44,7 +44,9 @@ const isFirst = index === 1;
     >
     </div>
 
-    <div class="absolute inset-x-0 bottom-0 hidden flex-col gap-3 p-6 md:flex md:gap-4 md:p-10">
+    <div
+      class="absolute inset-x-0 bottom-0 hidden flex-col gap-3 p-6 md:flex md:gap-4 md:p-10"
+    >
       <h3 class="text-3xl leading-none text-white md:text-6xl">
         {project.name}
       </h3>
@@ -85,29 +87,15 @@ const isFirst = index === 1;
     class="mt-6 flex flex-col gap-6 md:flex-row md:items-start md:justify-between md:gap-8"
   >
     <p
-      class="max-w-2xl text-lg leading-relaxed font-normal text-white/80 light:text-neutral-900/80 md:text-xl"
+      class="max-w-2xl text-lg leading-relaxed font-thin opacity-80 light:opacity-100 md:text-xl"
     >
       {project.description}
     </p>
 
-    <div
-      class="hidden shrink-0 flex-col items-end gap-4 md:flex"
-    >
-      <span class="text-8xl leading-none text-background">
+    <div class="hidden shrink-0 flex-col items-end gap-4 md:flex">
+      <span class="text-9xl leading-none text-background">
         {String(index).padStart(2, "0")}
       </span>
-      <a
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="group/link flex items-center gap-2 text-base text-white light:text-neutral-900 duration-300 hover:text-background"
-      >
-        <span>Visit site</span>
-        <Icon
-          name="arrow-right"
-          class="h-4 w-4 duration-300 group-hover/link:translate-x-1"
-        />
-      </a>
     </div>
   </div>
 </article>

@@ -21,3 +21,13 @@ html.light body {
   background-color: #f7f5f2;
   color: #14181a;
 }
+
+::selection {
+  background-color: #f7f5f2;
+  color: #14181a;
+}
+
+.light ::selection {
+  background-color: #070b0f;
+  color: #f7f5f2;
+}

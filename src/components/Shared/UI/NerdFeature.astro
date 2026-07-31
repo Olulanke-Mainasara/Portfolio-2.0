@@ -27,12 +27,18 @@ const isFirst = index === 0;
   </div>
 
   <div class="w-full text-left md:max-w-lg">
-    <div class="flex items-baseline gap-4">
+    <div class="flex items-center gap-4">
       <span class="text-2xl text-background md:text-3xl">{numeral}</span>
-      <p class="text-sm tracking-[0.3em] text-white/40 light:text-neutral-900/40 uppercase">{label}</p>
+      <p
+        class="text-sm tracking-[0.3em] opacity-80 light:opacity-100 uppercase"
+      >
+        {label}
+      </p>
     </div>
     <h2 class="mt-4 text-5xl leading-[0.95] md:text-7xl">{title}</h2>
-    <p class="mt-6 max-w-lg text-lg font-normal text-white/80 light:text-neutral-900/80 md:text-xl">
+    <p
+      class="mt-6 max-w-lg text-lg font-thin opacity-80 light:opacity-100 md:text-xl"
+    >
       {description}
     </p>
   </div>

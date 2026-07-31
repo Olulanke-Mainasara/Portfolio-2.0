@@ -6,7 +6,9 @@ import ProjectListItem from "../Shared/UI/ProjectListItem.astro";
 const featured = projects.slice(0, 6);
 ---
 
-<section class="px-4 mt-32 text-white light:text-neutral-900 lg:px-8 max-w-screen-2xl mx-auto">
+<section
+  class="px-4 mt-32 text-white light:text-neutral-900 lg:px-8 max-w-screen-2xl mx-auto"
+>
   <div class="flex flex-col lg:flex-row lg:gap-8 xl:gap-16">
     <div
       class="lg:sticky lg:top-[32%] lg:self-start lg:basis-2/5 xl:basis-1/3 text-center lg:text-left"
@@ -18,7 +20,7 @@ const featured = projects.slice(0, 6);
         >
       </h2>
       <p
-        class="max-w-sm mt-6 text-lg font-thin lg:text-xl opacity-70 hidden lg:block"
+        class="max-w-sm mt-6 text-lg font-thin lg:text-xl opacity-80 light:opacity-100 hidden lg:block"
       >
         A handful of things I've shipped recently. The rest live on the full
         projects page.

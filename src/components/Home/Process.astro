@@ -8,7 +8,9 @@ import { process } from "@/data";
     Process
   </h2>
 
-  <div class="max-w-screen-2xl mx-auto mt-16 border-t border-white/10 light:border-black/10 md:mt-24">
+  <div
+    class="max-w-screen-2xl mx-auto mt-16 border-t border-white/10 light:border-black/10 md:mt-24"
+  >
     {
       process.map((step, index) => (
         <div
@@ -30,7 +32,9 @@ import { process } from "@/data";
 
           <div class="max-w-2xl">
             <h3 class="text-3xl font-light md:text-4xl">{step.name}</h3>
-            <p class="mt-2 text-xl font-thin opacity-70">{step.description}</p>
+            <p class="mt-2 text-xl font-thin opacity-80 light:opacity-100">
+              {step.description}
+            </p>
           </div>
 
           <svg

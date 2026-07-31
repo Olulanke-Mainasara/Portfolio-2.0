@@ -109,7 +109,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
           <div>
             <motion.p
               style={{ opacity: scrollYProgress }}
-              className="text-xl font-thin tracking-widest text-center text-transparent uppercase md:text-3xl"
+              className="text-xl tracking-widest text-center text-text-white light:text-neutral-900 uppercase md:text-3xl"
             >
               Frontend Engineer
             </motion.p>
@@ -124,8 +124,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
           >
             <p className="max-w-md text-3xl font-thin">
               I build fast, intelligent, and creative solutions for the web, and
-              I have a lot of fun doing it.{" "}
-              <span className="font-bold">Hire me</span>.
+              I have a lot of fun doing it.
             </p>
 
             {children}

@@ -44,7 +44,12 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
       </a>
     </div>
 
-    <Reveal type="slide" direction="up" distance="24px" class="mt-8 px-4 lg:px-8">
+    <Reveal
+      type="slide"
+      direction="up"
+      distance="24px"
+      class="mt-8 px-4 lg:px-8"
+    >
       <header class="text-white light:text-neutral-900">
         <div
           class="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm font-medium tracking-widest text-white/60 light:text-neutral-900/60 uppercase"
@@ -58,7 +63,9 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
         >
           {post.data.title}
         </h1>
-        <p class="mt-6 max-w-2xl text-xl font-normal text-white/80 light:text-neutral-900/80 md:text-2xl">
+        <p
+          class="mt-6 max-w-2xl text-xl font-thin opacity-80 light:opacity-100 md:text-2xl"
+        >
           {post.data.description}
         </p>
       </header>
