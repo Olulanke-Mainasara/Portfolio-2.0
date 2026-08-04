@@ -6,7 +6,6 @@ interface Props {
   duration?: string;
   delay?: string;
   class?: string;
-  disableOnMobile?: boolean;
 }
 
 const {
@@ -16,7 +15,6 @@ const {
   duration = "0.6s",
   delay = "0s",
   class: className = "",
-  disableOnMobile = false,
 } = Astro.props;
 
 const offsets: Record<string, string> = {
@@ -34,7 +32,7 @@ const initialTransform =
 ---
 
 <div
-  class={`reveal ${disableOnMobile ? "reveal-mobile-off" : ""} ${className}`}
+  class={`reveal ${className}`}
   style={`--reveal-transform: ${initialTransform}; --reveal-duration: ${duration}; --reveal-delay: ${delay};`}
 >
   <slot />
@@ -52,31 +50,22 @@ const initialTransform =
     opacity: 1;
     transform: none;
   }
-
-  .reveal-mobile-off {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 </style>
 
 <script>
-  let observer: IntersectionObserver | null = null;
+  import { inView } from "framer-motion/dom";
+
+  let stopReveal: (() => void) | null = null;
 
   function initReveal() {
-    observer?.disconnect();
-    observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer?.unobserve(entry.target);
-          }
-        });
+    stopReveal?.();
+    stopReveal = inView(
+      ".reveal",
+      (element) => {
+        element.classList.add("visible");
       },
-      { threshold: 0.15 },
+      { amount: 0.15 },
     );
-    document.querySelectorAll(".reveal").forEach((el) => observer!.observe(el));
   }
 
   document.addEventListener("astro:page-load", initReveal);

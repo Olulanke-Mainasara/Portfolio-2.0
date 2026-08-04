@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { motion } from "framer-motion";
 import { gsap } from "gsap";
 
 export interface BentoCardProps {
@@ -73,47 +74,57 @@ const BentoCard: React.FC<BentoCardProps> = ({
   };
 
   return (
-    <a
-      ref={cardRef}
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      onClick={handleClick}
-      className={`bento-card group relative block w-full overflow-hidden rounded-3xl border border-white/10 ${className}`}
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.7, ease: "easeOut" }}
     >
-      <img
-        src={image}
-        alt=""
-        className={`absolute inset-0 object-cover w-full h-full duration-500 group-hover:scale-105 ${imageClassName}`}
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.15) 60%, transparent)",
-        }}
-      />
+      <a
+        ref={cardRef}
+        href={href}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        onClick={handleClick}
+        className="bento-card group relative block w-full h-full overflow-hidden rounded-3xl border border-white/10"
+      >
+        <img
+          src={image}
+          alt=""
+          className={`absolute inset-0 object-cover w-full h-full duration-500 group-hover:scale-105 ${imageClassName}`}
+        />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.15) 60%, transparent)",
+          }}
+        />
 
-      <div className="absolute flex items-center justify-between gap-4 p-4 border rounded-2xl inset-x-3 bottom-3 md:inset-x-4 md:bottom-4 border-white/10 bg-white/10 backdrop-blur-md">
-        <div className="min-w-0">
-          <h3 className="text-lg font-normal text-white truncate md:text-xl">
-            {title}
-          </h3>
-          <p className="mt-0.5 text-sm text-white/70 truncate">{description}</p>
+        <div className="absolute flex items-center justify-between gap-4 p-4 border rounded-2xl inset-x-3 bottom-3 md:inset-x-4 md:bottom-4 border-white/10 bg-white/10 backdrop-blur-md">
+          <div className="min-w-0">
+            <h3 className="text-lg font-normal text-white truncate md:text-xl">
+              {title}
+            </h3>
+            <p className="mt-0.5 text-sm text-white/70 truncate">
+              {description}
+            </p>
+          </div>
+          <span className="flex items-center justify-center w-10 h-10 duration-300 bg-white rounded-full shrink-0 group-hover:bg-background">
+            <ArrowIcon className="w-4 h-4 -rotate-45 text-black" />
+          </span>
         </div>
-        <span className="flex items-center justify-center w-10 h-10 duration-300 bg-white rounded-full shrink-0 group-hover:bg-background">
-          <ArrowIcon className="w-4 h-4 -rotate-45 text-black" />
-        </span>
-      </div>
 
-      <style>{`
-        .bento-card { transition: transform 0.35s ease, box-shadow 0.35s ease; }
-        .bento-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 34px rgba(${glowColor}, 0.35);
-        }
-      `}</style>
-    </a>
+        <style>{`
+          .bento-card { transition: transform 0.35s ease, box-shadow 0.35s ease; }
+          .bento-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 34px rgba(${glowColor}, 0.35);
+          }
+        `}</style>
+      </a>
+    </motion.div>
   );
 };
 

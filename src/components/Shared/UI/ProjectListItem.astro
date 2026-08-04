@@ -85,21 +85,16 @@ const restClip =
 </style>
 
 <script>
-  function initProjectReveal() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.4 },
-    );
+  import { inView } from "framer-motion/dom";
 
-    document
-      .querySelectorAll(".project-reveal:not(.in-view)")
-      .forEach((el) => observer.observe(el));
+  function initProjectReveal() {
+    inView(
+      ".project-reveal:not(.in-view)",
+      (element) => {
+        element.classList.add("in-view");
+      },
+      { amount: 0.4 },
+    );
   }
 
   document.addEventListener("astro:page-load", initProjectReveal);

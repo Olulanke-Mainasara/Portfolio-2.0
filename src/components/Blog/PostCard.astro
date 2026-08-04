@@ -98,21 +98,16 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
 </style>
 
 <script>
-  function initPostCardReveal() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.3 },
-    );
+  import { inView } from "framer-motion/dom";
 
-    document
-      .querySelectorAll(".post-card-reveal:not(.in-view)")
-      .forEach((el) => observer.observe(el));
+  function initPostCardReveal() {
+    inView(
+      ".post-card-reveal:not(.in-view)",
+      (element) => {
+        element.classList.add("in-view");
+      },
+      { amount: 0.3 },
+    );
   }
 
   document.addEventListener("astro:page-load", initPostCardReveal);

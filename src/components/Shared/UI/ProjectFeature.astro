@@ -20,12 +20,11 @@ const techSlugs = JSON.stringify(
   project.technologies.map((tech) => tech.toLowerCase()),
 );
 const highlights = project.highlights ?? project.technologies.slice(0, 3);
-const isFirst = index === 1;
 ---
 
 <article
   id={project.name}
-  class={`work-entry project-feature-reveal scroll-mt-24 md:scroll-mt-32 ${isFirst ? "reveal-mobile-off" : ""}`}
+  class="work-entry project-feature-reveal scroll-mt-24 md:scroll-mt-32"
   data-tech={techSlugs}
 >
   <a
@@ -113,30 +112,19 @@ const isFirst = index === 1;
     opacity: 1;
     transform: translateY(0);
   }
-
-  .project-feature-reveal.reveal-mobile-off {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 </style>
 
 <script>
-  function initProjectFeatureReveal() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.2 },
-    );
+  import { inView } from "framer-motion/dom";
 
-    document
-      .querySelectorAll(".project-feature-reveal:not(.in-view)")
-      .forEach((el) => observer.observe(el));
+  function initProjectFeatureReveal() {
+    inView(
+      ".project-feature-reveal:not(.in-view)",
+      (element) => {
+        element.classList.add("in-view");
+      },
+      { amount: 0.2 },
+    );
   }
 
   document.addEventListener("astro:page-load", initProjectFeatureReveal);

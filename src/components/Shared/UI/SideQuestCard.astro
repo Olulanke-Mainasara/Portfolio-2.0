@@ -102,21 +102,16 @@ const offsets = [
 </style>
 
 <script>
-  function initQuestReveal() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.25 },
-    );
+  import { inView } from "framer-motion/dom";
 
-    document
-      .querySelectorAll(".quest-reveal:not(.in-view)")
-      .forEach((el) => observer.observe(el));
+  function initQuestReveal() {
+    inView(
+      ".quest-reveal:not(.in-view)",
+      (element) => {
+        element.classList.add("in-view");
+      },
+      { amount: 0.25 },
+    );
   }
 
   document.addEventListener("astro:page-load", initQuestReveal);

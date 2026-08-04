@@ -1,27 +1,40 @@
-import Project1 from "./images/Project1.webp";
-import Project2 from "./images/Project2.webp";
-import Project3 from "./images/Project3.webp";
-import Project4 from "./images/Project4.webp";
-import Project5 from "./images/Project5.webp";
-import Project6 from "./images/Project6.webp";
-import Project7 from "./images/Project7.webp";
-import Project8 from "./images/Project8.webp";
-import Project9 from "./images/Project9.webp";
-import Project10 from "./images/Project10.webp";
-import SupermanArt from "./images/aura-farming-was-always-comic-accurate-any-one-who-says-v0-srglco3u8blf1.jpg";
-import DcJusticeLeague from "./images/Who_Owns_DC_Comics_1200x1200_crop_center.webp";
-import LegoMcLarenP1 from "./images/McLaren-P1-Lego.jpg";
-import ApolloLaunch from "./images/rocket-Saturn-V-mission-Apollo-11-Pad-July-16-1969.webp";
-import F1Car from "./images/images.jpeg";
+import FunXplorerImg from "./images/projects/project-funxplorer.webp";
+import AgencyIoImg from "./images/projects/project-agency-io.webp";
+import NextGenPatientsImg from "./images/projects/project-nextgen-patients.webp";
+import MoovaImg from "./images/projects/project-moova.webp";
+import MyButlerImg from "./images/projects/project-my-butler.webp";
+import CodedInMotionImg from "./images/projects/project-coded-in-motion.webp";
+import TeXcellenceImg from "./images/projects/project-texcellence.webp";
+import AfritransferImg from "./images/projects/project-afritransfer.webp";
+import CaveFoundationImg from "./images/projects/project-cave-foundation.webp";
+import SafiPayImg from "./images/projects/project-safipay.webp";
+import FunmiladeAkingbagbohunImg from "./images/projects/project-funmilade-akingbagbohun.png";
+import SupermanArt from "./images/nerd-facts/nerd-superhero.jpg";
+import DcJusticeLeague from "./images/nerd-facts/nerd-comics.webp";
+import LegoMcLarenP1 from "./images/nerd-facts/nerd-lego.jpg";
+import ApolloLaunch from "./images/nerd-facts/nerd-space.webp";
+import F1Car from "./images/nerd-facts/nerd-f1.jpeg";
 
 export const projects = [
+  {
+    name: "Funmilade Akingbagbohun",
+    shortDescription:
+      "Personal portfolio for a mechanical engineer and institutional leader.",
+    description:
+      "A personal portfolio site built for Engr. Funmilade Akingbagbohun, mechanical engineer and institutional leader — first female National Chairman of the Nigerian Institution of Mechanical Engineers, and 13th Chairman of the NSE Ikeja Branch. Showcases her career highlights, leadership roles, and achievements.",
+    image: FunmiladeAkingbagbohunImg,
+    link: "https://funmilade-akingbagbohun-portfolio.vercel.app/",
+    technologies: ["TypeScript", "Astro", "Tailwind CSS", "Motion"],
+    highlights: ["Astro", "Tailwind CSS", "Motion"],
+  },
+  /* Not done yet — hide until finished
   {
     name: "SafiPay",
     shortDescription:
       "Full-stack fraud detection system powered by XGBoost, trained on 6M+ transactions.",
     description:
       "A full-stack, machine learning-powered fraud detection system for mobile money transactions. Trained an XGBoost classifier on 6M+ PaySim transactions using a CRISP-DM pipeline. Features real-time batch prediction streaming via SSE, a SHAP explainability chart for model transparency, and a dashboard for monitoring model performance.",
-    image: Project10,
+    image: SafiPayImg,
     link: "https://safipay-fyp.vercel.app/",
     technologies: [
       "TypeScript",
@@ -36,13 +49,14 @@ export const projects = [
     ],
     highlights: ["Next.js", "Express", "FastAPI", "XGBoost"],
   },
+  */
   {
     name: "Cave Foundation",
     shortDescription:
       "Scholarship showcase site built for a programme supporting young Nigerian women.",
     description:
       "A showcase website built for the Cave Foundation Scholarship, a programme supporting young Nigerian women. Provides detailed programme information, an application process timeline, FAQs, and a seamless onboarding experience for prospective applicants.",
-    image: Project9,
+    image: CaveFoundationImg,
     link: "https://www.cavefoundation.com/",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Motion"],
     highlights: ["Next.js", "Tailwind CSS", "Motion"],
@@ -53,7 +67,7 @@ export const projects = [
       "Frontend engineering for a pan-African fintech platform serving wallets, transfers & savings.",
     description:
       "Frontend engineering for AfriTransfer, a pan-African financial services platform offering wallets, AJO savings groups, bank transfers, multi-currency holdings, and USSD support for low-data users. Led the UI architecture, set component and code quality standards, and integrated Google Gemini for intelligent in-app assistance.",
-    image: Project8,
+    image: AfritransferImg,
     link: "https://afritransfer.com/",
     technologies: [
       "TypeScript",
@@ -71,7 +85,7 @@ export const projects = [
       "A modern, fast, and content-rich redesign of a growing tech conference platform.",
     description:
       "A complete redesign and rebuild of the TeXcellence event platform, modernizing the experience for a growing tech conference. The new version showcases speakers, sessions, and past highlights in a single seamless platform, replacing an outdated site that no longer reflected the event's scale.",
-    image: Project7,
+    image: TeXcellenceImg,
     link: "https://texcellence-4.vercel.app/",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Motion"],
     highlights: ["Next.js", "Tailwind CSS", "Motion"],
@@ -82,7 +96,7 @@ export const projects = [
       "Cinematic portfolio site for a videographer, with CMS-driven updates and scroll animations.",
     description:
       "A cinematic portfolio website for a professional videographer, built to showcase client work and storytelling through immersive visuals and smooth animations. Content is managed via Sanity CMS, allowing the client to update their portfolio independently without touching code.",
-    image: Project6,
+    image: CodedInMotionImg,
     link: "https://coded-in-motion.vercel.app/",
     technologies: [
       "TypeScript",
@@ -93,13 +107,14 @@ export const projects = [
     ],
     highlights: ["Next.js", "Motion", "Sanity CMS"],
   },
+  /* Not done yet — hide until finished
   {
     name: "My Butler",
     shortDescription:
       "AI-powered e-commerce platform with outfit and collection recommendations.",
     description:
       "A full-stack e-commerce platform with an AI-powered personal styling layer. Uses TensorFlow to analyse user preferences and deliver tailored outfit and style recommendations, going beyond standard filtering to personalise the shopping experience at the item level.",
-    image: Project5,
+    image: MyButlerImg,
     link: "https://my-butler-v1.vercel.app/",
     technologies: [
       "TypeScript",
@@ -112,13 +127,14 @@ export const projects = [
     ],
     highlights: ["Next.js", "Supabase", "TensorFlow", "Motion"],
   },
+  */
   {
     name: "Moova",
     shortDescription:
       "Gemini-powered travel planner that builds personalised trips from your mood and budget.",
     description:
       "An AI-powered travel planner that generates personalised trips based on your mood, budget, and timeframe. Powered by Google Gemini, it delivers curated destinations, activity breakdowns, and cost estimates, with Supabase handling auth and trip persistence.",
-    image: Project4,
+    image: MoovaImg,
     link: "https://moova-travels.vercel.app/",
     technologies: [
       "TypeScript",
@@ -137,18 +153,19 @@ export const projects = [
       "Open-source telemedicine platform with QR check-in, video consults, and appointment booking.",
     description:
       "An open-source telemedicine platform making medical consultation accessible directly from a smartphone. Features appointment booking, QR-based patient check-in, real-time patient records, video consultation, and automated appointment reminders. Built with Appwrite as the backend and tested with Jest.",
-    image: Project3,
+    image: NextGenPatientsImg,
     link: "https://next-gen-patients.vercel.app/",
     technologies: ["Next.js", "Tailwind CSS", "Motion", "Appwrite", "Jest"],
     highlights: ["Next.js", "Appwrite", "Motion", "Jest"],
   },
+  /* Not done yet — hide until finished
   {
     name: "Agency.io",
     shortDescription:
       "Vacation planning app giving users full control over booking, experiences, and itineraries.",
     description:
       "A vacation planning and trip scheduling web app with the aim of giving users the ability to take full control of the planning and booking of their vacations, access bespoke and exquisite experiences and take them to a whole new level of ease and comfort.",
-    image: Project2,
+    image: AgencyIoImg,
     link: "https://agency-io-v1.vercel.app/",
     technologies: [
       "TypeScript",
@@ -159,13 +176,14 @@ export const projects = [
     ],
     highlights: ["Next.js", "Firebase", "Motion"],
   },
+  */
   {
     name: "FunXplorer",
     shortDescription:
       "A multi-tool web app blending games, quizzes, and utility features in one interface.",
     description:
       "A fun and functional web app that combines interactive learning, entertainment, and utility tools in one sleek interface. Whether you want to learn something new, test your knowledge, play a quick game, or just get work done, this app has you covered.",
-    image: Project1,
+    image: FunXplorerImg,
     link: "https://fun-xplorer.vercel.app/",
     technologies: ["HTML", "CSS", "JavaScript"],
     highlights: ["HTML", "CSS", "JavaScript"],

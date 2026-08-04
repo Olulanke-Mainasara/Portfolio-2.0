@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  site: "https://mainasaraolulanke.com",
   integrations: [react(), icon()],
   vite: {
     plugins: [tailwindcss()],

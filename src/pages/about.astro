@@ -6,7 +6,7 @@ import SideQuestCard from "@/components/Shared/UI/SideQuestCard.astro";
 import InfiniteMenu from "@/components/Shared/UI/InfiniteMenu";
 import { Icon } from "astro-icon/components";
 import { technologies, sideQuests } from "@/data";
-import AboutImg from "@/images/me-suit.webp";
+import AboutImg from "@/images/about/about-profile.webp";
 
 const email = "mainasara.o.olulanke@gmail.com";
 
@@ -81,7 +81,10 @@ const menuItems = await Promise.all(
 );
 ---
 
-<Layout title="About - Mainasara Olulanke">
+<Layout
+  title="About - Mainasara Olulanke"
+  description="Frontend Engineer by day, aspiring polymath by night. Get to know Mainasara Olulanke — background, skills, and what drives the work."
+>
   <main class="mx-auto max-w-screen-2xl pt-17 md:pt-20">
     <section class="px-4 text-center text-white light:text-neutral-900 lg:px-8">
       <h1
@@ -96,7 +99,6 @@ const menuItems = await Promise.all(
       direction="up"
       distance="24px"
       class="mt-8 md:mt-14"
-      disableOnMobile
     >
       <section
         class="flex flex-col items-center gap-4 lg:gap-8 px-4 text-white light:text-neutral-900 md:flex-row md:items-start xl:items-center lg:px-8 xl:min-h-125 xl:h-[80vh]"

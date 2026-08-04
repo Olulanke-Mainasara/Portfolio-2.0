@@ -12,11 +12,10 @@ interface Props {
 const { index, label, title, description, image } = Astro.props;
 const reversed = index % 2 === 1;
 const numeral = "0" + (index + 1);
-const isFirst = index === 0;
 ---
 
 <article
-  class={`nerd-feature-reveal flex flex-col items-center gap-12 md:gap-10 ${reversed ? "md:flex-row-reverse" : "md:flex-row"} lg:gap-12 ${isFirst ? "reveal-mobile-off" : ""}`}
+  class={`nerd-feature-reveal flex flex-col items-center gap-12 md:gap-10 ${reversed ? "md:flex-row-reverse" : "md:flex-row"} lg:gap-12`}
 >
   <div class="w-full shrink-0 md:w-2/5">
     <div
@@ -57,30 +56,19 @@ const isFirst = index === 0;
     opacity: 1;
     transform: translateY(0);
   }
-
-  .nerd-feature-reveal.reveal-mobile-off {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 </style>
 
 <script>
-  function initNerdFeatureReveal() {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("in-view");
-          observer.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.25 },
-    );
+  import { inView } from "framer-motion/dom";
 
-    document
-      .querySelectorAll(".nerd-feature-reveal:not(.in-view)")
-      .forEach((el) => observer.observe(el));
+  function initNerdFeatureReveal() {
+    inView(
+      ".nerd-feature-reveal:not(.in-view)",
+      (element) => {
+        element.classList.add("in-view");
+      },
+      { amount: 0.25 },
+    );
   }
 
   document.addEventListener("astro:page-load", initNerdFeatureReveal);

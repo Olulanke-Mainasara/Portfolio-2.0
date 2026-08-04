@@ -10,7 +10,10 @@ import ContactLinks from "@/components/Shared/UI/ContactLinks.astro";
 import ScrollReveal from "./../components/Shared/UI/ScrollReveal.tsx";
 ---
 
-<Layout title="Mainasara Olulanke - Frontend Engineer">
+<Layout
+  title="Mainasara Olulanke - Frontend Engineer"
+  description="Frontend Engineer crafting exquisite user interfaces and beautiful, clean-code frontends. Explore projects, process, and the work."
+>
   <Splash client:load />
   <main>
     <div>
@@ -63,6 +66,7 @@ import ScrollReveal from "./../components/Shared/UI/ScrollReveal.tsx";
 <script>
   import { gsap } from "gsap";
   import { SplitText } from "gsap/SplitText";
+  import { inView } from "framer-motion/dom";
 
   gsap.registerPlugin(SplitText);
 
@@ -77,24 +81,19 @@ import ScrollReveal from "./../components/Shared/UI/ScrollReveal.tsx";
 
         gsap.set(split.lines, { filter: "blur(14px)", opacity: 0.3 });
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (!entry.isIntersecting) return;
-              gsap.to(split.lines, {
-                filter: "blur(0px)",
-                opacity: 1,
-                duration: 0.9,
-                ease: "power2.out",
-                stagger: 0.15,
-              });
-              observer.unobserve(entry.target);
+        inView(
+          el,
+          () => {
+            gsap.to(split.lines, {
+              filter: "blur(0px)",
+              opacity: 1,
+              duration: 0.9,
+              ease: "power2.out",
+              stagger: 0.15,
             });
           },
-          { threshold: 0.4 },
+          { amount: 0.4 },
         );
-
-        observer.observe(el);
       });
   }
 
