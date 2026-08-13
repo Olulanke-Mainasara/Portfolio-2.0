@@ -101,8 +101,8 @@ const About = ({ children }: { children: React.ReactNode }) => {
             className="flex items-center justify-end w-full p-4 lg:px-8"
           >
             <p className="max-w-md text-3xl font-thin text-right">
-              Hey, I'm Mainasara Olulanke, Frontend Engineer by day, aspiring
-              astronaut by night.
+              I'm a Frontend Engineer with a deep care for the craft, and an
+              aspiring astronaut on Fridays.
             </p>
           </motion.div>
 
@@ -142,10 +142,11 @@ const About = ({ children }: { children: React.ReactNode }) => {
             ref={textRef}
             className="max-w-xl lg:max-w-3xl text-xl font-thin lg:text-3xl xl:text-4xl opacity-0 xl:leading-12"
           >
-            I've spent 3+ years building production web apps for real clients,
-            led frontend at AfriTransfer, and got my hands dirty with both code
-            and infrastructure at CWG PLC. I've also taught a cohort of junior
-            developers how to stop fearing the terminal, a BIG W for me.
+            I've spent 3+ years building fintech, conference, NGO, marketing,
+            and personal platforms. I led frontend at AfriTransfer, and got my
+            hands dirty with both code and infrastructure at CWG PLC. I've also
+            taught a cohort of junior developers how to stop fearing the
+            terminal, a BIG W for me.
           </h3>
         </div>
       </div>

@@ -62,9 +62,11 @@ const NavChip: React.FC<NavChipProps> = ({
 export interface StaggeredMenuItem {
   label: string;
   ariaLabel: string;
-  link: string;
+  link?: string;
   newTab?: boolean;
   fontStyle?: "comic";
+  disabled?: boolean;
+  numberOverride?: string;
 }
 export interface StaggeredMenuSocialItem {
   label: string;
@@ -134,11 +136,19 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
   }, []);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    // On the homepage the nav stays hidden until the hero (one viewport
+    // tall) has scrolled past, so the "scrolled" style shouldn't kick in
+    // until the user scrolls further still — otherwise it appears already
+    // in its compact state the moment it fades in, on top of the reveal
+    // text. Offset the threshold by that hidden scroll distance.
+    const onScroll = () => {
+      const revealOffset = activePath === "/" ? window.innerHeight : 0;
+      setScrolled(window.scrollY - revealOffset > 40);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [activePath]);
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
@@ -454,7 +464,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         gsap.set(btn, { color: resolvedMenuButtonColor });
       }
     },
-    [resolvedOpenMenuButtonColor, resolvedMenuButtonColor, changeMenuColorOnOpen],
+    [
+      resolvedOpenMenuButtonColor,
+      resolvedMenuButtonColor,
+      changeMenuColorOnOpen,
+    ],
   );
 
   React.useEffect(() => {
@@ -468,7 +482,11 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
         gsap.set(toggleBtnRef.current, { color: resolvedMenuButtonColor });
       }
     }
-  }, [changeMenuColorOnOpen, resolvedMenuButtonColor, resolvedOpenMenuButtonColor]);
+  }, [
+    changeMenuColorOnOpen,
+    resolvedMenuButtonColor,
+    resolvedOpenMenuButtonColor,
+  ]);
 
   const toggleMenu = useCallback(() => {
     const target = !openRef.current;
@@ -662,20 +680,20 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 >
                   <span
                     ref={iconRef}
-                    className="sm-icon relative w-8 h-8 md:w-9 md:h-9 shrink-0 inline-flex items-center justify-center [will-change:transform]"
+                    className="sm-icon relative w-8 h-8 md:w-9 md:h-9 shrink-0 inline-flex items-center justify-center will-change-transform"
                     aria-hidden="true"
                   >
                     <span
                       ref={lineTopRef}
-                      className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
+                      className="sm-icon-line absolute top-1/2 w-full h-0.75 bg-current rounded-xs -translate-y-1/2 will-change-transform"
                     />
                     <span
                       ref={lineMidRef}
-                      className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
+                      className="sm-icon-line absolute top-1/2 w-full h-0.75 bg-current rounded-xs -translate-y-1/2 will-change-transform"
                     />
                     <span
                       ref={lineBotRef}
-                      className="sm-icon-line absolute top-1/2 w-full h-[3px] bg-current rounded-[2px] -translate-y-1/2 [will-change:transform]"
+                      className="sm-icon-line absolute top-1/2 w-full h-0.75 bg-current rounded-xs -translate-y-1/2 will-change-transform"
                     />
                   </span>
                 </button>
@@ -698,27 +716,47 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
             >
               {items && items.length ? (
                 items.map((it, idx) => {
-                  const active = isActiveLink(it.link, activePath);
+                  const active = it.link
+                    ? isActiveLink(it.link, activePath)
+                    : false;
+                  const disabled = it.disabled || !it.link;
+                  const itemClassName = `sm-panel-item relative text-white font-semibold leading-none tracking-[-1px] uppercase transition-[background,color] duration-150 ease-linear inline-flex items-start no-underline ${disabled ? "sm-panel-item-disabled" : "cursor-pointer"} ${it.fontStyle === "comic" ? "sm-panel-item-comic" : ""}`;
+                  const labelSpan = (
+                    <span className="sm-panel-itemLabel inline-block origin-[50%_100%] will-change-transform">
+                      {it.label}
+                    </span>
+                  );
+
                   return (
                     <li
                       className="sm-panel-itemWrap relative overflow-hidden leading-none"
                       key={it.label + idx}
                     >
-                      <a
-                        className={`sm-panel-item relative text-white font-semibold cursor-pointer leading-none tracking-[-1px] uppercase transition-[background,color] duration-150 ease-linear inline-flex items-start no-underline ${it.fontStyle === "comic" ? "sm-panel-item-comic" : ""}`}
-                        href={it.link}
-                        target={it.newTab ? "_blank" : undefined}
-                        rel={it.newTab ? "noopener noreferrer" : undefined}
-                        aria-label={it.ariaLabel}
-                        aria-current={active ? "page" : undefined}
-                        data-index={idx + 1}
-                        data-active={active || undefined}
-                        onClick={closeMenu}
-                      >
-                        <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
-                          {it.label}
+                      {disabled ? (
+                        <span
+                          className={itemClassName}
+                          aria-label={it.ariaLabel}
+                          data-index={idx + 1}
+                          data-suffix={it.numberOverride}
+                        >
+                          {labelSpan}
                         </span>
-                      </a>
+                      ) : (
+                        <a
+                          className={itemClassName}
+                          href={it.link}
+                          target={it.newTab ? "_blank" : undefined}
+                          rel={it.newTab ? "noopener noreferrer" : undefined}
+                          aria-label={it.ariaLabel}
+                          aria-current={active ? "page" : undefined}
+                          data-index={idx + 1}
+                          data-active={active || undefined}
+                          data-suffix={it.numberOverride}
+                          onClick={closeMenu}
+                        >
+                          {labelSpan}
+                        </a>
+                      )}
                     </li>
                   );
                 })
@@ -728,7 +766,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                   aria-hidden="true"
                 >
                   <span className="sm-panel-item relative text-white font-semibold cursor-pointer leading-none tracking-[-1px] uppercase transition-[background,color] duration-150 ease-linear inline-flex items-start no-underline">
-                    <span className="sm-panel-itemLabel inline-block [transform-origin:50%_100%] will-change-transform">
+                    <span className="sm-panel-itemLabel inline-block origin-[50%_100%] will-change-transform">
                       No items
                     </span>
                   </span>
@@ -741,7 +779,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                 className="sm-socials mt-auto pt-8 flex flex-col gap-3"
                 aria-label="Social links"
               >
-                <h3 className="sm-socials-title m-0 text-base font-medium [color:var(--sm-accent,#ff0000)]">
+                <h3 className="sm-socials-title m-0 text-base font-medium text-(--sm-accent,#ff0000)">
                   Socials
                 </h3>
                 <ul
@@ -754,7 +792,7 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
                         href={s.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="sm-socials-link text-base font-medium text-white/70 no-underline relative inline-block py-[2px] transition-[color,opacity] duration-300 ease-linear"
+                        className="sm-socials-link text-base font-medium text-white/70 no-underline relative inline-block py-0.5 transition-[color,opacity] duration-300 ease-linear"
                         onClick={closeMenu}
                       >
                         {s.label}
@@ -808,9 +846,14 @@ export const StaggeredMenu: React.FC<StaggeredMenuProps> = ({
 .sm-scope .sm-panel-item[data-active] { cursor: default; }
 .sm-scope .sm-panel-item[data-active]:hover { color: #fff; }
 .sm-scope .sm-panel-list[data-numbering] .sm-panel-item[data-active]::after { content: ""; font-size: 0.22em; letter-spacing: 0.08em; }
+.sm-scope .sm-panel-item-disabled { cursor: default; color: rgba(255,255,255,0.4); }
+.sm-scope .sm-panel-item-disabled:hover { color: rgba(255,255,255,0.4); }
+.sm-scope .sm-panel-list[data-numbering] .sm-panel-item[data-suffix]::after { content: attr(data-suffix); font-size: 0.22em; letter-spacing: 0.02em; }
 html.light .sm-scope .staggered-menu-panel { background: #ffffff; }
 html.light .sm-scope .sm-panel-item { color: #14181a; }
 html.light .sm-scope .sm-panel-item[data-active]:hover { color: #14181a; }
+html.light .sm-scope .sm-panel-item-disabled { color: rgba(20,24,26,0.4); }
+html.light .sm-scope .sm-panel-item-disabled:hover { color: rgba(20,24,26,0.4); }
 html.light .sm-scope .sm-socials-link { color: rgba(20, 24, 26, 0.7); }
 @media (max-width: 640px) { .sm-scope .staggered-menu-panel { width: 100%; left: 0; right: 0; } .sm-scope .sm-prelayers { width: 100%; left: 0; right: 0; } }
       `}</style>
