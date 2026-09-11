@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# /offline is kept out of search with a noindex meta tag rather than a
+# Disallow here — a blocked URL can never be crawled, so the noindex would
+# never be read.
+
+Sitemap: https://mainasaraolulanke.com/sitemap-index.xml

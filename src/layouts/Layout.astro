@@ -2,6 +2,7 @@
 import Nav from "../components/Shared/Nav.astro";
 import Footer from "../components/Shared/Footer.astro";
 import SmoothScroll from "../components/Shared/UI/SmoothScroll.tsx";
+import StructuredData from "../components/Shared/SEO/StructuredData.astro";
 import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 
@@ -106,6 +107,7 @@ const unregisterServiceWorker = `
     <meta name="apple-mobile-web-app-title" content="Mainasara" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
     {noindex && <meta name="robots" content="noindex" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -152,6 +154,8 @@ const unregisterServiceWorker = `
     </script>
 
     <script is:inline set:html={import.meta.env.PROD ? registerServiceWorker : unregisterServiceWorker} />
+
+    <StructuredData />
 
     <ClientRouter />
   </head>

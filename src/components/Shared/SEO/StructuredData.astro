@@ -1,0 +1,49 @@
+---
+import { socialProfiles, technologies } from "@/data";
+
+// Person and WebSite markup describe the site as a whole, so it belongs on the
+// homepage once rather than repeated across every route.
+const isHome = Astro.url.pathname === "/";
+
+const site = Astro.site;
+if (!site) {
+  throw new Error("StructuredData needs `site` set in astro.config.mjs");
+}
+
+const abs = (path: string) => new URL(path, site).href;
+
+const description =
+  "Mainasara Olulanke — Frontend Engineer building fast, thoughtful, and beautifully-crafted web experiences.";
+
+const graph = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": abs("#website"),
+      url: site.href,
+      name: "Mainasara Olulanke",
+      description,
+      inLanguage: "en",
+      publisher: { "@id": abs("#person") },
+    },
+    {
+      "@type": "Person",
+      "@id": abs("#person"),
+      name: "Mainasara Olulanke",
+      url: site.href,
+      image: abs("/me.webp"),
+      jobTitle: "Frontend Engineer",
+      description,
+      knowsAbout: technologies.map((technology) => technology.name),
+      sameAs: socialProfiles.map((profile) => profile.url),
+    },
+  ],
+};
+---
+
+{
+  isHome && (
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(graph)} />
+  )
+}

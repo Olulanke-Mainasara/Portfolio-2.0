@@ -557,3 +557,19 @@ export const companies = [
     role: "Redesigned the tech conference's event platform",
   },
 ];
+
+/**
+ * Canonical profile URLs, for the Person schema's `sameAs`. Tracking params
+ * are stripped — search engines need the canonical profile, not a QR referral.
+ * The nav, footer, contact links and about page still hold their own copies;
+ * they could be pointed here later.
+ */
+export const socialProfiles = [
+  { label: "GitHub", url: "https://github.com/Olulanke-Mainasara" },
+  {
+    label: "LinkedIn",
+    url: "https://www.linkedin.com/in/mainasara-olulanke-01658a228/",
+  },
+  { label: "X", url: "https://x.com/MainasaraOlu" },
+  { label: "Instagram", url: "https://www.instagram.com/grim_redd" },
+];

@@ -19,7 +19,9 @@ const TEMPLATE = resolve(
 /** Never worth a user's storage: crawler-only or large on-demand downloads. */
 const EXCLUDED_PATHS = new Set(["/og-image.jpg"]);
 const EXCLUDED_EXTENSIONS = new Set([".pdf", ".map"]);
-const EXCLUDED_NAMES = new Set([".DS_Store", "sw.js"]);
+const EXCLUDED_NAMES = new Set([".DS_Store", "sw.js", "robots.txt"]);
+/** Sitemap XML is for crawlers; the site itself never fetches it. */
+const EXCLUDED_PATTERNS = [/^\/sitemap[-\w]*\.xml$/];
 
 async function walk(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -43,7 +45,8 @@ function isExcluded(urlPath) {
   return (
     EXCLUDED_PATHS.has(urlPath) ||
     EXCLUDED_NAMES.has(name) ||
-    EXCLUDED_EXTENSIONS.has(ext)
+    EXCLUDED_EXTENSIONS.has(ext) ||
+    EXCLUDED_PATTERNS.some((pattern) => pattern.test(urlPath))
   );
 }
 
