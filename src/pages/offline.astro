@@ -1,0 +1,52 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+// Served by the service worker when a page is requested that was never cached
+// and the network is unreachable.
+---
+
+<Layout
+  title="Offline - Mainasara Olulanke"
+  description="You are offline. This page could not be loaded."
+  noindex
+>
+  <main
+    class="mx-auto flex min-h-svh max-w-screen-2xl flex-col justify-center px-4 pt-17 pb-24 text-white light:text-neutral-900 md:pt-20 lg:px-8"
+  >
+    <h1
+      class="text-6xl leading-[0.85] font-normal tracking-tight sm:text-7xl md:text-8xl lg:text-[9rem]"
+    >
+      No signal<span class="text-background">.</span>
+    </h1>
+
+    <p class="mt-6 max-w-xl text-lg text-white/70 light:text-neutral-900/70 md:text-xl">
+      You're offline, and this page isn't in the cache yet. Pages you've already
+      visited will still work — or try again once you're back on a network.
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center gap-4">
+      <button
+        type="button"
+        id="offline-retry"
+        class="cursor-pointer border border-white/30 px-6 py-3 text-base transition-colors hover:border-white hover:bg-white hover:text-neutral-900 light:border-neutral-900/30 light:hover:border-neutral-900 light:hover:bg-neutral-900 light:hover:text-white"
+      >
+        Try again
+      </button>
+
+      <a
+        href="/"
+        class="border-b border-white/30 pb-1 text-base transition-colors hover:border-white light:border-neutral-900/30 light:hover:border-neutral-900"
+      >
+        Go home
+      </a>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const retry = document.getElementById("offline-retry");
+  retry?.addEventListener("click", () => window.location.reload());
+
+  // Reload the moment connectivity comes back, so the real page takes over.
+  window.addEventListener("online", () => window.location.reload());
+</script>

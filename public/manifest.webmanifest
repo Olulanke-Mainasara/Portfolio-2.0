@@ -1,0 +1,51 @@
+{
+  "id": "/",
+  "name": "Mainasara Olulanke",
+  "short_name": "Mainasara",
+  "description": "Mainasara Olulanke — Frontend Engineer building fast, thoughtful, and beautifully-crafted web experiences.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#070b0f",
+  "theme_color": "#070b0f",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Recent Work",
+      "short_name": "Work",
+      "url": "/projects"
+    },
+    {
+      "name": "Blog",
+      "short_name": "Blog",
+      "url": "/blog"
+    },
+    {
+      "name": "The Nerd",
+      "short_name": "Nerd",
+      "url": "/the-nerd"
+    }
+  ]
+}
