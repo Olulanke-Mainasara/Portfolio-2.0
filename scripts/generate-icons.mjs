@@ -18,7 +18,6 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = resolve(root, "public/icons");
 
 const INK = "#f7f5f2";
-const INK_LIGHT = "#14181a";
 const GROUND = "#070b0f";
 const SHADE = "#424141";
 
@@ -35,48 +34,42 @@ const COMET_STROKED =
 // Bounding box of the assembled mark, in the same units as the boxes below.
 const MARK = { x: -12.5, y: 0, w: 59.75, h: 35.3963 };
 
-const strokeAttrs = (klass) =>
-  `fill="none" ${klass ? `class="${klass}"` : ""} stroke-width="4" stroke-linejoin="round" stroke-linecap="round"`;
+const strokeAttrs = `fill="none" stroke="${INK}" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"`;
 
-function markup({ themeAware }) {
-  const stroke = themeAware ? "" : ` stroke="${INK}"`;
-  const klass = themeAware ? "ink" : "";
+function markup() {
   return `
-    <svg x="-12.5" y="5.018" width="17.5" height="25.128" viewBox="0 0 39 56" ${strokeAttrs(klass)}${stroke} overflow="visible">
+    <svg x="-12.5" y="5.018" width="17.5" height="25.128" viewBox="0 0 39 56" ${strokeAttrs} overflow="visible">
       <path d="M35.2812 53L3.71875 28L35.2813 3" />
     </svg>
-    <svg x="0" y="0" width="33.75" height="35.3963" viewBox="0 0 82 86" ${strokeAttrs(klass)}${stroke} overflow="visible">
+    <svg x="0" y="0" width="33.75" height="35.3963" viewBox="0 0 82 86" ${strokeAttrs} overflow="visible">
       <path d="${COMET_FILLED}" fill="${SHADE}" />
       <path d="${COMET_STROKED}" />
     </svg>
-    <svg x="29.75" y="5.25" width="17.5" height="25.789" viewBox="0 0 38 56" ${strokeAttrs(klass)}${stroke} overflow="visible">
+    <svg x="29.75" y="5.25" width="17.5" height="25.789" viewBox="0 0 38 56" ${strokeAttrs} overflow="visible">
       <path d="M3.0625 3L34.9375 28L3.0625 53" />
     </svg>`;
 }
 
 /** A square icon: mark centred on the site's dark ground. */
-function squareIcon(size, widthFraction) {
+function squareIcon(size, widthFraction, radius = 0) {
   const scale = (size * widthFraction) / MARK.w;
   const tx = (size - MARK.w * scale) / 2 - MARK.x * scale;
   const ty = (size - MARK.h * scale) / 2 - MARK.y * scale;
+  const rx = radius ? ` rx="${radius}"` : "";
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
-  <rect width="${size}" height="${size}" fill="${GROUND}" />
-  <g transform="translate(${tx.toFixed(3)} ${ty.toFixed(3)}) scale(${scale.toFixed(6)})">${markup({ themeAware: false })}
+  <rect width="${size}" height="${size}"${rx} fill="${GROUND}" />
+  <g transform="translate(${tx.toFixed(3)} ${ty.toFixed(3)}) scale(${scale.toFixed(6)})">${markup()}
   </g>
 </svg>`;
 }
 
-/** Transparent, theme-aware mark for use as the SVG favicon. */
+/**
+ * The SVG favicon: the mark on a rounded dark tile, matching favicon.ico.
+ * Browsers take the SVG over the .ico whenever both are linked, so it has to
+ * carry its own ground — a bare mark drops the tile the .ico always had.
+ */
 function faviconSvg() {
-  const pad = 3;
-  const vb = `${MARK.x - pad} ${MARK.y - pad} ${MARK.w + pad * 2} ${MARK.h + pad * 2}`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${vb}">
-  <style>
-    .ink { stroke: ${INK}; }
-    @media (prefers-color-scheme: light) { .ink { stroke: ${INK_LIGHT}; } }
-  </style>${markup({ themeAware: true })}
-</svg>
-`;
+  return `${squareIcon(64, 0.78, 11)}\n`;
 }
 
 const targets = [
