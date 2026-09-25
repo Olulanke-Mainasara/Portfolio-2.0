@@ -8,7 +8,10 @@ import TeXcellenceImg from "./images/projects/project-texcellence.webp";
 import AfritransferImg from "./images/projects/project-afritransfer.webp";
 import CaveFoundationImg from "./images/projects/project-cave-foundation.webp";
 import SafiPayImg from "./images/projects/project-safipay.webp";
-import FunmiladeAkingbagbohunImg from "./images/projects/project-funmilade-akingbagbohun.png";
+import FunmiladeAkingbagbohunImg from "./images/projects/project-funmilade-akingbagbohun.webp";
+import EvolveImg from "./images/projects/project-evolve.webp";
+import BatonImg from "./images/projects/project-baton.webp";
+import SpliteetImg from "./images/projects/project-spliteet.webp";
 import SupermanArt from "./images/nerd-facts/nerd-superhero.jpg";
 import DcJusticeLeague from "./images/nerd-facts/nerd-comics.webp";
 import LegoMcLarenP1 from "./images/nerd-facts/nerd-lego.jpg";
@@ -16,6 +19,55 @@ import ApolloLaunch from "./images/nerd-facts/nerd-space.webp";
 import F1Car from "./images/nerd-facts/nerd-f1.jpeg";
 
 export const projects = [
+  {
+    name: "Evolve",
+    shortDescription:
+      "Scroll-driven story of how birds evolved from dinosaurs, told through fossils and photography.",
+    description:
+      "A scroll-driven editorial site on how birds evolved from dinosaurs. It opens on a macro shot of a bird's eye sitting inside the O of the wordmark, then scrolling dives through the pupil into seven chapters spanning 230 million years, from the first dinosaurs to Archaeopteryx, feathered fossils, and the asteroid impact, with a live counter tracking millions of years as you go. Every claim is fact-checked and sourced, and it installs as an offline-capable PWA.",
+    image: EvolveImg,
+    link: "https://evolve-prints.vercel.app/",
+    technologies: [
+      "TypeScript",
+      "React",
+      "Vite",
+      "GSAP",
+      "ScrollTrigger",
+      "Lenis",
+      "PWA",
+      "Vitest",
+    ],
+    highlights: ["React", "GSAP", "Lenis", "PWA"],
+  },
+  {
+    name: "Baton",
+    shortDescription:
+      "Marketing site and patient dashboard for a concept platform for cross-hospital specialist care.",
+    description:
+      "A marketing site for Baton, a concept product for booking specialists across a network of hospitals: patients arrive with a pass the desk scans in seconds and keep one thread with everyone treating them. Includes the home page, a patient dashboard, a blog, help centre, changelog, careers, and legal pages, all driven by typed content modules, with a token-based light/dark theme that clears WCAG AA and offline support as an installable PWA.",
+    image: BatonImg,
+    link: "https://baton-health.vercel.app/",
+    technologies: [
+      "TypeScript",
+      "Vue",
+      "Vue Router",
+      "Vite",
+      "Tailwind CSS",
+      "PWA",
+    ],
+    highlights: ["Vue", "Tailwind CSS", "PWA"],
+  },
+  {
+    name: "Spliteet",
+    shortDescription:
+      "Image splitter that cuts a picture into slices, panels, or a grid that line back up when posted.",
+    description:
+      "A browser tool that cuts an image into slices, carousel panels, or a square-tile grid that line back up when posted or saved in order. Drop, paste, or pick an image, choose the mode and piece count, preview the cut guides live, then save the pieces one by one or download them as a zip. Built with no framework, it runs entirely on-device and installs as a PWA.",
+    image: SpliteetImg,
+    link: "https://spliteet.vercel.app/",
+    technologies: ["HTML", "CSS", "JavaScript", "JSZip", "PWA"],
+    highlights: ["JavaScript", "JSZip", "PWA"],
+  },
   {
     name: "Funmilade Akingbagbohun",
     shortDescription:
@@ -147,6 +199,7 @@ export const projects = [
     ],
     highlights: ["Next.js", "Google Gemini", "Supabase", "Clerk"],
   },
+  /* Hidden from the list
   {
     name: "NextGen Patients",
     shortDescription:
@@ -158,6 +211,7 @@ export const projects = [
     technologies: ["Next.js", "Tailwind CSS", "Motion", "Appwrite", "Jest"],
     highlights: ["Next.js", "Appwrite", "Motion", "Jest"],
   },
+  */
   /* Not done yet — hide until finished
   {
     name: "Agency.io",
@@ -177,6 +231,7 @@ export const projects = [
     highlights: ["Next.js", "Firebase", "Motion"],
   },
   */
+  /* Hidden from the list
   {
     name: "FunXplorer",
     shortDescription:
@@ -188,6 +243,7 @@ export const projects = [
     technologies: ["HTML", "CSS", "JavaScript"],
     highlights: ["HTML", "CSS", "JavaScript"],
   },
+  */
 ];
 
 // All icon URLs verified 200 via raw.githubusercontent.com/devicons/devicon
