@@ -13,7 +13,7 @@ if (!site) {
 const abs = (path: string) => new URL(path, site).href;
 
 const description =
-  "Mainasara Olulanke — Frontend Engineer building fast, thoughtful, and beautifully-crafted web experiences.";
+  "Mainasara Olulanke — Software Engineer building fast, thoughtful, and beautifully-crafted web experiences.";
 
 const graph = {
   "@context": "https://schema.org",
@@ -33,7 +33,7 @@ const graph = {
       name: "Mainasara Olulanke",
       url: site.href,
       image: abs("/me.webp"),
-      jobTitle: "Frontend Engineer",
+      jobTitle: "Software Engineer",
       description,
       knowsAbout: technologies.map((technology) => technology.name),
       sameAs: socialProfiles.map((profile) => profile.url),

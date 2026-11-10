@@ -2,11 +2,20 @@
 import ProjectFeature from "@/components/Shared/UI/ProjectFeature.astro";
 import Layout from "@/layouts/Layout.astro";
 import { projects } from "@/data";
+
+const tagLabels = new Map<string, string>();
+projects.forEach((project) => {
+  (project.tags ?? []).forEach((tag) => {
+    const slug = tag.toLowerCase();
+    if (!tagLabels.has(slug)) tagLabels.set(slug, tag);
+  });
+});
+const tags = [...tagLabels.entries()];
 ---
 
 <Layout
   title="Projects - Mainasara Olulanke"
-  description="A selection of shipped work from Mainasara Olulanke — full-stack products, frontend engineering, and client sites built with Next.js, TypeScript, and Motion."
+  description="A selection of shipped work from Mainasara Olulanke — full-stack products, software engineering, and client sites built with Next.js, TypeScript, and Motion."
 >
   <main class="mx-auto max-w-screen-2xl pt-17 md:pt-20">
     <section class="px-4 text-white light:text-neutral-900 lg:px-8">
@@ -16,6 +25,32 @@ import { projects } from "@/data";
         Recent Work<span class="text-background">.</span>
       </h1>
     </section>
+
+    {
+      tags.length > 1 && (
+        <div
+          id="tag-filters"
+          class="mt-10 flex flex-wrap justify-center gap-3 px-4 md:mt-16 lg:px-8"
+        >
+          <button
+            type="button"
+            data-tag-filter="all"
+            class="tag-chip active rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm text-white light:text-neutral-900 duration-300"
+          >
+            All
+          </button>
+          {tags.map(([slug, label]) => (
+            <button
+              type="button"
+              data-tag-filter={slug}
+              class="tag-chip rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm text-white/50 light:text-neutral-900/50 duration-300"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )
+    }
 
     <div
       class="mt-8 md:mt-14 flex flex-col gap-24 px-4 text-white light:text-neutral-900 md:gap-32 lg:px-8"
@@ -28,3 +63,41 @@ import { projects } from "@/data";
     </div>
   </main>
 </Layout>
+
+<style>
+  .tag-chip.active {
+    color: black;
+    background: var(--color-background);
+    border-color: var(--color-background);
+  }
+</style>
+
+<script>
+  function initTagFilters() {
+    const bar = document.getElementById("tag-filters");
+    if (!bar) return;
+
+    const chips = Array.from(
+      bar.querySelectorAll<HTMLButtonElement>(".tag-chip"),
+    );
+    const cards = Array.from(
+      document.querySelectorAll<HTMLElement>(".work-entry[data-tags]"),
+    );
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const tag = chip.dataset.tagFilter;
+        chips.forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+
+        cards.forEach((card) => {
+          const cardTags: string[] = JSON.parse(card.dataset.tags || "[]");
+          const show = tag === "all" || cardTags.includes(tag ?? "");
+          card.style.display = show ? "" : "none";
+        });
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initTagFilters);
+</script>

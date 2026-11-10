@@ -12,7 +12,7 @@ A fast, animation-heavy personal portfolio built with Astro, React, and Tailwind
 
 ## About
 
-This is the source for my personal site: a frontend engineer's portfolio covering my work, a bit about me, and a blog. It's built to be fast by default (Astro ships zero JS unless a component needs it) while still being expressive — scroll-driven reveals, staggered text splits, a WebGL project menu, and a light/dark theme that persists across visits.
+This is the source for my personal site: a software engineer's portfolio covering my work, a bit about me, and a blog. It's built to be fast by default (Astro ships zero JS unless a component needs it) while still being expressive — scroll-driven reveals, staggered text splits, a WebGL project menu, and a light/dark theme that persists across visits.
 
 ## Features
 

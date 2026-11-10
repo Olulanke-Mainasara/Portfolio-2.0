@@ -16,7 +16,7 @@ The old portfolio did its job. It listed projects, had a contact form, looked fi
 So I tore it down and started over. The new version has a few things the old one didn't:
 
 - A homepage that actually shows the work instead of just linking to it
-- [The Nerd](/the-nerd), a page for the parts of me that have nothing to do with frontend engineering: comics, Lego, Formula 1, and an ongoing campaign to get to space
+- [The Nerd](/the-nerd), a page for the parts of me that have nothing to do with software engineering: comics, Lego, Formula 1, and an ongoing campaign to get to space
 - This blog, for everything that doesn't fit neatly into a project card
 
 None of it was a redesign for the sake of a redesign. Every section exists because the old site was missing it.
@@ -25,7 +25,7 @@ None of it was a redesign for the sake of a redesign. Every section exists becau
 
 I'm not going to pretend I'll be publishing every week. What I want this space for is simpler: the stuff that usually only lives in commit messages, half finished Notion docs, and Slack threads with myself. Decisions I went back and forth on. Bugs that took longer to fix than I'd like to admit. Why I picked one library over another, and whether I'd make the same call again.
 
-Expect posts about frontend engineering first, the projects I'm building second, and whatever else earns a spot on the [about page](/about#contact) third.
+Expect posts about software engineering first, the projects I'm building second, and whatever else earns a spot on the [about page](/about#contact) third.
 
 ## What to expect next
 

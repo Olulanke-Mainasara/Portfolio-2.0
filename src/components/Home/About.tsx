@@ -17,7 +17,7 @@ const HeroH1 = () => {
       <div className="sticky top-0 flex flex-col items-center justify-center w-full md:min-h-192 h-screen -z-10">
         <div>
           <p className="text-xl tracking-widest text-center uppercase md:text-3xl">
-            Frontend Engineer
+            Software Engineer
           </p>
           <motion.h1
             initial={{ y: 100, opacity: 0 }}
@@ -101,7 +101,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
             className="flex items-center justify-end w-full p-4 lg:px-8"
           >
             <p className="max-w-md text-3xl font-thin text-right">
-              I'm a Frontend Engineer with a deep care for the craft, and an
+              I'm a Software Engineer with a deep care for the craft, and an
               aspiring astronaut on Fridays.
             </p>
           </motion.div>
@@ -111,7 +111,7 @@ const About = ({ children }: { children: React.ReactNode }) => {
               style={{ opacity: scrollYProgress }}
               className="text-xl tracking-widest text-center text-text-white light:text-neutral-900 uppercase md:text-3xl"
             >
-              Frontend Engineer
+              Software Engineer
             </motion.p>
             <h1 className="text-6xl md:text-9xl xl:text-[200px] uppercase flex flex-col items-center leading-none xl:block relative text-transparent">
               <span className="xl:hidden">Olulanke</span>Mainasara

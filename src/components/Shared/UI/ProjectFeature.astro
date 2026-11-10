@@ -12,6 +12,7 @@ interface Props {
     image: ImageMetadata;
     technologies: string[];
     highlights?: string[];
+    tags?: string[];
   };
 }
 
@@ -20,12 +21,15 @@ const techSlugs = JSON.stringify(
   project.technologies.map((tech) => tech.toLowerCase()),
 );
 const highlights = project.highlights ?? project.technologies.slice(0, 3);
+const tags = project.tags ?? [];
+const tagSlugs = JSON.stringify(tags.map((tag) => tag.toLowerCase()));
 ---
 
 <article
   id={project.name}
   class="work-entry project-feature-reveal scroll-mt-24 md:scroll-mt-32"
   data-tech={techSlugs}
+  data-tags={tagSlugs}
 >
   <a
     href={project.link}
@@ -46,6 +50,15 @@ const highlights = project.highlights ?? project.technologies.slice(0, 3);
     <div
       class="absolute inset-x-0 bottom-0 hidden flex-col gap-3 p-6 md:flex md:gap-4 md:p-10"
     >
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="w-fit rounded-full bg-background px-3 py-1 text-xs text-black">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
       <h3 class="text-3xl leading-none text-white md:text-6xl">
         {project.name}
       </h3>
@@ -68,9 +81,20 @@ const highlights = project.highlights ?? project.technologies.slice(0, 3);
   </a>
 
   <div class="mt-6 flex flex-col gap-4 md:hidden">
-    <h3 class="text-3xl leading-none text-white light:text-neutral-900">
-      {project.name}
-    </h3>
+    <div class="flex flex-wrap items-center gap-3">
+      <h3 class="text-3xl leading-none text-white light:text-neutral-900">
+        {project.name}
+      </h3>
+      {tags.length > 0 && (
+        <div class="flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span class="w-fit rounded-full bg-background px-3 py-1 text-xs text-black">
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
+    </div>
     <div class="flex flex-wrap gap-2">
       {
         highlights.map((tech) => (
