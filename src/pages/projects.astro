@@ -2,6 +2,14 @@
 import ProjectFeature from "@/components/Shared/UI/ProjectFeature.astro";
 import Layout from "@/layouts/Layout.astro";
 import { projects } from "@/data";
+
+const tags = [
+  ...new Set(
+    projects.flatMap((project) =>
+      (project.tags ?? []).map((t) => t.toLowerCase()),
+    ),
+  ),
+];
 ---
 
 <Layout
@@ -17,6 +25,32 @@ import { projects } from "@/data";
       </h1>
     </section>
 
+    {
+      tags.length > 1 && (
+        <div
+          id="tag-filters"
+          class="mt-10 flex flex-wrap justify-center gap-3 px-4 md:mt-16 lg:px-8"
+        >
+          <button
+            type="button"
+            data-tag-filter="all"
+            class="tag-chip active rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm tracking-widest text-white light:text-neutral-900 uppercase duration-300"
+          >
+            All
+          </button>
+          {tags.map((tag) => (
+            <button
+              type="button"
+              data-tag-filter={tag}
+              class="tag-chip rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm tracking-widest text-white/50 light:text-neutral-900/50 uppercase duration-300"
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      )
+    }
+
     <div
       class="mt-8 md:mt-14 flex flex-col gap-24 px-4 text-white light:text-neutral-900 md:gap-32 lg:px-8"
     >
@@ -28,3 +62,41 @@ import { projects } from "@/data";
     </div>
   </main>
 </Layout>
+
+<style>
+  .tag-chip.active {
+    color: black;
+    background: var(--color-background);
+    border-color: var(--color-background);
+  }
+</style>
+
+<script>
+  function initTagFilters() {
+    const bar = document.getElementById("tag-filters");
+    if (!bar) return;
+
+    const chips = Array.from(
+      bar.querySelectorAll<HTMLButtonElement>(".tag-chip"),
+    );
+    const cards = Array.from(
+      document.querySelectorAll<HTMLElement>(".work-entry[data-tags]"),
+    );
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const tag = chip.dataset.tagFilter;
+        chips.forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+
+        cards.forEach((card) => {
+          const cardTags: string[] = JSON.parse(card.dataset.tags || "[]");
+          const show = tag === "all" || cardTags.includes(tag ?? "");
+          card.style.display = show ? "" : "none";
+        });
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initTagFilters);
+</script>

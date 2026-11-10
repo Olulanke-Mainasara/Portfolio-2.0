@@ -26,6 +26,7 @@ export const projects = [
     description:
       "A scroll-driven editorial site on how birds evolved from dinosaurs. It opens on a macro shot of a bird's eye sitting inside the O of the wordmark, then scrolling dives through the pupil into seven chapters spanning 230 million years, from the first dinosaurs to Archaeopteryx, feathered fossils, and the asteroid impact, with a live counter tracking millions of years as you go. Every claim is fact-checked and sourced, and it installs as an offline-capable PWA.",
     image: EvolveImg,
+    tags: ["Motion & Brand"],
     link: "https://evolve-prints.vercel.app/",
     technologies: [
       "TypeScript",
@@ -46,6 +47,7 @@ export const projects = [
     description:
       "A marketing site for Baton, a concept product for booking specialists across a network of hospitals: patients arrive with a pass the desk scans in seconds and keep one thread with everyone treating them. Includes the home page, a patient dashboard, a blog, help centre, changelog, careers, and legal pages, all driven by typed content modules, with a token-based light/dark theme that clears WCAG AA and offline support as an installable PWA.",
     image: BatonImg,
+    tags: ["Motion & Brand"],
     link: "https://baton-health.vercel.app/",
     technologies: [
       "TypeScript",
@@ -64,6 +66,7 @@ export const projects = [
     description:
       "A browser tool that cuts an image into slices, carousel panels, or a square-tile grid that line back up when posted or saved in order. Drop, paste, or pick an image, choose the mode and piece count, preview the cut guides live, then save the pieces one by one or download them as a zip. Built with no framework, it runs entirely on-device and installs as a PWA.",
     image: SpliteetImg,
+    tags: ["Full-Stack"],
     link: "https://spliteet.vercel.app/",
     technologies: ["HTML", "CSS", "JavaScript", "JSZip", "PWA"],
     highlights: ["JavaScript", "JSZip", "PWA"],
@@ -75,6 +78,7 @@ export const projects = [
     description:
       "A personal portfolio site built for Engr. Funmilade Akingbagbohun, mechanical engineer and institutional leader — first female National Chairman of the Nigerian Institution of Mechanical Engineers, and 13th Chairman of the NSE Ikeja Branch. Showcases her career highlights, leadership roles, and achievements.",
     image: FunmiladeAkingbagbohunImg,
+    tags: ["Motion & Brand"],
     link: "https://funmilade-akingbagbohun-portfolio.vercel.app/",
     technologies: ["TypeScript", "Astro", "Tailwind CSS", "Motion"],
     highlights: ["Astro", "Tailwind CSS", "Motion"],
@@ -87,6 +91,7 @@ export const projects = [
     description:
       "A full-stack, machine learning-powered fraud detection system for mobile money transactions. Trained an XGBoost classifier on 6M+ PaySim transactions using a CRISP-DM pipeline. Features real-time batch prediction streaming via SSE, a SHAP explainability chart for model transparency, and a dashboard for monitoring model performance.",
     image: SafiPayImg,
+    tags: ["Full-Stack"],
     link: "https://safipay-fyp.vercel.app/",
     technologies: [
       "TypeScript",
@@ -109,6 +114,7 @@ export const projects = [
     description:
       "A showcase website built for the Cave Foundation Scholarship, a programme supporting young Nigerian women. Provides detailed programme information, an application process timeline, FAQs, and a seamless onboarding experience for prospective applicants.",
     image: CaveFoundationImg,
+    tags: ["Motion & Brand"],
     link: "https://www.cavefoundation.com/",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Motion"],
     highlights: ["Next.js", "Tailwind CSS", "Motion"],
@@ -120,6 +126,7 @@ export const projects = [
     description:
       "Frontend engineering for AfriTransfer, a pan-African financial services platform offering wallets, AJO savings groups, bank transfers, multi-currency holdings, and USSD support for low-data users. Led the UI architecture, set component and code quality standards, and integrated Google Gemini for intelligent in-app assistance.",
     image: AfritransferImg,
+    tags: ["Full-Stack", "Motion & Brand"],
     link: "https://afritransfer.com/",
     technologies: [
       "TypeScript",
@@ -138,6 +145,7 @@ export const projects = [
     description:
       "A complete redesign and rebuild of the TeXcellence event platform, modernizing the experience for a growing tech conference. The new version showcases speakers, sessions, and past highlights in a single seamless platform, replacing an outdated site that no longer reflected the event's scale.",
     image: TeXcellenceImg,
+    tags: ["Motion & Brand"],
     link: "https://texcellence-4.vercel.app/",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Motion"],
     highlights: ["Next.js", "Tailwind CSS", "Motion"],
@@ -149,6 +157,7 @@ export const projects = [
     description:
       "A cinematic portfolio website for a professional videographer, built to showcase client work and storytelling through immersive visuals and smooth animations. Content is managed via Sanity CMS, allowing the client to update their portfolio independently without touching code.",
     image: CodedInMotionImg,
+    tags: ["Motion & Brand"],
     link: "https://coded-in-motion.vercel.app/",
     technologies: [
       "TypeScript",
@@ -167,6 +176,7 @@ export const projects = [
     description:
       "A full-stack e-commerce platform with an AI-powered personal styling layer. Uses TensorFlow to analyse user preferences and deliver tailored outfit and style recommendations, going beyond standard filtering to personalise the shopping experience at the item level.",
     image: MyButlerImg,
+    tags: ["Full-Stack"],
     link: "https://my-butler-v1.vercel.app/",
     technologies: [
       "TypeScript",
@@ -187,6 +197,7 @@ export const projects = [
     description:
       "An AI-powered travel planner that generates personalised trips based on your mood, budget, and timeframe. Powered by Google Gemini, it delivers curated destinations, activity breakdowns, and cost estimates, with Supabase handling auth and trip persistence.",
     image: MoovaImg,
+    tags: ["Full-Stack", "Motion & Brand"],
     link: "https://moova-travels.vercel.app/",
     technologies: [
       "TypeScript",
@@ -207,6 +218,7 @@ export const projects = [
     description:
       "An open-source telemedicine platform making medical consultation accessible directly from a smartphone. Features appointment booking, QR-based patient check-in, real-time patient records, video consultation, and automated appointment reminders. Built with Appwrite as the backend and tested with Jest.",
     image: NextGenPatientsImg,
+    tags: ["Full-Stack"],
     link: "https://next-gen-patients.vercel.app/",
     technologies: ["Next.js", "Tailwind CSS", "Motion", "Appwrite", "Jest"],
     highlights: ["Next.js", "Appwrite", "Motion", "Jest"],
@@ -220,6 +232,7 @@ export const projects = [
     description:
       "A vacation planning and trip scheduling web app with the aim of giving users the ability to take full control of the planning and booking of their vacations, access bespoke and exquisite experiences and take them to a whole new level of ease and comfort.",
     image: AgencyIoImg,
+    tags: ["Full-Stack"],
     link: "https://agency-io-v1.vercel.app/",
     technologies: [
       "TypeScript",
@@ -239,6 +252,7 @@ export const projects = [
     description:
       "A fun and functional web app that combines interactive learning, entertainment, and utility tools in one sleek interface. Whether you want to learn something new, test your knowledge, play a quick game, or just get work done, this app has you covered.",
     image: FunXplorerImg,
+    tags: ["Full-Stack"],
     link: "https://fun-xplorer.vercel.app/",
     technologies: ["HTML", "CSS", "JavaScript"],
     highlights: ["HTML", "CSS", "JavaScript"],
@@ -490,9 +504,14 @@ export const now = {
 
 export const faqs = [
   {
+    question: "What kind of projects do you take on?",
+    answer:
+      "Two main flavors: full-stack products — dashboards, AI tools, anything with real data and logic behind it — and animation-heavy marketing or brand sites, the kind built to make someone stop scrolling. I genuinely enjoy both, so pitch me either.",
+  },
+  {
     question: "What's your tech stack?",
     answer:
-      "Mostly TypeScript, React, Next.js, and Astro on the frontend, with Tailwind CSS for styling. On the backend I reach for Node, Express, Python, and whatever database fits the job (PostgreSQL, Supabase, Firebase). I also dabble in machine learning when a project calls for it.",
+      "Mostly TypeScript, React, Next.js, and Astro on the frontend, with Tailwind CSS for styling and GSAP, Motion, and Lenis when a project needs real animation. On the backend I reach for Node, Express, Python, and whatever database fits the job (PostgreSQL, Supabase, Firebase). I also dabble in machine learning when a project calls for it.",
   },
   {
     question: "Are you available for freelance work?",
