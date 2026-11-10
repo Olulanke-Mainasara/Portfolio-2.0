@@ -3,13 +3,14 @@ import ProjectFeature from "@/components/Shared/UI/ProjectFeature.astro";
 import Layout from "@/layouts/Layout.astro";
 import { projects } from "@/data";
 
-const tags = [
-  ...new Set(
-    projects.flatMap((project) =>
-      (project.tags ?? []).map((t) => t.toLowerCase()),
-    ),
-  ),
-];
+const tagLabels = new Map<string, string>();
+projects.forEach((project) => {
+  (project.tags ?? []).forEach((tag) => {
+    const slug = tag.toLowerCase();
+    if (!tagLabels.has(slug)) tagLabels.set(slug, tag);
+  });
+});
+const tags = [...tagLabels.entries()];
 ---
 
 <Layout
@@ -34,17 +35,17 @@ const tags = [
           <button
             type="button"
             data-tag-filter="all"
-            class="tag-chip active rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm tracking-widest text-white light:text-neutral-900 uppercase duration-300"
+            class="tag-chip active rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm text-white light:text-neutral-900 duration-300"
           >
             All
           </button>
-          {tags.map((tag) => (
+          {tags.map(([slug, label]) => (
             <button
               type="button"
-              data-tag-filter={tag}
-              class="tag-chip rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm tracking-widest text-white/50 light:text-neutral-900/50 uppercase duration-300"
+              data-tag-filter={slug}
+              class="tag-chip rounded-full border border-white/15 light:border-black/15 px-4 py-2 text-sm text-white/50 light:text-neutral-900/50 duration-300"
             >
-              {tag}
+              {label}
             </button>
           ))}
         </div>
