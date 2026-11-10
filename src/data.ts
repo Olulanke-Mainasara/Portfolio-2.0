@@ -69,7 +69,7 @@ export const projects = [
     description:
       "A marketing site for Baton, a concept product for booking specialists across a network of hospitals: patients arrive with a pass the desk scans in seconds and keep one thread with everyone treating them. Includes the home page, a patient dashboard, a blog, help centre, changelog, careers, and legal pages, all driven by typed content modules, with a token-based light/dark theme that clears WCAG AA and offline support as an installable PWA.",
     image: BatonImg,
-    tags: ["Motion & brand"],
+    tags: ["Full-stack"],
     link: "https://baton-health.vercel.app/",
     technologies: [
       "TypeScript",
@@ -98,7 +98,7 @@ export const projects = [
     shortDescription:
       "Personal portfolio for a mechanical engineer and institutional leader.",
     description:
-      "A personal portfolio site built for Engr. Funmilade Akingbagbohun, mechanical engineer and institutional leader — first female National Chairman of the Nigerian Institution of Mechanical Engineers, and 13th Chairman of the NSE Ikeja Branch. Showcases her career highlights, leadership roles, and achievements.",
+      "A personal portfolio site built for Engr. Funmilade Akingbagbohun, mechanical engineer and institutional leader who became the first female National Chairman of the Nigerian Institution of Mechanical Engineers and the 13th Chairman of the NSE Ikeja Branch. Showcases her career highlights, leadership roles, and achievements.",
     image: FunmiladeAkingbagbohunImg,
     tags: ["Motion & brand"],
     link: "https://funmilade-akingbagbohun-portfolio.vercel.app/",
@@ -504,7 +504,7 @@ export const faqs = [
   {
     question: "What kind of projects do you take on?",
     answer:
-      "Two main flavors: full-stack products — dashboards, AI tools, anything with real data and logic behind it — and animation-heavy marketing or brand sites, the kind built to make someone stop scrolling. I genuinely enjoy both, so pitch me either.",
+      "Two main flavors: full-stack products, think dashboards and AI tools with real data and logic behind them, and animation-heavy marketing or brand sites, the kind built to make someone stop scrolling. I genuinely enjoy both, so pitch me either.",
   },
   {
     question: "What's your tech stack?",
